@@ -16,7 +16,7 @@ let package = Package(
   ],
   // Dependencies declare other packages that this package depends on.
   dependencies: [
-    .package(name: "WrkstrmFoundation", path: "./WrkstrmFoundation"),
+    .package(name: "WrkstrmFoundation", path: "../WrkstrmFoundation"),
     .package(path: "WrkstrmLog"),
   ],
   // Targets are the basic building blocks of a package. A target can define a module or a test
