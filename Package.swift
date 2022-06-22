@@ -25,11 +25,7 @@ let package = Package(
   targets: [
     .target(name: "WrkstrmCrossKit", dependencies: ["WrkstrmLog"]),
     .target(
-      name: "WrkstrmKit",
-      dependencies: [
-        "WrkstrmCrossKit",
-        .product(name: "WrkstrmFoundation", package: "WrkstrmFoundation"),
-      ]),
+      name: "WrkstrmKit", dependencies: ["WrkstrmCrossKit", "WrkstrmFoundation"]),
     .target(name: "WrkstrmSwiftUI", dependencies: []),
     .target(name: "WrkstrmSwiftUIExp", dependencies: ["WrkstrmSwiftUI", "WrkstrmCrossKit"]),
     .testTarget(name: "WrkstrmKitTests", dependencies: ["WrkstrmKit"]),
