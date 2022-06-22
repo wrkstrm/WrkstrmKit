@@ -1,0 +1,10 @@
+{
+  "optionSet" : {
+    "BazelPath" : {
+      "p" : "/Users/rismay/.bazel/bin/bazel"
+    },
+    "WorkspaceRootPath" : {
+      "p" : "/Users/rismay/Code/avalon/apple"
+    }
+  }
+}

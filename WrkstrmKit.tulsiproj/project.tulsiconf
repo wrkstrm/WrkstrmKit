@@ -1,0 +1,17 @@
+{
+  "configDefaults" : {
+    "optionSet" : {
+      "PreBuildPhaseRunScript" : {
+        "p" : "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi"
+      },
+      "ProjectGenerationPlatformConfiguration" : {
+        "p" : "macos_x86_64"
+      }
+    }
+  },
+  "packages" : [
+    "WrkstrmKit"
+  ],
+  "projectName" : "WrkstrmUtilities",
+  "workspaceRoot" : "../.."
+}
