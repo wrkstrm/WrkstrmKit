@@ -10,7 +10,8 @@ let package = Package(
   platforms: [
     .iOS(.v13),
     .macOS(.v12),
-    .watchOS(.v6)],
+    .watchOS(.v6),
+  ],
   products: [
     .library(name: "WrkstrmCrossKit", targets: ["WrkstrmCrossKit"]),
     .library(name: "WrkstrmKit", targets: ["WrkstrmKit"]),
