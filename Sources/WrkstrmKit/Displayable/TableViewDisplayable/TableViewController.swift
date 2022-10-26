@@ -124,7 +124,7 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
       }
       searchController?.searchBar.autocapitalizationType = .none
       searchController?.searchBar.delegate = self  // Monitor when the search button is tapped.
-      
+
       // Place the search bar in the navigation bar.
       switch search?.scopes?.mode {
       case let .filter(scopes):
