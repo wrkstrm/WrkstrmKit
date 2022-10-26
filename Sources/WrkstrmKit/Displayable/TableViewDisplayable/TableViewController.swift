@@ -119,8 +119,12 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
       searchController?.obscuresBackgroundDuringPresentation = false
       searchController?.delegate = self
       searchController?.searchResultsUpdater = self
+      if #available(iOS 16.0, *) {
+        searchController?.scopeBarActivation = .automatic
+      }
       searchController?.searchBar.autocapitalizationType = .none
       searchController?.searchBar.delegate = self  // Monitor when the search button is tapped.
+      
       // Place the search bar in the navigation bar.
       switch search?.scopes?.mode {
       case let .filter(scopes):
