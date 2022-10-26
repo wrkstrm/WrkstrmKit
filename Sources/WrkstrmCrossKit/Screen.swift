@@ -9,9 +9,9 @@ import Cocoa
 public typealias Screen = NSScreen
 #endif
 
-extension Screen {
+public extension Screen {
 
-  public static var hairlineWidth: CGFloat {
+  static var hairlineWidth: CGFloat {
 #if canImport(UIKit)
     return 1 / Screen.main.scale
 #elseif os(OSX)

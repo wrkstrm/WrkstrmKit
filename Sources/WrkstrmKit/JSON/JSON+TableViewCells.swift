@@ -70,7 +70,7 @@ extension WrkstrmFoundation.JSON {
 
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .array(key, arrayValue)? = model as? JSON.Value,
-        case let .dictionary(jsonArray) = arrayValue
+            case let .dictionary(jsonArray) = arrayValue
       else { Log.guard() }
 
       textLabel?.text = key.titlecased()
@@ -92,7 +92,7 @@ extension WrkstrmFoundation.JSON {
 
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .dictionary(key, jsonDictionary)? = model as? JSON.Value,
-        case let .any(json) = jsonDictionary
+            case let .any(json) = jsonDictionary
       else { Log.guard() }
       textLabel?.text = key.titlecased()
 

@@ -2,17 +2,17 @@
 import UIKit
 import WrkstrmFoundation
 
-extension UIView {
+public extension UIView {
 
-  public static let pulseDuration: TimeInterval = 2
+  static let pulseDuration: TimeInterval = 2
 
   @discardableResult
-  public func pulseView(_ pulse: Bool) -> UIViewPropertyAnimator {
+  func pulseView(_ pulse: Bool) -> UIViewPropertyAnimator {
     pulseView(pulse, delay: 0.0)
   }
 
   @discardableResult
-  public func pulseView(_ pulse: Bool, delay _: CGFloat) -> UIViewPropertyAnimator {
+  func pulseView(_ pulse: Bool, delay _: CGFloat) -> UIViewPropertyAnimator {
     if pulse {
       let scaleFactor: CGFloat = 0.9
       let timingOptions: UIView.AnimationOptions = [

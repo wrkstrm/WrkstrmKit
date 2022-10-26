@@ -28,9 +28,9 @@ public struct WebNavBarView: SwiftUI.View {
 
 // MARK: - Nav Buttons
 
-extension WebNavBarView {
+public extension WebNavBarView {
 
-  public struct LoadingButton: SwiftUI.View {
+  struct LoadingButton: SwiftUI.View {
 
     @ObservedObject var webViewState: WebView.State
 
@@ -45,7 +45,7 @@ extension WebNavBarView {
     }
   }
 
-  public struct BackButton: SwiftUI.View {
+  struct BackButton: SwiftUI.View {
 
     @ObservedObject var webViewState: WebView.State
 
@@ -57,7 +57,7 @@ extension WebNavBarView {
     }
   }
 
-  public struct ForwardButton: SwiftUI.View {
+  struct ForwardButton: SwiftUI.View {
 
     @ObservedObject var webViewState: WebView.State
 

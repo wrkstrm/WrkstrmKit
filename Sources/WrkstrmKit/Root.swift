@@ -6,13 +6,13 @@ public protocol Root {
   var window: UIWindow { get }
 }
 
-extension Root {
+public extension Root {
 
-  public var rootNavController: UINavigationController? {
+  var rootNavController: UINavigationController? {
     window.rootViewController as? UINavigationController
   }
 
-  public var rootViewController: UIViewController {
+  var rootViewController: UIViewController {
     // swiftlint:disable:next force_unwrapping
     rootNavController?.viewControllers.first ?? window.rootViewController!
   }
@@ -38,7 +38,8 @@ public final class SceneRoot: Root {
 
   public init(
     windowScene: UIWindowScene,
-    rootViewController: UIViewController = UIViewController()) {
+    rootViewController: UIViewController = UIViewController())
+  {
     scene = windowScene
     window = UIWindow(windowScene: windowScene)
     window.rootViewController = rootViewController

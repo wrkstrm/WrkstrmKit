@@ -12,15 +12,15 @@ public protocol Indexable {
   func indexPath(for item: Item) -> IndexPath?
 }
 
-extension Indexable {
+public extension Indexable {
 
-  public var numberOfSections: Int { items.count }
+  var numberOfSections: Int { items.count }
 
-  public func numberOfItems(in section: Int) -> Int { items[section].count }
+  func numberOfItems(in section: Int) -> Int { items[section].count }
 
-  public func item(for path: IndexPath) -> Item { items[path.section][path.item] }
+  func item(for path: IndexPath) -> Item { items[path.section][path.item] }
 
-  public func indexPath(for item: Item) -> IndexPath? {
+  func indexPath(for item: Item) -> IndexPath? {
     for (index, section) in items.enumerated() {
       if let row = section.firstIndex(of: item) {
         return IndexPath(item: row, section: index)

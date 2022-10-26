@@ -7,7 +7,8 @@ public class PlaceholderSupplementaryCell: UICollectionViewCell {}
 public class PlaceholderCollectionCell: UICollectionViewCell {}
 
 public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObject,
-  UICollectionViewDataSource, Indexable {
+  UICollectionViewDataSource, Indexable
+{
 
   public typealias CellConfig = (UICollectionViewCell, Model.Item, IndexPath) -> Void
 
@@ -56,7 +57,8 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
   public func collectionView(
     _ collectionView: UICollectionView,
     viewForSupplementaryElementOfKind kind: String,
-    at indexPath: IndexPath) -> UICollectionReusableView {
+    at indexPath: IndexPath) -> UICollectionReusableView
+  {
     guard
       let view = displayable.supplementaryElementView(
         for: collectionView,
@@ -82,7 +84,8 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
 
   public func collectionView(
     _ collectionView: UICollectionView,
-    cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+  {
     let cellType = item(for: indexPath).collectionReusableCell
     if cellType == PlaceholderCollectionCell.self {
       collectionView.register(cellType, forCellWithReuseIdentifier: cellType.reuseIdentifier())

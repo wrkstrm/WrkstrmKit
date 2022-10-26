@@ -1,11 +1,11 @@
 #if canImport(QuartzCore)
 import QuartzCore
 
-extension CAGradientLayer {
+public extension CAGradientLayer {
 
-  public typealias Positions = (start: CGPoint, end: CGPoint)
+  typealias Positions = (start: CGPoint, end: CGPoint)
 
-  public enum Direction: CaseIterable {
+  enum Direction: CaseIterable {
 
     case leftRight
 
@@ -52,7 +52,7 @@ extension CAGradientLayer {
     }
   }
 
-  public var direction: Direction? {
+  var direction: Direction? {
     get {
       Direction.allCases.first { $0.position == (start: startPoint, end: endPoint) }
     }

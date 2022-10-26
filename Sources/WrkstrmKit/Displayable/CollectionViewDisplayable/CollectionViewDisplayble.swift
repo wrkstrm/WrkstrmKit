@@ -16,21 +16,23 @@ public protocol CollectionViewDisplayable: Indexable where Item: CollectionReusa
     at indexPath: IndexPath) -> UICollectionReusableView?
 }
 
-extension CollectionViewDisplayable {
+public extension CollectionViewDisplayable {
 
-  public func reusableCell(for path: IndexPath) -> CollectionReusableCell.Type {
+  func reusableCell(for path: IndexPath) -> CollectionReusableCell.Type {
     item(for: path).collectionReusableCell
   }
 
-  public func dataSource(config: CollectionViewDataSource<Self>.CellConfig? = nil)
-    -> CollectionViewDataSource<Self> {
+  func dataSource(config: CollectionViewDataSource<Self>.CellConfig? = nil)
+    -> CollectionViewDataSource<Self>
+  {
     CollectionViewDataSource(model: self, config: config)
   }
 
-  public func supplementaryElementView(
+  func supplementaryElementView(
     for _: UICollectionView,
     of _: String,
-    at _: IndexPath) -> UICollectionReusableView? {
+    at _: IndexPath) -> UICollectionReusableView?
+  {
     nil
   }
 }
@@ -39,7 +41,8 @@ extension Array: CollectionViewDisplayable where Element: CollectionReusableItem
 
   public func collectionDataSource(
     config: CollectionViewDataSource<[Element]>.CellConfig? = nil)
-    -> CollectionViewDataSource<[Element]> {
+    -> CollectionViewDataSource<[Element]>
+  {
     CollectionViewDataSource(model: self, config: config)
   }
 }

@@ -50,21 +50,24 @@ public class Search<Model: TableViewDisplayable> {
 
   public init(
     scopes: (mode: ScopeMode, default: Int)? = nil,
-    filter: @escaping Filter.Match) {
+    filter: @escaping Filter.Match)
+  {
     self.scopes = scopes
     main = [filter]
   }
 
   public init(
     scopes: (mode: ScopeMode, default: Int)? = nil,
-    filters: [Filter.Match]) {
+    filters: [Filter.Match])
+  {
     self.scopes = scopes
     main = filters
   }
 }
 
 open class TableViewController<Model: TableViewDisplayable>: UITableViewController,
-  UISearchProtocols {
+  UISearchProtocols
+{
 
   // MARK: - TableViewDisplayble Variables
 
@@ -121,11 +124,11 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
       // Place the search bar in the navigation bar.
       switch search?.scopes?.mode {
       case let .filter(scopes):
-        searchController?.searchBar.scopeButtonTitles = scopes.map { $0.title }
+        searchController?.searchBar.scopeButtonTitles = scopes.map(\.title)
         searchController?.searchBar.selectedScopeButtonIndex = search?.scopes?.default ?? 0
 
       case let .sort(scopes):
-        searchController?.searchBar.scopeButtonTitles = scopes.map { $0.title }
+        searchController?.searchBar.scopeButtonTitles = scopes.map(\.title)
         searchController?.searchBar.selectedScopeButtonIndex = search?.scopes?.default ?? 0
 
       case .none:

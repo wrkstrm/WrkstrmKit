@@ -9,9 +9,9 @@
 import UIKit
 import WrkstrmCrossKit
 
-extension UICollectionView {
+public extension UICollectionView {
 
-  public func add(_ registrar: Registrar) {
+  func add(_ registrar: Registrar) {
     if let classes = registrar.classes as? [UICollectionReusableView.Type] {
       register(classes: classes)
     }

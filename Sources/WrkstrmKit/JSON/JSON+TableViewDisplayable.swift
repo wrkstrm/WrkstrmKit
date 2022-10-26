@@ -33,9 +33,9 @@ extension JSON.Value: TableReusableItem {
   }
 }
 
-extension JSON {
+public extension JSON {
 
-  public static let registrar =
+  static let registrar =
     Registrar(classes: [
       JSON.BasicCell.self,
       JSON.IntegerCell.self,
@@ -45,7 +45,7 @@ extension JSON {
       JSON.AnyCell.self,
     ])
 
-  public struct Displayable: TableViewDisplayable {
+  struct Displayable: TableViewDisplayable {
 
     let jsonArray: [JSONDictionary]
 
@@ -121,9 +121,9 @@ public protocol JSONTableViewDisplayable {
     -> TableViewDataSource<JSON.Displayable>
 }
 
-extension JSONTableViewDisplayable where Self: Codable {
+public extension JSONTableViewDisplayable where Self: Codable {
 
-  public func convertToJSONDictionary() -> JSONDictionary {
+  func convertToJSONDictionary() -> JSONDictionary {
 
     // swiftlint:disable:next force_try
     let data = try! JSONEncoder.default.encode(self)
@@ -135,9 +135,10 @@ extension JSONTableViewDisplayable where Self: Codable {
     // swiftlint:disable:previous force_cast
   }
 
-  public func jsonDictionaryDataSource(
+  func jsonDictionaryDataSource(
     config: TableViewDataSource<JSON.Displayable>
-      .CellConfig? = nil) -> TableViewDataSource<JSON.Displayable> {
+      .CellConfig? = nil) -> TableViewDataSource<JSON.Displayable>
+  {
 
     let displayble =
       JSON.Displayable(

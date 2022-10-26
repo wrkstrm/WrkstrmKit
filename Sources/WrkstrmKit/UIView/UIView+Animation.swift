@@ -1,17 +1,18 @@
 #if canImport(UIKit)
 import UIKit
 
-extension CGFloat {
+public extension CGFloat {
 
-  public static let minAlphaForTouchInput: CGFloat = 0.010_000_001
+  static let minAlphaForTouchInput: CGFloat = 0.010_000_001
 }
 
-extension UIView {
+public extension UIView {
 
   @discardableResult
-  public func perform(
+  func perform(
     _ animation: Animation,
-    completion: Animation.Completion? = nil) -> UIViewPropertyAnimator {
+    completion: Animation.Completion? = nil) -> UIViewPropertyAnimator
+  {
     let options = animation.options
     let stage = animation.stage
 
@@ -47,11 +48,11 @@ extension UIView {
       completion: finalCompletion)
   }
 
-  public func hide(_ views: [UIView]) {
+  func hide(_ views: [UIView]) {
     views.forEach { $0.alpha = .minAlphaForTouchInput }
   }
 
-  public func show(_ views: [UIView]) {
+  func show(_ views: [UIView]) {
     views.forEach { $0.alpha = 1 }
   }
 }

@@ -2,9 +2,9 @@
 import UIKit
 import WrkstrmCrossKit
 
-extension UIStackView {
+public extension UIStackView {
 
-  public convenience init(views: [UIView]) {
+  convenience init(views: [UIView]) {
     self.init()
     translatesAutoresizingMaskIntoConstraints = false
     axis = .vertical
@@ -18,9 +18,9 @@ public protocol GridDelegate: AnyObject {
   func view(for stack: UIStackView, indexPath: IndexPath) -> UIView
 }
 
-extension StackViewController {
+public extension StackViewController {
 
-  public enum ContentElement {
+  enum ContentElement {
 
     case label(String)
 
@@ -29,7 +29,7 @@ extension StackViewController {
     case image(UIImage)
   }
 
-  public enum Style {
+  enum Style {
 
     case content([ContentElement], alignment: UIStackView.Alignment)
 
@@ -39,9 +39,9 @@ extension StackViewController {
   }
 }
 
-extension StackViewController.ContentElement {
+public extension StackViewController.ContentElement {
 
-  public var view: UIView {
+  var view: UIView {
     switch self {
     case let .label(text):
       let label = UILabel()
@@ -74,7 +74,7 @@ open class StackViewController: UIViewController {
   public init(style: Style) {
     self.style = style
     if case let .content(elements, alignment) = style {
-      stack = UIStackView(views: elements.map { $0.view })
+      stack = UIStackView(views: elements.map(\.view))
       stack.alignment = alignment
     } else if case let .views(views, alignment) = style {
       stack = UIStackView(views: views)

@@ -5,7 +5,8 @@ import WrkstrmCrossKit
 class PlaceholderTableViewCell: UITableViewCell {}
 
 public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
-  UITableViewDataSource, Indexable {
+  UITableViewDataSource, Indexable
+{
 
   public typealias CellConfig = ((model: Model.Item, cell: UITableViewCell), IndexPath) -> Void
 
@@ -24,7 +25,7 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
     items = model.items
     self.config = config
     self.registrar = registrar
-    reusableTypes = items.map { $0.map { $0.tableReusableCell } }
+    reusableTypes = items.map { $0.map(\.tableReusableCell) }
   }
 
   init(items: [[Model.Item]], registrar: Registrar? = nil, config: CellConfig? = nil) {
@@ -32,7 +33,7 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
     self.items = items
     self.config = config
     self.registrar = registrar
-    reusableTypes = items.map { $0.map { $0.tableReusableCell } }
+    reusableTypes = items.map { $0.map(\.tableReusableCell) }
   }
 
   public func modelFor(indexPath path: IndexPath) -> Model.Item? { item(for: path) }
@@ -55,7 +56,8 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
 
   public func tableView(
     _ tableView: UITableView,
-    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  {
     let reusableType = reusableTypes[indexPath.section][indexPath.row]
     if reusableType.reuseIdentifier() == PlaceholderTableViewCell.reuseIdentifier() {
       tableView.register(
@@ -67,7 +69,8 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
     switch reusableType {
     case let styleableType as StyleableCell.Type:
       if let cachedCell =
-        tableView.dequeueReusableCell(withIdentifier: styleableType.reuseIdentifier()) {
+        tableView.dequeueReusableCell(withIdentifier: styleableType.reuseIdentifier())
+      {
         cell = cachedCell
       } else {
         cell =
