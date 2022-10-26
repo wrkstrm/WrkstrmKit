@@ -74,7 +74,7 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
           (styleableType.init(
             style: styleableType.cellStyle,
             reuseIdentifier: styleableType.reuseIdentifier()) as! UITableViewCell)
-        //swiftlint:disable:previous force_cast
+        // swiftlint:disable:previous force_cast
         cell.prepareForReuse()
       }
 

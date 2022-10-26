@@ -87,4 +87,4 @@ public class SplitViewControllerInstantiator: TableViewController<[Instantiator]
   }
 }
 
-#endif  //canImport(UIKit)
+#endif  // canImport(UIKit)

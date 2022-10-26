@@ -11,4 +11,4 @@ extension CGSize {
     height = CGFloat(size)
   }
 }
-#endif  //canImport(CoreGraphics)
+#endif  // canImport(CoreGraphics)
