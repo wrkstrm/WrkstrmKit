@@ -1,10 +1,10 @@
-// swift-tools-version:5.9
+// swift-tools-version:5.8
 import PackageDescription
 
 let package = Package(
   name: "WrkstrmKit",
   platforms: [
-    .iOS(.v13),
+    .iOS(.v15),
     .macOS(.v12),
     .watchOS(.v6),
   ],
@@ -14,14 +14,10 @@ let package = Package(
     .library(name: "WrkstrmSwiftUI", targets: ["WrkstrmSwiftUI"]),
     .library(name: "WrkstrmSwiftUIExp", targets: ["WrkstrmSwiftUIExp"]),
   ],
-  // Dependencies declare other packages that this package depends on.
   dependencies: [
     .package(name: "WrkstrmFoundation", path: "../WrkstrmFoundation"),
     .package(name: "WrkstrmLog", path: "../WrkstrmLog"),
   ],
-  // Targets are the basic building blocks of a package. A target can define a module or a test
-  // suite. Targets can depend on other targets in this package, and on products in packages which
-  // this package depends on.
   targets: [
     .target(name: "WrkstrmCrossKit", dependencies: ["WrkstrmLog"]),
     .target(
