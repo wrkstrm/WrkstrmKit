@@ -80,9 +80,9 @@ public class SplitViewControllerInstantiator: TableViewController<[Instantiator]
     let navController =
       UINavigationController(rootViewController: item.provider.instantiate())
     navController.navigationBar.isTranslucent = true
-    if let splitViewController {
+    if let splitViewController = splitViewController {
       splitViewController.showDetailViewController(navController, sender: nil)
-    } else if let navigationController {
+    } else if let navigationController = navigationController {
       navigationController.pushViewController(navController, animated: true)
     }
   }

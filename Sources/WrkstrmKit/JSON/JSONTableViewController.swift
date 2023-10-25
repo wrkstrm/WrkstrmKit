@@ -17,6 +17,10 @@ extension JSONTableViewController: Injectable {
 
 open class JSONTableViewController: TableViewController<JSON.Displayable> {
 
+  override open func viewDidLoad() {
+    super.viewDidLoad()
+  }
+
   override open func tableView(
     _ tableView: UITableView,
     willSelectRowAt indexPath: IndexPath) -> IndexPath?

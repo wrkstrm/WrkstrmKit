@@ -26,28 +26,28 @@ public extension CAGradientLayer {
     var position: Positions {
       switch self {
       case .leftRight:
-        (start: .init(x: 0, y: 0.5), end: .init(x: 1, y: 0.5))
+        return (start: .init(x: 0, y: 0.5), end: .init(x: 1, y: 0.5))
 
       case .rightLeft:
-        (start: .init(x: 1, y: 0.5), end: .init(x: 0, y: 0.5))
+        return (start: .init(x: 1, y: 0.5), end: .init(x: 0, y: 0.5))
 
       case .topBottom:
-        (start: .init(x: 0.5, y: 0), end: .init(x: 0.5, y: 1))
+        return (start: .init(x: 0.5, y: 0), end: .init(x: 0.5, y: 1))
 
       case .bottomTop:
-        (start: .init(x: 0.5, y: 1), end: .init(x: 0.5, y: 0))
+        return (start: .init(x: 0.5, y: 1), end: .init(x: 0.5, y: 0))
 
       case .topLeftBottomRight:
-        (start: .init(x: 0, y: 0), end: .init(x: 1, y: 1))
+        return (start: .init(x: 0, y: 0), end: .init(x: 1, y: 1))
 
       case .bottomRightTopLeft:
-        (start: .init(x: 1, y: 1), end: .init(x: 0, y: 0))
+        return (start: .init(x: 1, y: 1), end: .init(x: 0, y: 0))
 
       case .topRightBottomLeft:
-        (start: .init(x: 1, y: 0), end: .init(x: 0, y: 1))
+        return (start: .init(x: 1, y: 0), end: .init(x: 0, y: 1))
 
       case .bottomLeftTopRight:
-        (start: .init(x: 0, y: 1), end: .init(x: 1, y: 0))
+        return (start: .init(x: 0, y: 1), end: .init(x: 1, y: 0))
       }
     }
   }

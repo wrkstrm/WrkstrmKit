@@ -10,25 +10,25 @@ extension JSON.Value: TableReusableItem {
     switch self {
 
     case .integer:
-      JSON.IntegerCell.self
+      return JSON.IntegerCell.self
 
     case .double:
-      JSON.DoubleCell.self
+      return JSON.DoubleCell.self
 
     case .string:
-      JSON.StringCell.self
+      return JSON.StringCell.self
 
     case .date:
-      JSON.DateCell.self
+      return JSON.DateCell.self
 
     case .array:
-      JSON.ArrayCell.self
+      return JSON.ArrayCell.self
 
     case .dictionary:
-      JSON.DictionaryCell.self
+      return JSON.DictionaryCell.self
 
     case .any:
-      JSON.AnyCell.self
+      return JSON.AnyCell.self
     }
   }
 }
@@ -61,12 +61,12 @@ public extension JSON {
         let sortedJSON = json.lazy.sorted { $0.key < $1.key }
         return sortedJSON.map { key, anyValue -> Value in
           guard let fuzzyKeys = dateKeyFuzzyOverride else {
-            return generateValue(key, anyValue: anyValue)
+            return self.generateValue(key, anyValue: anyValue)
           }
           for fuzzyKey in fuzzyKeys where key.lowercased().contains(fuzzyKey.lowercased()) {
             return self.generateDateValue(key, anyValue: anyValue)
           }
-          return generateValue(key, anyValue: anyValue)
+          return self.generateValue(key, anyValue: anyValue)
         }
       }
       return values
@@ -88,28 +88,28 @@ public extension JSON {
       switch anyValue {
 
       case let value as Int:
-        .integer(key, value)
+        return .integer(key, value)
 
       case let value as Double:
-        .double(key, value)
+        return .double(key, value)
 
       case let value as String:
-        .string(key, value)
+        return .string(key, value)
 
       case let value as Date:
-        .date(key, value)
+        return .date(key, value)
 
       case let value as [JSONDictionary]:
-        .array(key, EquatableArray.dictionary(value))
+        return .array(key, EquatableArray.dictionary(value))
 
       case let value as [Any]:
-        .array(key, EquatableArray.any(value))
+        return .array(key, EquatableArray.any(value))
 
       case let value as JSONDictionary:
-        .dictionary(key, EquatableDictionary.any(value))
+        return .dictionary(key, EquatableDictionary.any(value))
 
       default:
-        .any(key, "\(anyValue)")
+        return .any(key, "\(anyValue)")
       }
     }
   }

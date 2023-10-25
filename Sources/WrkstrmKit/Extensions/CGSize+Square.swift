@@ -3,9 +3,9 @@ import CoreGraphics
 
 extension CGSize {
 
-  static func square(size: some BinaryFloatingPoint) -> CGSize { CGSize(square: size) }
+  static func square<Value: BinaryFloatingPoint>(size: Value) -> CGSize { CGSize(square: size) }
 
-  init(square size: some BinaryFloatingPoint) {
+  init<Value: BinaryFloatingPoint>(square size: Value) {
     self.init()
     width = CGFloat(size)
     height = CGFloat(size)
