@@ -38,7 +38,7 @@ open class HostingCollectionViewCell: CollectionViewCell {
     host.view.transform = CGAffineTransform.identity
   }
 
-  open func prepareForDisplay<V: SwiftUI.View>(_ view: V) {
+  open func prepareForDisplay(_ view: some SwiftUI.View) {
     host.rootView = AnyView(view)
     host.view.layoutSubviews()
     let height = host.view.intrinsicContentSize.height

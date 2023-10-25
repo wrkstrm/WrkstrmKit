@@ -12,7 +12,7 @@ open class CollectionViewController<Model: CollectionViewDisplayable>: UICollect
 
   open var displayableModel: Model? {
     didSet {
-      if let displayableModel = displayableModel {
+      if let displayableModel {
         genericDataSource = displayableModel.dataSource()
       }
     }

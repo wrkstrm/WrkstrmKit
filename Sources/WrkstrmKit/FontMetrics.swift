@@ -21,9 +21,9 @@ public enum FontMetrics {
   ///
   public static func scaledFont(for font: UIFont) -> UIFont {
     if #available(iOS 11.0, *) {
-      return UIFontMetrics.default.scaledFont(for: font)
+      UIFontMetrics.default.scaledFont(for: font)
     } else {
-      return font.withSize(scaler * font.pointSize)
+      font.withSize(scaler * font.pointSize)
     }
   }
 
@@ -37,12 +37,12 @@ public enum FontMetrics {
   ///
   public static func scaledFont(for font: UIFont, maximumPointSize: CGFloat) -> UIFont {
     if #available(iOS 11.0, *) {
-      return UIFontMetrics.default.scaledFont(
+      UIFontMetrics.default.scaledFont(
         for: font,
         maximumPointSize: maximumPointSize,
         compatibleWith: nil)
     } else {
-      return font.withSize(min(scaler * font.pointSize, maximumPointSize))
+      font.withSize(min(scaler * font.pointSize, maximumPointSize))
     }
   }
 
@@ -53,9 +53,9 @@ public enum FontMetrics {
   ///
   public static func scaledValue(for value: CGFloat) -> CGFloat {
     if #available(iOS 11.0, *) {
-      return UIFontMetrics.default.scaledValue(for: value)
+      UIFontMetrics.default.scaledValue(for: value)
     } else {
-      return scaler * value
+      scaler * value
     }
   }
 }
