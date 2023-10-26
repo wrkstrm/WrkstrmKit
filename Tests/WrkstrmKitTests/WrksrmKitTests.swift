@@ -1,5 +1,6 @@
-@testable import WrkstrmKit
 import XCTest
+
+@testable import WrkstrmKit
 
 final class WrkstrmKitTests: XCTestCase {
   func testExample() {

@@ -3,7 +3,7 @@
 import UIKit
 #elseif os(OSX)
 import Cocoa
-#endif // canImport(UIKit)
+#endif  // canImport(UIKit)
 
 @objc
 public protocol ReusableCell {
@@ -12,7 +12,7 @@ public protocol ReusableCell {
   static var defaultNib: UINib { get }
 #elseif os(OSX)
   static var defaultNib: NSNib { get }
-#endif // canImport(UIKit)
+#endif  // canImport(UIKit)
 
   static func reuseIdentifier() -> String
 

@@ -19,4 +19,4 @@ public extension Screen {
 #endif
   }
 }
-#endif // !canImport(WatchKit)
+#endif  // !canImport(WatchKit)

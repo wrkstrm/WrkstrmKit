@@ -108,4 +108,4 @@ public extension NSLayoutAnchor {
     constraint(equalTo: anchor, constant: constant).isActive = true
   }
 }
-#endif   // !canImport(WatchKit)
+#endif  // !canImport(WatchKit)
