@@ -4,8 +4,8 @@ import WrkstrmLog
 
 private let estimatedRowHeight: CGFloat = 200
 
-typealias UISearchProtocols = UISearchControllerDelegate & UISearchResultsUpdating
-  & UISearchBarDelegate
+typealias UISearchProtocols = UISearchBarDelegate & UISearchControllerDelegate
+  & UISearchResultsUpdating
 
 public class Search<Model: TableViewDisplayable> {
 
@@ -73,7 +73,7 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
 
   open var displayableModel: Model? {
     didSet {
-      if let displayableModel = displayableModel {
+      if let displayableModel {
         search?.model = displayableModel
         genericDataSource = displayableModel.dataSource()
       }
@@ -102,7 +102,7 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
 
   open var search: Search<Model>? {
     didSet {
-      if let search = search {
+      if let search {
         definesPresentationContext = true
         searchController = UISearchController(searchResultsController: nil)
         search.model = displayableModel
@@ -161,7 +161,7 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
   open func updateSearchResults(for searchController: UISearchController) {
     // Strip out all the leading and trailing spaces.
     Log.verbose("isActive: \(searchController.isActive)")
-    guard let search = search else { return }
+    guard let search else { return }
     let index = searchController.searchBar.selectedScopeButtonIndex
     var scopedItems = search.model?.items
     switch search.scopes?.mode {

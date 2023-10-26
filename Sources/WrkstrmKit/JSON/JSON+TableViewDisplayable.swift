@@ -61,12 +61,12 @@ public extension JSON {
         let sortedJSON = json.lazy.sorted { $0.key < $1.key }
         return sortedJSON.map { key, anyValue -> Value in
           guard let fuzzyKeys = dateKeyFuzzyOverride else {
-            return self.generateValue(key, anyValue: anyValue)
+            return generateValue(key, anyValue: anyValue)
           }
           for fuzzyKey in fuzzyKeys where key.lowercased().contains(fuzzyKey.lowercased()) {
             return self.generateDateValue(key, anyValue: anyValue)
           }
-          return self.generateValue(key, anyValue: anyValue)
+          return generateValue(key, anyValue: anyValue)
         }
       }
       return values
