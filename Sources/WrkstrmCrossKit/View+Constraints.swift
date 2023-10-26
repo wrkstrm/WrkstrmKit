@@ -20,12 +20,11 @@ public extension View {
 
   private var constraintCache: ConstraintCache {
     get {
-      if let cache = objc_getAssociatedObject(
-        self,
-        &AssociatedKey.constraintCache) as? ConstraintCache
-      {
-        return cache
-      } else {
+      guard
+        let cache = objc_getAssociatedObject(
+          self,
+          &AssociatedKey.constraintCache) as? ConstraintCache
+      else {
         let cache = ConstraintCache()
         objc_setAssociatedObject(
           self,
@@ -34,6 +33,7 @@ public extension View {
           .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return cache
       }
+      return cache
     }
     set {
       objc_setAssociatedObject(

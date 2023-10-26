@@ -1,5 +1,6 @@
 #if canImport(UIKit)
 import UIKit
+import WrkstrmFoundation
 
 public extension Notification {
 

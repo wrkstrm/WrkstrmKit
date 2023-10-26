@@ -20,11 +20,10 @@ public enum FontMetrics {
   /// - Returns: The font at its scaled point size.
   ///
   public static func scaledFont(for font: UIFont) -> UIFont {
-    if #available(iOS 11.0, *) {
-      return UIFontMetrics.default.scaledFont(for: font)
-    } else {
+    guard #available(iOS 11.0, *) else {
       return font.withSize(scaler * font.pointSize)
     }
+    return UIFontMetrics.default.scaledFont(for: font)
   }
 
   /// Returns a version of the specified font that adopts the current font metrics and is
@@ -36,14 +35,13 @@ public enum FontMetrics {
   /// - Returns: The font at its constrained scaled point size.
   ///
   public static func scaledFont(for font: UIFont, maximumPointSize: CGFloat) -> UIFont {
-    if #available(iOS 11.0, *) {
-      return UIFontMetrics.default.scaledFont(
-        for: font,
-        maximumPointSize: maximumPointSize,
-        compatibleWith: nil)
-    } else {
+    guard #available(iOS 11.0, *) else {
       return font.withSize(min(scaler * font.pointSize, maximumPointSize))
     }
+    return UIFontMetrics.default.scaledFont(
+      for: font,
+      maximumPointSize: maximumPointSize,
+      compatibleWith: nil)
   }
 
   /// Scales an arbitrary layout value based on the current Dynamic Type settings.
@@ -52,11 +50,10 @@ public enum FontMetrics {
   /// - Returns: The value scaled based on current Dynamic Type settings.
   ///
   public static func scaledValue(for value: CGFloat) -> CGFloat {
-    if #available(iOS 11.0, *) {
-      return UIFontMetrics.default.scaledValue(for: value)
-    } else {
+    guard #available(iOS 11.0, *) else {
       return scaler * value
     }
+    return UIFontMetrics.default.scaledValue(for: value)
   }
 }
 #endif

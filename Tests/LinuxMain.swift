@@ -1,6 +1,6 @@
 import WrkstrmKitTests
 import XCTest
 
-var tests = [XCTestCaseEntry]()
+var tests: [XCTestCaseEntry] = []
 tests += WrkstrmKitTests.allTests()
 XCTMain(tests)

@@ -97,12 +97,11 @@ public struct AnimationIterator: IteratorProtocol {
   var animation: Animation?
 
   public mutating func next() -> Animation? {
-    if let next = animation {
-      animation = next.next
-      return next
-    } else {
+    guard let next = animation else {
       return nil
     }
+    animation = next.next
+    return next
   }
 }
 #endif
