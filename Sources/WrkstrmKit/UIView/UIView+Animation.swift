@@ -25,15 +25,15 @@ public extension UIView {
     }
 
     let finalCompletion: Animation.Completion = { [weak self] position in
-      guard let self else {
+      guard let self = self else {
         return
       }
       DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + options.hold) { [weak self] in
-        guard let self else {
+        guard let self = self else {
           return
         }
-        if let next = animation.next, window != nil {
-          perform(next, completion: completion)
+        if let next = animation.next, self.window != nil {
+          self.perform(next, completion: completion)
         } else {
           completion?(position)
         }

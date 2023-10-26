@@ -22,8 +22,8 @@ public extension UIView {
       ]
       let start = Animation(
         with: .options(duration: Self.pulseDuration, timingOptions: timingOptions),
-        .stage { [weak self] in guard let self else { return }
-          transform = CGAffineTransform.identity.scaledBy(
+        .stage { [weak self] in guard let self = self else { return }
+          self.transform = CGAffineTransform.identity.scaledBy(
             x: scaleFactor,
             y: scaleFactor)
         })

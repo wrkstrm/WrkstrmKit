@@ -43,7 +43,7 @@ open class HostingTableViewCell: TableViewCell, StyleableCell {
     host.view.transform = CGAffineTransform.identity
   }
 
-  open func prepareForDisplay(_ view: some SwiftUI.View) {
+  open func prepareForDisplay<V: SwiftUI.View>(_ view: V) {
     host.rootView = AnyView(view)
     host.view.layoutSubviews()
     contentView.bounds = host.view.bounds
