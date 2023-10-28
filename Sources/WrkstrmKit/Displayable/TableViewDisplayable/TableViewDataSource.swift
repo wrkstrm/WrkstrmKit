@@ -42,11 +42,11 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
 
   public func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
     if let model {
-      return model.title(for: section)
+      model.title(for: section)
     } else if numberOfSections > 1 {
-      return .localizedStringWithFormat("Item %@", (section + 1).integerString())
+      .localizedStringWithFormat("Item %@", (section + 1).integerString())
     } else {
-      return nil
+      nil
     }
   }
 

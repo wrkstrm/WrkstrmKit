@@ -74,11 +74,12 @@ extension WrkstrmFoundation.JSON {
       else { Log.guard() }
 
       textLabel?.text = key.titlecased()
-      let formatString: String!
-      if jsonArray.count == 1 {
-        formatString = NSLocalizedString("%@ Item", comment: "")
+      let formatString: String! =
+        if jsonArray.count == 1
+      {
+        NSLocalizedString("%@ Item", comment: "")
       } else {
-        formatString = NSLocalizedString("%@ Items", comment: "")
+        NSLocalizedString("%@ Items", comment: "")
       }
       detailTextLabel?.text =
         .localizedStringWithFormat(
@@ -96,11 +97,12 @@ extension WrkstrmFoundation.JSON {
       else { Log.guard() }
       textLabel?.text = key.titlecased()
 
-      let formatString: String!
-      if json.count == 1 {
-        formatString = NSLocalizedString("%@ Detail", comment: "")
+      let formatString: String! =
+        if json.count == 1
+      {
+        NSLocalizedString("%@ Detail", comment: "")
       } else {
-        formatString = NSLocalizedString("%@ Details", comment: "")
+        NSLocalizedString("%@ Details", comment: "")
       }
       detailTextLabel?.text =
         .localizedStringWithFormat(
