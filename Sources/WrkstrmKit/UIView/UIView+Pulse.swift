@@ -3,7 +3,6 @@ import UIKit
 import WrkstrmFoundation
 
 extension UIView {
-
   fileprivate static let pulseDuration: TimeInterval = 2
 
   @discardableResult

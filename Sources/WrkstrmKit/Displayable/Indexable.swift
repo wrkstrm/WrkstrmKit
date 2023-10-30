@@ -2,7 +2,6 @@
 import UIKit
 
 public protocol Indexable {
-
   associatedtype Item: Equatable
 
   var items: [[Item]] { get }
@@ -13,7 +12,6 @@ public protocol Indexable {
 }
 
 extension Indexable {
-
   public var numberOfSections: Int { items.count }
 
   public func numberOfItems(in section: Int) -> Int { items[section].count }
@@ -31,7 +29,6 @@ extension Indexable {
 }
 
 extension Array: Indexable where Element: Equatable {
-
   public typealias Item = Element
 
   public var items: [[Item]] { [self] }

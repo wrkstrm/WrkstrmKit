@@ -5,12 +5,10 @@ import WrkstrmFoundation
 import WrkstrmMain
 
 public protocol ControllerProvider {
-
   static func instantiate() -> UIViewController
 }
 
 public struct Instantiator {
-
   public var name: String
 
   public var detail: String
@@ -25,19 +23,16 @@ public struct Instantiator {
 }
 
 extension Instantiator: Equatable {
-
   public static func == (lhs: Instantiator, rhs: Instantiator) -> Bool {
     lhs.name == rhs.name && lhs.detail == rhs.detail && lhs.provider == rhs.provider
   }
 }
 
 extension Instantiator: TableReusableItem {
-
   public var tableReusableCell: TableReusableCell.Type { InstantiatorCell.self }
 }
 
 public class InstantiatorCell: UITableViewCell, StyleableCell {
-
   public static var cellStyle: UITableViewCell.CellStyle = .subtitle
 
   override public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -57,7 +52,6 @@ public class InstantiatorCell: UITableViewCell, StyleableCell {
 }
 
 extension SplitViewControllerInstantiator: Injectable {
-
   public func inject(_ resource: [Instantiator]) {
     genericDataSource = resource.tableDataSource()
   }
@@ -67,7 +61,6 @@ extension SplitViewControllerInstantiator: Injectable {
 }
 
 public class SplitViewControllerInstantiator: TableViewController<[Instantiator]> {
-
   override public func viewDidLoad() {
     super.viewDidLoad()
     tableView.addRegistar(Registrar(classes: [InstantiatorCell.self], nibs: nil))

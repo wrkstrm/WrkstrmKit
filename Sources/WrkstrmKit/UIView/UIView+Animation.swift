@@ -2,12 +2,10 @@
 import UIKit
 
 extension CGFloat {
-
   static let minAlphaForTouchInput: CGFloat = 0.010_000_001
 }
 
 extension UIView {
-
   @discardableResult
   func perform(
     _ animation: Animation,

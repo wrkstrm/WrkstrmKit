@@ -10,9 +10,7 @@ public typealias View = NSView
 #endif
 
 extension View {
-
   private enum AssociatedKey {
-
     static var constraintCache = "wsm_constraintCache"
   }
 

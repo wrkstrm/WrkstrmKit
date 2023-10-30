@@ -4,7 +4,6 @@ import SwiftUI
 import UIKit
 
 public struct PageViewController: UIViewControllerRepresentable {
-
   //  @Binding public var currentPage: Int
 
   var controllers: [UIViewController]
@@ -34,13 +33,11 @@ public struct PageViewController: UIViewControllerRepresentable {
 // MARK: - Coordinator
 
 extension PageViewController {
-
   public func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
 
   public class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-
     var parent: PageViewController
 
     init(_ pageViewController: PageViewController) {
@@ -51,7 +48,6 @@ extension PageViewController {
       _: UIPageViewController,
       viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-
       guard let index = parent.controllers.firstIndex(of: viewController) else {
         return nil
       }
@@ -65,7 +61,6 @@ extension PageViewController {
       _: UIPageViewController,
       viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
-
       guard let index = parent.controllers.firstIndex(of: viewController) else {
         return nil
       }

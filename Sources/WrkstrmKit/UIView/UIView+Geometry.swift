@@ -2,7 +2,6 @@
 import UIKit
 
 @objc extension UIView {
-
   /// Returns the center of the bounds.
   /// Helpful when trying to center a subview insdide another subview.
   public var boundsCenter: CGPoint {

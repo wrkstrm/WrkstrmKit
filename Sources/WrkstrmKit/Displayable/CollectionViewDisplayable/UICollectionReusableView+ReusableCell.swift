@@ -10,7 +10,6 @@ import UIKit
 import WrkstrmCrossKit
 
 extension UICollectionReusableView: CollectionReusableCell {
-
   public static var defaultNib: UINib {
     UINib(nibName: String(describing: self), bundle: Bundle(for: self))
   }

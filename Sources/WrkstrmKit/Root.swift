@@ -2,12 +2,10 @@
 import UIKit
 
 public protocol Root {
-
   var window: UIWindow { get }
 }
 
 extension Root {
-
   public var rootNavController: UINavigationController? {
     window.rootViewController as? UINavigationController
   }
@@ -19,7 +17,6 @@ extension Root {
 }
 
 public class AppRoot: Root {
-
   public var window: UIWindow
 
   public init(frame: CGRect, rootViewController: UIViewController = UIViewController()) {
@@ -31,7 +28,6 @@ public class AppRoot: Root {
 
 @available(iOS 13.0, *)
 public final class SceneRoot: Root {
-
   public let scene: UIWindowScene
 
   public var window: UIWindow

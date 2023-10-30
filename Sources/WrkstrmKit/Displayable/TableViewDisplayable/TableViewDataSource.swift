@@ -7,7 +7,6 @@ class PlaceholderTableViewCell: UITableViewCell {}
 public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
   UITableViewDataSource, Indexable
 {
-
   public typealias CellConfig = ((model: Model.Item, cell: UITableViewCell), IndexPath) -> Void
 
   public let model: Model?

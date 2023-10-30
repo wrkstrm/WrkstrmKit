@@ -11,7 +11,6 @@ public protocol TableViewDisplayable: Indexable where Item: TableReusableItem {
 }
 
 extension TableViewDisplayable {
-
   public func reusableCell(for path: IndexPath) -> TableReusableCell.Type {
     item(for: path).tableReusableCell
   }
@@ -24,7 +23,6 @@ extension TableViewDisplayable {
 }
 
 extension Array: TableViewDisplayable where Element: TableReusableItem {
-
   public func title(for _: Int) -> String? { nil }
 
   public func tableDataSource(

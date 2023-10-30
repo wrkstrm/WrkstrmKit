@@ -4,7 +4,6 @@
 import UIKit
 
 extension UIApplicationDelegate {
-
   public typealias LaunchOptions = [UIApplication.LaunchOptionsKey: Any]
 
   public typealias OpenURLOptions = [UIApplication.OpenURLOptionsKey: Any]

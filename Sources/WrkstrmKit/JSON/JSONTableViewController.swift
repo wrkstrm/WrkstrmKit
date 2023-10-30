@@ -5,7 +5,6 @@ import WrkstrmLog
 import WrkstrmMain
 
 extension JSONTableViewController: Injectable {
-
   public func inject(_ resource: TableViewDataSource<JSON.Displayable>) {
     genericDataSource = resource
   }
@@ -16,7 +15,6 @@ extension JSONTableViewController: Injectable {
 }
 
 open class JSONTableViewController: TableViewController<JSON.Displayable> {
-
   override open func tableView(
     _ tableView: UITableView,
     willSelectRowAt indexPath: IndexPath

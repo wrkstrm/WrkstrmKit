@@ -3,7 +3,6 @@ import SwiftUI
 import UIKit
 
 open class HostingTableViewCell: TableViewCell, StyleableCell {
-
   public static var cellStyle: UITableViewCell.CellStyle = .subtitle
 
   public var host = UIHostingController(rootView: AnyView(Color.clear))

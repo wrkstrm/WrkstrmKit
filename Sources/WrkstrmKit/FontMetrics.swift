@@ -5,7 +5,6 @@ import UIKit
 /// https://medium.com/livefront/practical-dynamic-type-d2b5774e8a8a
 
 public enum FontMetrics {
-
   /// A scale value based on the current device text size setting. With the device using the
   /// default Large setting, `scaler` will be `1.0`. Only used when `UIFontMetrics` is not
   /// available.

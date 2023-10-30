@@ -1,6 +1,5 @@
 #if !canImport(WatchKit)
 public struct Registrar {
-
   public var classes: [ReusableCell.Type]?
 
   public var nibs: [ReusableCell.Type]?

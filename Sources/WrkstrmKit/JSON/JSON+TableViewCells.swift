@@ -4,9 +4,7 @@ import WrkstrmFoundation
 import WrkstrmLog
 
 extension WrkstrmFoundation.JSON {
-
   open class BasicCell: UITableViewCell, StyleableCell {
-
     public static var cellStyle: UITableViewCell.CellStyle = .value1
 
     /// UITableViewCells instantiated from a UITableView's deque mechanism instantiates classes with
@@ -31,7 +29,6 @@ extension WrkstrmFoundation.JSON {
   }
 
   public class IntegerCell: BasicCell {
-
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .integer(key, value)? = model as? JSON.Value else { Log.guard() }
       textLabel?.text = key.titlecased()
@@ -40,7 +37,6 @@ extension WrkstrmFoundation.JSON {
   }
 
   public class DoubleCell: BasicCell {
-
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .double(key, value)? = model as? JSON.Value else { Log.guard() }
       textLabel?.text = key.titlecased()
@@ -49,7 +45,6 @@ extension WrkstrmFoundation.JSON {
   }
 
   public class StringCell: BasicCell {
-
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .string(key, value)? = model as? JSON.Value else { Log.guard() }
       textLabel?.text = key.titlecased()
@@ -58,7 +53,6 @@ extension WrkstrmFoundation.JSON {
   }
 
   public class DateCell: BasicCell {
-
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .date(key, value)? = model as? JSON.Value else { Log.guard() }
       textLabel?.text = key.titlecased()
@@ -67,7 +61,6 @@ extension WrkstrmFoundation.JSON {
   }
 
   public class ArrayCell: BasicCell {
-
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .array(key, arrayValue)? = model as? JSON.Value,
         case let .dictionary(jsonArray) = arrayValue
@@ -89,7 +82,6 @@ extension WrkstrmFoundation.JSON {
   }
 
   public class DictionaryCell: BasicCell {
-
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .dictionary(key, jsonDictionary)? = model as? JSON.Value,
         case let .any(json) = jsonDictionary
@@ -111,7 +103,6 @@ extension WrkstrmFoundation.JSON {
   }
 
   public class AnyCell: BasicCell {
-
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .any(value, key)? = model as? JSON.Value else { Log.guard() }
       textLabel?.text = key.titlecased()

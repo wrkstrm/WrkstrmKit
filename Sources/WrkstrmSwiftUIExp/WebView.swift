@@ -7,7 +7,6 @@ import WebKit
 // MARK: - WebView
 
 public struct WebView: UIViewRepresentable {
-
   @ObservedObject public var state = State()
 
   public init() {}
@@ -32,9 +31,7 @@ public struct WebView: UIViewRepresentable {
 // MARK: - State
 
 extension WebView {
-
   public class State: ObservableObject {
-
     weak var coordinator: Coordinator?
 
     public let willChange = PassthroughSubject<State, Never>()
@@ -75,7 +72,6 @@ extension WebView {
 // MARK: - Coordinator
 
 extension WebView {
-
   public func makeCoordinator() -> Coordinator {
     let coordinator = Coordinator(self)
     state.coordinator = coordinator
@@ -83,7 +79,6 @@ extension WebView {
   }
 
   public class Coordinator: NSObject {
-
     weak var parentUIView: WKWebView?
 
     var parent: WebView
@@ -128,7 +123,6 @@ extension WebView {
 // MARK: - WKNavigationDelegate
 
 extension WebView.Coordinator: WKNavigationDelegate {
-
   func updateState(isLoading: Bool, webView: WKWebView) {
     parent.state.isLoading = isLoading
     parent.state.canGoForward = webView.canGoForward

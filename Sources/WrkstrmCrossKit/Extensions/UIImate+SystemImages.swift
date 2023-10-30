@@ -2,7 +2,6 @@
 import UIKit
 
 extension UIImage {
-
   // swiftlint:disable:next force_unwrapping
   public static let arrowCircle = UIImage(systemName: "arrow.2.circlepath.circle")!
 

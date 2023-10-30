@@ -5,7 +5,6 @@ import UIKit
 import WrkstrmCrossKit
 
 public struct ActivityViewController: UIViewControllerRepresentable {
-
   private var urls: [URL]
 
   public init(urls: [URL]) {

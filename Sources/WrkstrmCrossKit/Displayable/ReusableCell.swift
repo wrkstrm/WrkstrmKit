@@ -7,7 +7,6 @@ import Cocoa
 
 @objc
 public protocol ReusableCell {
-
   #if canImport(UIKit)
   static var defaultNib: UINib { get }
   #elseif os(OSX)

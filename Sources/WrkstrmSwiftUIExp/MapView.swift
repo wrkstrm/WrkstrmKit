@@ -6,7 +6,6 @@ import MapKit
 #if os(iOS)
 @available(iOS 13.0, *)
 public struct MapView: UIViewRepresentable {
-
   public var coordinate: CLLocationCoordinate2D
 
   public init(coordinate: CLLocationCoordinate2D) {
@@ -29,7 +28,6 @@ public struct MapView: UIViewRepresentable {
 
 @available(macOS 10.15, *)
 public struct MapView: NSViewRepresentable {
-
   public var coordinate: CLLocationCoordinate2D
 
   public init(coordinate: CLLocationCoordinate2D) {

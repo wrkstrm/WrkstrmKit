@@ -9,7 +9,6 @@
 import UIKit
 
 open class CollectionViewController<Model: CollectionViewDisplayable>: UICollectionViewController {
-
   open var displayableModel: Model? {
     didSet {
       if let displayableModel {

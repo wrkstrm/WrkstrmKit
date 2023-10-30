@@ -5,7 +5,6 @@ import UIKit
 
 @available(iOS 13.0, *)
 public struct PageControl: UIViewRepresentable {
-
   //  @Binding public var currentPage: Int
 
   public var numberOfPages: Int
@@ -34,13 +33,11 @@ public struct PageControl: UIViewRepresentable {
 // MARK: - Coordinator
 
 extension PageControl {
-
   public func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
 
   public class Coordinator: NSObject {
-
     var control: PageControl
 
     init(_ control: PageControl) {

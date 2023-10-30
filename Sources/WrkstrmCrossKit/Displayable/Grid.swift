@@ -1,7 +1,6 @@
 import CoreGraphics
 
 public struct Grid {
-
   public let rows: Int
 
   public let columns: Int

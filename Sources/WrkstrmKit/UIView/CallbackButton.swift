@@ -2,7 +2,6 @@
 import UIKit
 
 final class CallbackButton: UIView {
-
   let onTap: () -> Void
 
   let button: UIButton

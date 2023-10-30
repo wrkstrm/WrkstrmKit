@@ -3,7 +3,6 @@ import UIKit
 import WrkstrmCrossKit
 
 extension UITableView {
-
   public func register(nib cells: [UITableViewCell.Type]) {
     cells.forEach {
       self.register($0.defaultNib, forCellReuseIdentifier: $0.reuseIdentifier())

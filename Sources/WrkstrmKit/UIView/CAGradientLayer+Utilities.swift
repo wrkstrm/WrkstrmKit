@@ -2,11 +2,9 @@
 import QuartzCore
 
 extension CAGradientLayer {
-
   typealias Positions = (start: CGPoint, end: CGPoint)
 
   enum Direction: CaseIterable {
-
     case leftRight
 
     case rightLeft

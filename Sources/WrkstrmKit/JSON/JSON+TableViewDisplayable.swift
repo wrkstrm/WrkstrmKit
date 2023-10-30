@@ -5,10 +5,8 @@ import WrkstrmFoundation
 import WrkstrmMain
 
 extension JSON.Value: TableReusableItem {
-
   public var tableReusableCell: TableReusableCell.Type {
     switch self {
-
       case .integer:
         JSON.IntegerCell.self
 
@@ -34,7 +32,6 @@ extension JSON.Value: TableReusableItem {
 }
 
 extension JSON {
-
   public static let registrar =
     Registrar(classes: [
       JSON.BasicCell.self,
@@ -46,7 +43,6 @@ extension JSON {
     ])
 
   public struct Displayable: TableViewDisplayable {
-
     let jsonArray: [JSONDictionary]
 
     var dateKeyFuzzyOverride: [String]?
@@ -86,7 +82,6 @@ extension JSON {
 
     func generateValue(_ key: String, anyValue: Any) -> Value {
       switch anyValue {
-
         case let value as Int:
           .integer(key, value)
 
@@ -116,15 +111,12 @@ extension JSON {
 }
 
 public protocol JSONTableViewDisplayable {
-
   func jsonDictionaryDataSource(config: TableViewDataSource<JSON.Displayable>.CellConfig?)
     -> TableViewDataSource<JSON.Displayable>
 }
 
 extension JSONTableViewDisplayable where Self: Codable {
-
   func convertToJSONDictionary() -> JSONDictionary {
-
     // swiftlint:disable:next force_try
     let data = try! JSONEncoder.default.encode(self)
 
@@ -139,7 +131,6 @@ extension JSONTableViewDisplayable where Self: Codable {
     config: TableViewDataSource<JSON.Displayable>
       .CellConfig? = nil
   ) -> TableViewDataSource<JSON.Displayable> {
-
     let displayble =
       JSON.Displayable(
         jsonArray: [convertToJSONDictionary()],

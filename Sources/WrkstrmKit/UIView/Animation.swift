@@ -2,7 +2,6 @@
 import UIKit
 
 public class Animation {
-
   public typealias Completion = (UIViewAnimatingPosition) -> Void
 
   public let options: Options
@@ -31,9 +30,7 @@ public class Animation {
 }
 
 extension Animation {
-
   public struct Options: Equatable {
-
     public let duration: TimeInterval
 
     public let delay: TimeInterval
@@ -69,7 +66,6 @@ extension Animation {
   }
 
   public struct Stage {
-
     public var load: (() -> Void)?
 
     public let perform: (() -> Void)?
@@ -86,14 +82,12 @@ extension Animation {
 }
 
 extension Animation: Sequence {
-
   public func makeIterator() -> AnimationIterator {
     AnimationIterator(animation: self)
   }
 }
 
 public struct AnimationIterator: IteratorProtocol {
-
   var animation: Animation?
 
   public mutating func next() -> Animation? {

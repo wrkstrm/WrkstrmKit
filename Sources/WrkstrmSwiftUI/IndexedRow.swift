@@ -1,7 +1,6 @@
 import SwiftUI
 
 public final class IndexedRow<M: Identifiable>: Identifiable, ObservableObject {
-
   public let id: Int
 
   public let index: Int

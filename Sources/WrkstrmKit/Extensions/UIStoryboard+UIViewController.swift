@@ -6,7 +6,6 @@ import UIKit
 // MARK: - UIViewController Convinience Initializers
 
 extension UIStoryboard {
-
   /// Returns a view controller in a storyboard for an identifier
   ///
   /// - Parameter identifier: The storyboard identifier inside the `UIStoryboard`.

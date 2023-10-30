@@ -8,9 +8,7 @@ typealias UISearchProtocols = UISearchBarDelegate & UISearchControllerDelegate
   & UISearchResultsUpdating
 
 public class Search<Model: TableViewDisplayable> {
-
   public struct Filter {
-
     public typealias Match = (Model.Item, String) -> Bool
 
     let title: String
@@ -23,7 +21,6 @@ public class Search<Model: TableViewDisplayable> {
   }
 
   public struct Sort {
-
     public typealias Order = (Model.Item, Model.Item) -> Bool
 
     let title: String
@@ -68,7 +65,6 @@ public class Search<Model: TableViewDisplayable> {
 open class TableViewController<Model: TableViewDisplayable>: UITableViewController,
   UISearchProtocols
 {
-
   // MARK: - TableViewDisplayble Variables
 
   open var displayableModel: Model? {

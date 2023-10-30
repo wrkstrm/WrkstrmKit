@@ -5,7 +5,6 @@ import SwiftUI
 import UIKit
 
 struct InterpolatingView: UIViewRepresentable {
-
   static var hackerOrange = Color(red: 255.0, green: 102.0, blue: 0.0, opacity: 1)
 
   var color: Color
@@ -29,13 +28,11 @@ struct InterpolatingView: UIViewRepresentable {
 }
 
 extension InterpolatingView {
-
   func makeCoordinator() -> InterpolatingView.Coordinator {
     Coordinator(self)
   }
 
   class Coordinator {
-
     var view: InterpolatingView
 
     init(_ view: InterpolatingView) {
@@ -45,7 +42,6 @@ extension InterpolatingView {
 }
 
 class InterpolatingUIView: UILabel {
-
   var color: Color = .black
 
   var radius: CGFloat = 0

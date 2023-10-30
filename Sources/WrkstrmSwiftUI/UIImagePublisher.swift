@@ -5,7 +5,6 @@ import SwiftUI
 import UIKit
 
 open class UIImagePublisher: ObservableObject {
-
   public var imageCancellable: AnyCancellable?
 
   @Published public var uiImage: UIImage

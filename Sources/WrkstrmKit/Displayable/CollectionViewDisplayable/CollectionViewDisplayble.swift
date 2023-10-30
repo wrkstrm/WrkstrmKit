@@ -3,7 +3,6 @@ import UIKit
 import WrkstrmCrossKit
 
 public protocol CollectionViewDisplayable: Indexable where Item: CollectionReusableItem {
-
   func reusableCell(for path: IndexPath) -> CollectionReusableCell.Type
 
   func dataSource(config: CollectionViewDataSource<Self>.CellConfig?) -> CollectionViewDataSource<
@@ -18,7 +17,6 @@ public protocol CollectionViewDisplayable: Indexable where Item: CollectionReusa
 }
 
 extension CollectionViewDisplayable {
-
   public func reusableCell(for path: IndexPath) -> CollectionReusableCell.Type {
     item(for: path).collectionReusableCell
   }
@@ -39,7 +37,6 @@ extension CollectionViewDisplayable {
 }
 
 extension Array: CollectionViewDisplayable where Element: CollectionReusableItem {
-
   public func collectionDataSource(
     config: CollectionViewDataSource<[Element]>.CellConfig? = nil
   )

@@ -3,7 +3,6 @@ import UIKit
 import WrkstrmCrossKit
 
 extension UICollectionView {
-
   public func register(nib cells: [UICollectionReusableView.Type]) {
     cells.forEach {
       self.register($0.defaultNib, forCellWithReuseIdentifier: $0.reuseIdentifier())

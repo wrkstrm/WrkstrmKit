@@ -3,7 +3,6 @@ import UIKit
 import WrkstrmCrossKit
 
 extension UIStackView {
-
   convenience init(views: [UIView]) {
     self.init()
     translatesAutoresizingMaskIntoConstraints = false
@@ -19,9 +18,7 @@ public protocol GridDelegate: AnyObject {
 }
 
 extension StackViewController {
-
   public enum ContentElement {
-
     case label(String)
 
     case button(String, () -> Void)
@@ -30,7 +27,6 @@ extension StackViewController {
   }
 
   public enum Style {
-
     case content([ContentElement], alignment: UIStackView.Alignment)
 
     case views([UIView], alignment: UIStackView.Alignment)
@@ -40,7 +36,6 @@ extension StackViewController {
 }
 
 extension StackViewController.ContentElement {
-
   public var view: UIView {
     switch self {
       case let .label(text):
@@ -64,7 +59,6 @@ extension StackViewController.ContentElement {
 }
 
 open class StackViewController: UIViewController {
-
   public var style: Style
 
   private(set) var stack: UIStackView
