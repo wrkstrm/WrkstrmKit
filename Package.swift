@@ -1,7 +1,7 @@
 // swift-tools-version:5.9
 import PackageDescription
 
-let package = Package(
+let package: Package = .init(
   name: "WrkstrmKit",
   platforms: [
     .iOS(.v15),
@@ -19,10 +19,39 @@ let package = Package(
     .package(name: "WrkstrmLog", path: "../WrkstrmLog"),
   ],
   targets: [
-    .target(name: "WrkstrmCrossKit", dependencies: ["WrkstrmLog"]),
     .target(
-      name: "WrkstrmKit", dependencies: ["WrkstrmCrossKit", "WrkstrmFoundation"]),
-    .target(name: "WrkstrmSwiftUI", dependencies: []),
-    .target(name: "WrkstrmSwiftUIExp", dependencies: ["WrkstrmSwiftUI", "WrkstrmCrossKit"]),
+      name: "WrkstrmCrossKit",
+
+      dependencies: ["WrkstrmLog"],
+      swiftSettings: [
+        .unsafeFlags([
+          "-Xfrontend",
+          "-warn-long-expression-type-checking=50",
+        ]),
+      ]),
+    .target(
+      name: "WrkstrmKit", dependencies: ["WrkstrmCrossKit", "WrkstrmFoundation"],
+      swiftSettings: [
+        .unsafeFlags([
+          "-Xfrontend",
+          "-warn-long-expression-type-checking=50",
+        ]),
+      ]),
+    .target(name: "WrkstrmSwiftUI", dependencies: [], swiftSettings: [
+      .unsafeFlags([
+        "-Xfrontend",
+        "-warn-long-expression-type-checking=50",
+      ]),
+    ]),
+    .target(
+      name: "WrkstrmSwiftUIExp",
+      dependencies: ["WrkstrmSwiftUI", "WrkstrmCrossKit"],
+
+      swiftSettings: [
+        .unsafeFlags([
+          "-Xfrontend",
+          "-warn-long-expression-type-checking=50",
+        ]),
+      ]),
     .testTarget(name: "WrkstrmKitTests", dependencies: ["WrkstrmKit"]),
   ])
