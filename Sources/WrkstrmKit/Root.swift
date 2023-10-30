@@ -6,13 +6,13 @@ public protocol Root {
   var window: UIWindow { get }
 }
 
-public extension Root {
+extension Root {
 
-  var rootNavController: UINavigationController? {
+  public var rootNavController: UINavigationController? {
     window.rootViewController as? UINavigationController
   }
 
-  var rootViewController: UIViewController {
+  public var rootViewController: UIViewController {
     // swiftlint:disable:next force_unwrapping
     rootNavController?.viewControllers.first ?? window.rootViewController!
   }

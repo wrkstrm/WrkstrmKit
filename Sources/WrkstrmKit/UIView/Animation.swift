@@ -30,9 +30,9 @@ public class Animation {
   }
 }
 
-public extension Animation {
+extension Animation {
 
-  struct Options: Equatable {
+  public struct Options: Equatable {
 
     public let duration: TimeInterval
 
@@ -68,7 +68,7 @@ public extension Animation {
     }
   }
 
-  struct Stage {
+  public struct Stage {
 
     public var load: (() -> Void)?
 

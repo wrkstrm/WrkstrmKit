@@ -33,9 +33,9 @@ extension JSON.Value: TableReusableItem {
   }
 }
 
-public extension JSON {
+extension JSON {
 
-  static let registrar =
+  public static let registrar =
     Registrar(classes: [
       JSON.BasicCell.self,
       JSON.IntegerCell.self,
@@ -45,7 +45,7 @@ public extension JSON {
       JSON.AnyCell.self,
     ])
 
-  struct Displayable: TableViewDisplayable {
+  public struct Displayable: TableViewDisplayable {
 
     let jsonArray: [JSONDictionary]
 
@@ -121,7 +121,7 @@ public protocol JSONTableViewDisplayable {
     -> TableViewDataSource<JSON.Displayable>
 }
 
-public extension JSONTableViewDisplayable where Self: Codable {
+extension JSONTableViewDisplayable where Self: Codable {
 
   func convertToJSONDictionary() -> JSONDictionary {
 

@@ -2,21 +2,21 @@
 import UIKit
 import WrkstrmCrossKit
 
-public extension UITableView {
+extension UITableView {
 
-  func register(nib cells: [UITableViewCell.Type]) {
+  public func register(nib cells: [UITableViewCell.Type]) {
     cells.forEach {
       self.register($0.defaultNib, forCellReuseIdentifier: $0.reuseIdentifier())
     }
   }
 
-  func register(classes cells: [UITableViewCell.Type]) {
+  public func register(classes cells: [UITableViewCell.Type]) {
     for cell in cells {
       register(cell.self, forCellReuseIdentifier: cell.reuseIdentifier())
     }
   }
 
-  func dequeueReusableCell<Cell: TableReusableCell>(
+  public func dequeueReusableCell<Cell: TableReusableCell>(
     _ cellClass: Cell.Type,
     for indexPath: IndexPath) -> Cell
   {

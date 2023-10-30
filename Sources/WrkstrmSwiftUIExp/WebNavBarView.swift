@@ -5,7 +5,7 @@ import WrkstrmCrossKit
 
 public struct WebNavBarView: SwiftUI.View {
 
-  @ObservedObject var webViewState: WebView.State
+  @ObservedObject public var webViewState: WebView.State
 
   public init(webViewState: WebView.State) {
     self.webViewState = webViewState
@@ -28,13 +28,13 @@ public struct WebNavBarView: SwiftUI.View {
 
 // MARK: - Nav Buttons
 
-public extension WebNavBarView {
+extension WebNavBarView {
 
-  struct LoadingButton: SwiftUI.View {
+  public struct LoadingButton: SwiftUI.View {
 
     @ObservedObject var webViewState: WebView.State
 
-    var reloadImage: UIImage {
+    public var reloadImage: UIImage {
       webViewState.isLoading ? .arrowCircle : .arrowClockwise
     }
 
@@ -45,7 +45,7 @@ public extension WebNavBarView {
     }
   }
 
-  struct BackButton: SwiftUI.View {
+  public struct BackButton: SwiftUI.View {
 
     @ObservedObject var webViewState: WebView.State
 
@@ -57,9 +57,9 @@ public extension WebNavBarView {
     }
   }
 
-  struct ForwardButton: SwiftUI.View {
+  public struct ForwardButton: SwiftUI.View {
 
-    @ObservedObject var webViewState: WebView.State
+    @ObservedObject public var webViewState: WebView.State
 
     public var body: some SwiftUI.View {
       Button(
@@ -85,7 +85,7 @@ public extension WebNavBarView {
 #if DEBUG
 struct WebNavBarViewPreviews: PreviewProvider {
 
-  static var previews: some SwiftUI.View {
+  public static var previews: some SwiftUI.View {
     WebNavBarView(webViewState: WebView.State())
   }
 }

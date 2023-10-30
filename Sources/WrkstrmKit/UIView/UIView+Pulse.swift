@@ -2,9 +2,9 @@
 import UIKit
 import WrkstrmFoundation
 
-public extension UIView {
+extension UIView {
 
-  static let pulseDuration: TimeInterval = 2
+  fileprivate static let pulseDuration: TimeInterval = 2
 
   @discardableResult
   func pulseView(_ pulse: Bool) -> UIViewPropertyAnimator {

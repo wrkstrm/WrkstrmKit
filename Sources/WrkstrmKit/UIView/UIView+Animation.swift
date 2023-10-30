@@ -1,12 +1,12 @@
 #if canImport(UIKit)
 import UIKit
 
-public extension CGFloat {
+extension CGFloat {
 
   static let minAlphaForTouchInput: CGFloat = 0.010_000_001
 }
 
-public extension UIView {
+extension UIView {
 
   @discardableResult
   func perform(

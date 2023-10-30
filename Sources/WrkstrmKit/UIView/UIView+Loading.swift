@@ -1,14 +1,14 @@
 #if canImport(UIKit)
 import UIKit
 
-public extension UIView {
+extension UIView {
 
   private enum AssociatedKey {
 
     static var embeddedView = "wsm_embeddedView"
   }
 
-  @IBOutlet var embeddedView: UIView? {
+  @IBOutlet public var embeddedView: UIView? {
     get {
       objc_getAssociatedObject(self, &AssociatedKey.embeddedView) as? UIView
     }
@@ -26,7 +26,7 @@ public extension UIView {
   /// Override this method to specify a nib that is not named similarly to the class name.
   /// This is required for Nested view types in Swift.
   //// Names like Nested.View are translated to simply "View"
-  var defaultNib: UINib? { nil }
+  public var defaultNib: UINib? { nil }
 
   /// Calls this method in a commonInit after both init with frame and coder to add the embedded
   /// view.

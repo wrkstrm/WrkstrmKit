@@ -2,9 +2,9 @@
 import UIKit
 import WrkstrmCrossKit
 
-public extension UITableView {
+extension UITableView {
 
-  func addRegistar(_ registrar: Registrar) {
+  public func addRegistar(_ registrar: Registrar) {
     if let classes = registrar.classes as? [UITableViewCell.Type] {
       register(classes: classes)
     }

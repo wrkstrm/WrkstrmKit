@@ -33,13 +33,13 @@ public struct PageViewController: UIViewControllerRepresentable {
 
 // MARK: - Coordinator
 
-public extension PageViewController {
+extension PageViewController {
 
-  func makeCoordinator() -> Coordinator {
+  public func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
 
-  class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+  public class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     var parent: PageViewController
 

@@ -3,11 +3,11 @@
 
 import UIKit
 
-public extension UIApplicationDelegate {
+extension UIApplicationDelegate {
 
-  typealias LaunchOptions = [UIApplication.LaunchOptionsKey: Any]
+  public typealias LaunchOptions = [UIApplication.LaunchOptionsKey: Any]
 
-  typealias OpenURLOptions = [UIApplication.OpenURLOptionsKey: Any]
+  public typealias OpenURLOptions = [UIApplication.OpenURLOptionsKey: Any]
 }
 #endif  // !canImport(UIKit)
 #endif  // !canImport(WatchKit)

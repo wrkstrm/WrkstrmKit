@@ -2,7 +2,7 @@
 import UIKit
 import WrkstrmCrossKit
 
-public extension UIStackView {
+extension UIStackView {
 
   convenience init(views: [UIView]) {
     self.init()
@@ -18,9 +18,9 @@ public protocol GridDelegate: AnyObject {
   func view(for stack: UIStackView, indexPath: IndexPath) -> UIView
 }
 
-public extension StackViewController {
+extension StackViewController {
 
-  enum ContentElement {
+  public enum ContentElement {
 
     case label(String)
 
@@ -29,7 +29,7 @@ public extension StackViewController {
     case image(UIImage)
   }
 
-  enum Style {
+  public enum Style {
 
     case content([ContentElement], alignment: UIStackView.Alignment)
 
@@ -39,9 +39,9 @@ public extension StackViewController {
   }
 }
 
-public extension StackViewController.ContentElement {
+extension StackViewController.ContentElement {
 
-  var view: UIView {
+  public var view: UIView {
     switch self {
     case let .label(text):
       let label = UILabel()

@@ -10,13 +10,13 @@ public protocol TableViewDisplayable: Indexable where Item: TableReusableItem {
   func dataSource(config: TableViewDataSource<Self>.CellConfig?) -> TableViewDataSource<Self>
 }
 
-public extension TableViewDisplayable {
+extension TableViewDisplayable {
 
-  func reusableCell(for path: IndexPath) -> TableReusableCell.Type {
+  public func reusableCell(for path: IndexPath) -> TableReusableCell.Type {
     item(for: path).tableReusableCell
   }
 
-  func dataSource(config: TableViewDataSource<Self>.CellConfig? = nil)
+  public func dataSource(config: TableViewDataSource<Self>.CellConfig? = nil)
     -> TableViewDataSource<Self>
   {
     TableViewDataSource(model: self, config: config)

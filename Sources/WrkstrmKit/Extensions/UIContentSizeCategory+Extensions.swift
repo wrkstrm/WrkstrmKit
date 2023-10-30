@@ -2,9 +2,9 @@
 import UIKit
 import WrkstrmFoundation
 
-public extension Notification {
+extension Notification {
 
-  static let contentSize = Transformer<Void>(
+  public static let contentSize = Transformer<Void>(
     name: UIContentSizeCategory.didChangeNotification)
 }
 #endif

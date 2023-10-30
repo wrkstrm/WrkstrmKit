@@ -9,14 +9,14 @@ import Cocoa
 public typealias View = NSView
 #endif
 
-public extension View {
+extension View {
 
   private enum AssociatedKey {
 
     static var constraintCache = "wsm_constraintCache"
   }
 
-  internal typealias ConstraintCache = [NSLayoutConstraint: CGFloat]
+  typealias ConstraintCache = [NSLayoutConstraint: CGFloat]
 
   private var constraintCache: ConstraintCache {
     get {
@@ -52,7 +52,7 @@ public extension View {
     constraint.constant = constraintCache[constraint, default: 0]
   }
 
-  func constrainEqual(
+  public func constrainEqual(
     attribute: NSLayoutConstraint.Attribute,
     to: AnyObject,
     multiplier: CGFloat = 1,
@@ -65,7 +65,7 @@ public extension View {
       constant: constant)
   }
 
-  func constrainEqual(
+  public func constrainEqual(
     attribute: NSLayoutConstraint.Attribute,
     to: AnyObject,
     _ toAttribute: NSLayoutConstraint.Attribute,
@@ -84,7 +84,7 @@ public extension View {
     ])
   }
 
-  func constrainEdges(to view: View) {
+  public func constrainEdges(to view: View) {
     constrainEqual(attribute: .top, to: view, .top)
     constrainEqual(attribute: .leading, to: view, .leading)
     constrainEqual(attribute: .trailing, to: view, .trailing)
@@ -92,18 +92,18 @@ public extension View {
   }
 
   /// If the `view` is nil, we take the superview.
-  func constrainToCenter(in view: View? = nil) {
+  public func constrainToCenter(in view: View? = nil) {
     guard let container = view ?? superview else { fatalError() }
     centerXAnchor.constrainEqual(anchor: container.centerXAnchor)
     centerYAnchor.constrainEqual(anchor: container.centerYAnchor)
   }
 
-  internal var centerPoint: CGPoint {
+  var centerPoint: CGPoint {
     CGPoint(x: (frame.origin.x + frame.size.width) / 2, y: (frame.origin.y + frame.size.height) / 2)
   }
 }
 
-public extension NSLayoutAnchor {
+extension NSLayoutAnchor {
   @objc func constrainEqual(anchor: NSLayoutAnchor, constant: CGFloat = 0) {
     constraint(equalTo: anchor, constant: constant).isActive = true
   }

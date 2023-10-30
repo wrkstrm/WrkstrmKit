@@ -1,9 +1,9 @@
 #if canImport(UIKit)
 import UIKit
 
-public extension UIImage {
+extension UIImage {
 
-  static func color(_ color: UIColor, size: CGSize) -> UIImage {
+  public static func color(_ color: UIColor, size: CGSize) -> UIImage {
     let rect = CGRect(origin: .zero, size: size)
     UIGraphicsBeginImageContext(rect.size)
     let context = UIGraphicsGetCurrentContext()

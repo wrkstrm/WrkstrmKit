@@ -1,15 +1,15 @@
 #if canImport(UIKit)
 import UIKit
 
-@objc public extension UIView {
+@objc extension UIView {
 
   /// Returns the center of the bounds.
   /// Helpful when trying to center a subview insdide another subview.
-  var boundsCenter: CGPoint {
+  public var boundsCenter: CGPoint {
     CGPoint(x: bounds.midX, y: bounds.midY)
   }
 
-  func round(corners: UIRectCorner, radius: CGFloat) {
+  public func round(corners: UIRectCorner, radius: CGFloat) {
     let path = UIBezierPath(
       roundedRect: bounds,
       byRoundingCorners: corners,

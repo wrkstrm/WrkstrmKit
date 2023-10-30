@@ -1,7 +1,7 @@
 import SwiftUI
 
-public extension AnyTransition {
-  static var moveAndFade: AnyTransition {
+extension AnyTransition {
+  public static var moveAndFade: AnyTransition {
     let insertion = Self.move(edge: .trailing)
       .combined(with: .opacity)
     let removal = Self.scale

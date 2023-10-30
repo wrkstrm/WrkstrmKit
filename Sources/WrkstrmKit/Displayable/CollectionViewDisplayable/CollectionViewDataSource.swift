@@ -40,7 +40,7 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
     self.config = config
   }
 
-  func model(for indexPath: IndexPath) -> Model.Item? {
+  public func model(for indexPath: IndexPath) -> Model.Item? {
     let sectionIndex = indexPath.section
     let rowIndex = indexPath.row
     if sectionIndex < items.count {

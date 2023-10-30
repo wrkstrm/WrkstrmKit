@@ -1,7 +1,7 @@
 #if canImport(QuartzCore)
 import QuartzCore
 
-public extension CAGradientLayer {
+extension CAGradientLayer {
 
   typealias Positions = (start: CGPoint, end: CGPoint)
 

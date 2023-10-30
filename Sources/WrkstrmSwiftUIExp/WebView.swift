@@ -31,9 +31,9 @@ public struct WebView: UIViewRepresentable {
 
 // MARK: - State
 
-public extension WebView {
+extension WebView {
 
-  class State: ObservableObject {
+  public class State: ObservableObject {
 
     weak var coordinator: Coordinator?
 
@@ -74,15 +74,15 @@ public extension WebView {
 
 // MARK: - Coordinator
 
-public extension WebView {
+extension WebView {
 
-  func makeCoordinator() -> Coordinator {
+  public func makeCoordinator() -> Coordinator {
     let coordinator = Coordinator(self)
     state.coordinator = coordinator
     return coordinator
   }
 
-  class Coordinator: NSObject {
+  public class Coordinator: NSObject {
 
     weak var parentUIView: WKWebView?
 

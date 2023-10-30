@@ -5,13 +5,13 @@ import UIKit
 
 // MARK: - UIViewController Convinience Initializers
 
-public extension UIStoryboard {
+extension UIStoryboard {
 
   /// Returns a view controller in a storyboard for an identifier
   ///
   /// - Parameter identifier: The storyboard identifier inside the `UIStoryboard`.
   /// - Returns: A `UIViewController` for the given storyboard identifier.
-  func controller(identifier: String) -> UIViewController {
+  public func controller(identifier: String) -> UIViewController {
     instantiateViewController(withIdentifier: identifier)
   }
 
@@ -20,7 +20,7 @@ public extension UIStoryboard {
   /// - Parameter class: The `UIViewController` class type that will be converted to a storyboard
   /// identifer.
   /// - Returns: An instance of the `UIViewController` class created from the storyboard.
-  func controller<Controller: UIViewController>(class _: Controller.Type) -> Controller {
+  public func controller<Controller: UIViewController>(class _: Controller.Type) -> Controller {
     // swiftlint:disable:next force_cast
     controller(identifier: String(describing: Controller.self)) as! Controller
   }
