@@ -28,8 +28,8 @@ extension Array: TableViewDisplayable where Element: TableReusableItem {
   public func title(for _: Int) -> String? { nil }
 
   public func tableDataSource(
-    config: TableViewDataSource<[Element]>.CellConfig? = nil) -> TableViewDataSource<[Element]>
-  {
+    config: TableViewDataSource<[Element]>.CellConfig? = nil
+  ) -> TableViewDataSource<[Element]> {
     TableViewDataSource(items: items, config: config)
   }
 }

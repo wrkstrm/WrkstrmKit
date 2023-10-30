@@ -70,17 +70,16 @@ extension WrkstrmFoundation.JSON {
 
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .array(key, arrayValue)? = model as? JSON.Value,
-            case let .dictionary(jsonArray) = arrayValue
+        case let .dictionary(jsonArray) = arrayValue
       else { Log.guard() }
 
       textLabel?.text = key.titlecased()
       let formatString: String! =
-        if jsonArray.count == 1
-      {
-        NSLocalizedString("%@ Item", comment: "")
-      } else {
-        NSLocalizedString("%@ Items", comment: "")
-      }
+        if jsonArray.count == 1 {
+          NSLocalizedString("%@ Item", comment: "")
+        } else {
+          NSLocalizedString("%@ Items", comment: "")
+        }
       detailTextLabel?.text =
         .localizedStringWithFormat(
           formatString,
@@ -93,17 +92,16 @@ extension WrkstrmFoundation.JSON {
 
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .dictionary(key, jsonDictionary)? = model as? JSON.Value,
-            case let .any(json) = jsonDictionary
+        case let .any(json) = jsonDictionary
       else { Log.guard() }
       textLabel?.text = key.titlecased()
 
       let formatString: String! =
-        if json.count == 1
-      {
-        NSLocalizedString("%@ Detail", comment: "")
-      } else {
-        NSLocalizedString("%@ Details", comment: "")
-      }
+        if json.count == 1 {
+          NSLocalizedString("%@ Detail", comment: "")
+        } else {
+          NSLocalizedString("%@ Details", comment: "")
+        }
       detailTextLabel?.text =
         .localizedStringWithFormat(
           formatString,

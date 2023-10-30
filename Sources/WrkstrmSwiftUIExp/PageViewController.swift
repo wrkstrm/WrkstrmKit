@@ -49,8 +49,8 @@ extension PageViewController {
 
     public func pageViewController(
       _: UIPageViewController,
-      viewControllerBefore viewController: UIViewController) -> UIViewController?
-    {
+      viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
 
       guard let index = parent.controllers.firstIndex(of: viewController) else {
         return nil
@@ -63,8 +63,8 @@ extension PageViewController {
 
     public func pageViewController(
       _: UIPageViewController,
-      viewControllerAfter viewController: UIViewController) -> UIViewController?
-    {
+      viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
 
       guard let index = parent.controllers.firstIndex(of: viewController) else {
         return nil
@@ -79,8 +79,8 @@ extension PageViewController {
       _: UIPageViewController,
       didFinishAnimating _: Bool,
       previousViewControllers _: [UIViewController],
-      transitionCompleted _: Bool)
-    {
+      transitionCompleted _: Bool
+    ) {
       //      if completed,
       //        let visibleViewController = pageViewController.viewControllers?.first,
       //        let index = parent.controllers.firstIndex(of: visibleViewController) {

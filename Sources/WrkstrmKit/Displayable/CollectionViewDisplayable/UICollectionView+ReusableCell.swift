@@ -18,8 +18,8 @@ extension UICollectionView {
 
   public func dequeueReusableCell<Cell: ReusableCell>(
     _ cellClass: Cell.Type,
-    for indexPath: IndexPath) -> Cell
-  {
+    for indexPath: IndexPath
+  ) -> Cell {
     dequeueReusableCell(
       withReuseIdentifier: cellClass.reuseIdentifier(),
       for: indexPath) as! Cell  // swiftlint:disable:this force_cast

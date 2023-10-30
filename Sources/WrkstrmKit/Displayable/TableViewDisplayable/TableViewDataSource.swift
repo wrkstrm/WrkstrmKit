@@ -56,8 +56,8 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
 
   public func tableView(
     _ tableView: UITableView,
-    cellForRowAt indexPath: IndexPath) -> UITableViewCell
-  {
+    cellForRowAt indexPath: IndexPath
+  ) -> UITableViewCell {
     let reusableType = reusableTypes[indexPath.section][indexPath.row]
     if reusableType.reuseIdentifier() == PlaceholderTableViewCell.reuseIdentifier() {
       tableView.register(
@@ -67,25 +67,25 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
 
     let cell: UITableViewCell!
     switch reusableType {
-    case let styleableType as StyleableCell.Type:
-      if let cachedCell =
-        tableView.dequeueReusableCell(withIdentifier: styleableType.reuseIdentifier())
-      {
-        cell = cachedCell
-      } else {
-        cell =
-          (styleableType.init(
-            style: styleableType.cellStyle,
-            reuseIdentifier: styleableType.reuseIdentifier()) as! UITableViewCell)
-        // swiftlint:disable:previous force_cast
-        cell.prepareForReuse()
-      }
+      case let styleableType as StyleableCell.Type:
+        if let cachedCell =
+          tableView.dequeueReusableCell(withIdentifier: styleableType.reuseIdentifier())
+        {
+          cell = cachedCell
+        } else {
+          cell =
+            (styleableType.init(
+              style: styleableType.cellStyle,
+              reuseIdentifier: styleableType.reuseIdentifier()) as! UITableViewCell)
+          // swiftlint:disable:previous force_cast
+          cell.prepareForReuse()
+        }
 
-    default:
-      cell =
-        tableView.dequeueReusableCell(
-          withIdentifier: reusableType.reuseIdentifier(),
-          for: indexPath)
+      default:
+        cell =
+          tableView.dequeueReusableCell(
+            withIdentifier: reusableType.reuseIdentifier(),
+            for: indexPath)
     }
 
     let currentItem = item(for: indexPath)

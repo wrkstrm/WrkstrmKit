@@ -56,8 +56,8 @@ extension View {
     attribute: NSLayoutConstraint.Attribute,
     to: AnyObject,
     multiplier: CGFloat = 1,
-    constant: CGFloat = 0)
-  {
+    constant: CGFloat = 0
+  ) {
     constrainEqual(
       attribute: attribute,
       to: to, attribute,
@@ -70,8 +70,8 @@ extension View {
     to: AnyObject,
     _ toAttribute: NSLayoutConstraint.Attribute,
     multiplier: CGFloat = 1,
-    constant: CGFloat = 0)
-  {
+    constant: CGFloat = 0
+  ) {
     NSLayoutConstraint.activate([
       NSLayoutConstraint(
         item: self,
@@ -80,7 +80,7 @@ extension View {
         toItem: to,
         attribute: toAttribute,
         multiplier: multiplier,
-        constant: constant),
+        constant: constant)
     ])
   }
 

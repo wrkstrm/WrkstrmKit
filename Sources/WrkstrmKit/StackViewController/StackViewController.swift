@@ -43,22 +43,22 @@ extension StackViewController.ContentElement {
 
   public var view: UIView {
     switch self {
-    case let .label(text):
-      let label = UILabel()
-      label.numberOfLines = 0
-      label.text = text
-      if #available(iOS 13.0, *) {
-        label.textColor = .label
-      }
-      return label
+      case let .label(text):
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = text
+        if #available(iOS 13.0, *) {
+          label.textColor = .label
+        }
+        return label
 
-    case let .button(title, callback):
-      return CallbackButton(title: title, onTap: callback)
+      case let .button(title, callback):
+        return CallbackButton(title: title, onTap: callback)
 
-    case let .image(image):
-      let image = UIImageView(image: image)
-      image.contentMode = .scaleAspectFit
-      return image
+      case let .image(image):
+        let image = UIImageView(image: image)
+        image.contentMode = .scaleAspectFit
+        return image
     }
   }
 }

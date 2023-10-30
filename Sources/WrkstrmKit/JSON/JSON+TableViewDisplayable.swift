@@ -9,26 +9,26 @@ extension JSON.Value: TableReusableItem {
   public var tableReusableCell: TableReusableCell.Type {
     switch self {
 
-    case .integer:
-      JSON.IntegerCell.self
+      case .integer:
+        JSON.IntegerCell.self
 
-    case .double:
-      JSON.DoubleCell.self
+      case .double:
+        JSON.DoubleCell.self
 
-    case .string:
-      JSON.StringCell.self
+      case .string:
+        JSON.StringCell.self
 
-    case .date:
-      JSON.DateCell.self
+      case .date:
+        JSON.DateCell.self
 
-    case .array:
-      JSON.ArrayCell.self
+      case .array:
+        JSON.ArrayCell.self
 
-    case .dictionary:
-      JSON.DictionaryCell.self
+      case .dictionary:
+        JSON.DictionaryCell.self
 
-    case .any:
-      JSON.AnyCell.self
+      case .any:
+        JSON.AnyCell.self
     }
   }
 }
@@ -87,29 +87,29 @@ extension JSON {
     func generateValue(_ key: String, anyValue: Any) -> Value {
       switch anyValue {
 
-      case let value as Int:
-        .integer(key, value)
+        case let value as Int:
+          .integer(key, value)
 
-      case let value as Double:
-        .double(key, value)
+        case let value as Double:
+          .double(key, value)
 
-      case let value as String:
-        .string(key, value)
+        case let value as String:
+          .string(key, value)
 
-      case let value as Date:
-        .date(key, value)
+        case let value as Date:
+          .date(key, value)
 
-      case let value as [JSONDictionary]:
-        .array(key, EquatableArray.dictionary(value))
+        case let value as [JSONDictionary]:
+          .array(key, EquatableArray.dictionary(value))
 
-      case let value as [Any]:
-        .array(key, EquatableArray.any(value))
+        case let value as [Any]:
+          .array(key, EquatableArray.any(value))
 
-      case let value as JSONDictionary:
-        .dictionary(key, EquatableDictionary.any(value))
+        case let value as JSONDictionary:
+          .dictionary(key, EquatableDictionary.any(value))
 
-      default:
-        .any(key, "\(anyValue)")
+        default:
+          .any(key, "\(anyValue)")
       }
     }
   }
@@ -137,8 +137,8 @@ extension JSONTableViewDisplayable where Self: Codable {
 
   func jsonDictionaryDataSource(
     config: TableViewDataSource<JSON.Displayable>
-      .CellConfig? = nil) -> TableViewDataSource<JSON.Displayable>
-  {
+      .CellConfig? = nil
+  ) -> TableViewDataSource<JSON.Displayable> {
 
     let displayble =
       JSON.Displayable(

@@ -50,16 +50,16 @@ public class Search<Model: TableViewDisplayable> {
 
   public init(
     scopes: (mode: ScopeMode, default: Int)? = nil,
-    filter: @escaping Filter.Match)
-  {
+    filter: @escaping Filter.Match
+  ) {
     self.scopes = scopes
     main = [filter]
   }
 
   public init(
     scopes: (mode: ScopeMode, default: Int)? = nil,
-    filters: [Filter.Match])
-  {
+    filters: [Filter.Match]
+  ) {
     self.scopes = scopes
     main = filters
   }
@@ -127,16 +127,16 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
 
       // Place the search bar in the navigation bar.
       switch search?.scopes?.mode {
-      case let .filter(scopes):
-        searchController?.searchBar.scopeButtonTitles = scopes.map(\.title)
-        searchController?.searchBar.selectedScopeButtonIndex = search?.scopes?.default ?? 0
+        case let .filter(scopes):
+          searchController?.searchBar.scopeButtonTitles = scopes.map(\.title)
+          searchController?.searchBar.selectedScopeButtonIndex = search?.scopes?.default ?? 0
 
-      case let .sort(scopes):
-        searchController?.searchBar.scopeButtonTitles = scopes.map(\.title)
-        searchController?.searchBar.selectedScopeButtonIndex = search?.scopes?.default ?? 0
+        case let .sort(scopes):
+          searchController?.searchBar.scopeButtonTitles = scopes.map(\.title)
+          searchController?.searchBar.selectedScopeButtonIndex = search?.scopes?.default ?? 0
 
-      case .none:
-        searchController?.searchBar.scopeButtonTitles = nil
+        case .none:
+          searchController?.searchBar.scopeButtonTitles = nil
       }
       if #available(iOS 11.0, *) {
         navigationItem.searchController = searchController
@@ -165,23 +165,23 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
     let index = searchController.searchBar.selectedScopeButtonIndex
     var scopedItems = search.model?.items
     switch search.scopes?.mode {
-    case let .filter(scopes):
-      let current = scopes[index]
-      scopedItems = scopedItems?.compactMap { section in
-        section.filter { current.test($0, current.title) }
-      }
-      Log.verbose("\(current)")
-
-    case let .sort(scopes):
-      if let test = scopes[index].test {
+      case let .filter(scopes):
+        let current = scopes[index]
         scopedItems = scopedItems?.compactMap { section in
-          let sortedSection = section.sorted { test($0, $1) }
-          return sortedSection
+          section.filter { current.test($0, current.title) }
         }
-      }
+        Log.verbose("\(current)")
 
-    default:
-      break
+      case let .sort(scopes):
+        if let test = scopes[index].test {
+          scopedItems = scopedItems?.compactMap { section in
+            let sortedSection = section.sorted { test($0, $1) }
+            return sortedSection
+          }
+        }
+
+      default:
+        break
     }
 
     guard

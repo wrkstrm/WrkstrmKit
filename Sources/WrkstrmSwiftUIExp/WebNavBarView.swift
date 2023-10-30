@@ -52,8 +52,9 @@ extension WebNavBarView {
     public var body: some SwiftUI.View {
       Button(
         action: { webViewState.goBack() },
-        label: { Image(uiImage: .chevronLeft).padding() })
-        .disabled(!webViewState.canGoBack)
+        label: { Image(uiImage: .chevronLeft).padding() }
+      )
+      .disabled(!webViewState.canGoBack)
     }
   }
 
@@ -64,8 +65,9 @@ extension WebNavBarView {
     public var body: some SwiftUI.View {
       Button(
         action: { webViewState.goForward() },
-        label: { Image(uiImage: .chevronRight).padding() })
-        .disabled(!webViewState.canGoForward)
+        label: { Image(uiImage: .chevronRight).padding() }
+      )
+      .disabled(!webViewState.canGoForward)
     }
   }
 

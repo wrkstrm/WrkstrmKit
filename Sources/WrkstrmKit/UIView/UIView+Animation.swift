@@ -11,8 +11,8 @@ extension UIView {
   @discardableResult
   func perform(
     _ animation: Animation,
-    completion: Animation.Completion? = nil) -> UIViewPropertyAnimator
-  {
+    completion: Animation.Completion? = nil
+  ) -> UIViewPropertyAnimator {
     let options = animation.options
     let stage = animation.stage
 

@@ -19,28 +19,28 @@ open class JSONTableViewController: TableViewController<JSON.Displayable> {
 
   override open func tableView(
     _ tableView: UITableView,
-    willSelectRowAt indexPath: IndexPath) -> IndexPath?
-  {
+    willSelectRowAt indexPath: IndexPath
+  ) -> IndexPath? {
     tableView.indexPathsForSelectedRows?.forEach { tableView.deselectRow(at: $0, animated: true) }
     guard let item = genericDataSource?.modelFor(indexPath: indexPath) else { return nil }
     switch item {
-    case let .array(_, jsonArray):
-      switch jsonArray {
-      case let .dictionary(jsonArray):
-        return jsonArray.isEmpty ? nil : indexPath
+      case let .array(_, jsonArray):
+        switch jsonArray {
+          case let .dictionary(jsonArray):
+            return jsonArray.isEmpty ? nil : indexPath
 
-      case .any:
+          case .any:
+            return nil
+        }
+
+      case let .dictionary(_, equatableJsonDictionary):
+        switch equatableJsonDictionary {
+          case let .any(jsonDictionary):
+            return jsonDictionary.isEmpty ? nil : indexPath
+        }
+
+      default:
         return nil
-      }
-
-    case let .dictionary(_, equatableJsonDictionary):
-      switch equatableJsonDictionary {
-      case let .any(jsonDictionary):
-        return jsonDictionary.isEmpty ? nil : indexPath
-      }
-
-    default:
-      return nil
     }
   }
 
@@ -50,23 +50,23 @@ open class JSONTableViewController: TableViewController<JSON.Displayable> {
 
     var jsonTuple: (key: String, jsonArray: [JSONDictionary])?
     switch item {
-    case let .dictionary(_, equatableJSONDictionary):
-      switch equatableJSONDictionary {
-      case let .any(jsonDictionary):
-        jsonTuple = (key: "", jsonArray: [jsonDictionary])
-      }
+      case let .dictionary(_, equatableJSONDictionary):
+        switch equatableJSONDictionary {
+          case let .any(jsonDictionary):
+            jsonTuple = (key: "", jsonArray: [jsonDictionary])
+        }
 
-    case let .array(key, equatableJsonArray):
-      switch equatableJsonArray {
-      case let .dictionary(array):
-        jsonTuple = (key: key, jsonArray: array)
+      case let .array(key, equatableJsonArray):
+        switch equatableJsonArray {
+          case let .dictionary(array):
+            jsonTuple = (key: key, jsonArray: array)
+
+          default:
+            break
+        }
 
       default:
         break
-      }
-
-    default:
-      break
     }
 
     if let tuple = jsonTuple {
