@@ -17,11 +17,11 @@ let package: Package = .init(
   dependencies: [
     .package(name: "WrkstrmFoundation", path: "../WrkstrmFoundation"),
     .package(name: "WrkstrmLog", path: "../WrkstrmLog"),
+    .package(name: "WrkstrmMain", path: "../WrkstrmMain"),
   ],
   targets: [
     .target(
       name: "WrkstrmCrossKit",
-
       dependencies: ["WrkstrmLog"],
       swiftSettings: [
         .unsafeFlags([
@@ -30,19 +30,26 @@ let package: Package = .init(
         ]),
       ]),
     .target(
-      name: "WrkstrmKit", dependencies: ["WrkstrmCrossKit", "WrkstrmFoundation"],
+      name: "WrkstrmKit",
+      dependencies: [
+        "WrkstrmCrossKit",
+        "WrkstrmFoundation",
+        "WrkstrmMain",
+      ],
       swiftSettings: [
         .unsafeFlags([
           "-Xfrontend",
           "-warn-long-expression-type-checking=50",
         ]),
       ]),
-    .target(name: "WrkstrmSwiftUI", dependencies: [], swiftSettings: [
-      .unsafeFlags([
-        "-Xfrontend",
-        "-warn-long-expression-type-checking=50",
+    .target(
+      name: "WrkstrmSwiftUI",
+      swiftSettings: [
+        .unsafeFlags([
+          "-Xfrontend",
+          "-warn-long-expression-type-checking=50",
+        ]),
       ]),
-    ]),
     .target(
       name: "WrkstrmSwiftUIExp",
       dependencies: ["WrkstrmSwiftUI", "WrkstrmCrossKit"],
