@@ -175,8 +175,7 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
       case let .sort(scopes):
         if let test = scopes[index].test {
           scopedItems = scopedItems?.compactMap { section in
-            let sortedSection = section.sorted { test($0, $1) }
-            return sortedSection
+            section.sorted { test($0, $1) }
           }
         }
 
