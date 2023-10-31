@@ -1,10 +1,3 @@
-//
-//  UICollectionViewCell+ReusableCell.swift
-//  WrkstrmKit
-//
-//  Created by Cristian Monterroza on 8/30/18.
-//  Copyright © 2018 Cristian Monterroza. All rights reserved.
-//
 #if canImport(UIKit)
 import UIKit
 import WrkstrmCrossKit

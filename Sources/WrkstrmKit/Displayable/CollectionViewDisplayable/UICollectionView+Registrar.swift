@@ -1,10 +1,3 @@
-//
-//  UICollectionView+Registrar.swift
-//  WrkstrmKit
-//
-//  Created by Cristian Monterroza on 9/3/18.
-//  Copyright © 2018 Cristian Monterroza. All rights reserved.
-//
 #if canImport(UIKit)
 import UIKit
 import WrkstrmCrossKit
