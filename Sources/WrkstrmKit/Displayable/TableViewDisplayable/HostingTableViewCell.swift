@@ -5,7 +5,7 @@ import UIKit
 open class HostingTableViewCell: TableViewCell, StyleableCell {
   public static var cellStyle: UITableViewCell.CellStyle = .subtitle
 
-  public var host = UIHostingController(rootView: AnyView(Color.clear))
+  public var host: UIHostingController = .init(rootView: AnyView(Color.clear))
 
   override public required init(
     style: UITableViewCell.CellStyle,

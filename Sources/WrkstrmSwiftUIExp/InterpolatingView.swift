@@ -5,7 +5,7 @@ import SwiftUI
 import UIKit
 
 struct InterpolatingView: UIViewRepresentable {
-  static var hackerOrange = Color(red: 255.0, green: 102.0, blue: 0.0, opacity: 1)
+  static var hackerOrange: Color = .init(red: 255.0, green: 102.0, blue: 0.0, opacity: 1)
 
   var color: Color
 
@@ -70,13 +70,13 @@ class InterpolatingUIView: UILabel {
     layer.shadowOffset = CGSize(width: x, height: y)
     layer.shadowOpacity = 1.0
     layer.shadowRadius = radius
-    let horizontal = UIInterpolatingMotionEffect(
+    let horizontal: UIInterpolatingMotionEffect = .init(
       keyPath: "layer.shadowOffset.width",
       type: .tiltAlongHorizontalAxis)
     horizontal.minimumRelativeValue = -12
     horizontal.maximumRelativeValue = 12
 
-    let vertical = UIInterpolatingMotionEffect(
+    let vertical: UIInterpolatingMotionEffect = .init(
       keyPath: "layer.shadowOffset.height",
       type: .tiltAlongVerticalAxis)
     vertical.minimumRelativeValue = -12

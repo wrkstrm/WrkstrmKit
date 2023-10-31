@@ -7,7 +7,7 @@ extension CGFloat {
 
 extension UIView {
   @discardableResult
-  func perform(
+  public func perform(
     _ animation: Animation,
     completion: Animation.Completion? = nil
   ) -> UIViewPropertyAnimator {
@@ -42,11 +42,11 @@ extension UIView {
       completion: finalCompletion)
   }
 
-  func hide(_ views: [UIView]) {
+  public func hide(_ views: [UIView]) {
     views.forEach { $0.alpha = .minAlphaForTouchInput }
   }
 
-  func show(_ views: [UIView]) {
+  public func show(_ views: [UIView]) {
     views.forEach { $0.alpha = 1 }
   }
 }

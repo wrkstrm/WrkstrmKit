@@ -23,7 +23,7 @@ extension View {
           self,
           &AssociatedKey.constraintCache) as? ConstraintCache
       else {
-        let cache = ConstraintCache()
+        let cache: ConstraintCache = .init()
         objc_setAssociatedObject(
           self,
           &AssociatedKey.constraintCache,

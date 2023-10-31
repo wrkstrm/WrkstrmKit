@@ -88,7 +88,7 @@ extension Animation: Sequence {
 }
 
 public struct AnimationIterator: IteratorProtocol {
-  var animation: Animation?
+  public var animation: Animation?
 
   public mutating func next() -> Animation? {
     guard let next = animation else {

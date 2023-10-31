@@ -28,7 +28,7 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
     for (section, elements) in items.enumerated() {
       var sectionIdentifiers: [String] = []
       elements.indices.forEach {
-        let path = IndexPath(row: $0, section: section)
+        let path: IndexPath = .init(row: $0, section: section)
 
         let cellType = model.reusableCell(for: path)
         sectionIdentifiers.append(cellType.reuseIdentifier())

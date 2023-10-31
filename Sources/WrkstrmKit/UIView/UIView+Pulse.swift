@@ -24,7 +24,7 @@ extension UIView {
       .allowUserInteraction,
       .beginFromCurrentState,
     ]
-    let start = Animation(
+    let start: Animation = .init(
       with: .options(duration: Self.pulseDuration, timingOptions: timingOptions),
       .stage { [weak self] in
         guard let self else { return }
@@ -33,7 +33,7 @@ extension UIView {
           y: scaleFactor)
       })
 
-    let next = Animation(
+    let next: Animation = .init(
       with: .options(duration: Self.pulseDuration, timingOptions: timingOptions),
       .stage { [weak self] in self?.transform = .identity },
       next: start)

@@ -9,11 +9,11 @@ import UIKit
   }
 
   public func round(corners: UIRectCorner, radius: CGFloat) {
-    let path = UIBezierPath(
+    let path: UIBezierPath = .init(
       roundedRect: bounds,
       byRoundingCorners: corners,
       cornerRadii: CGSize(width: radius, height: radius))
-    let mask = CAShapeLayer()
+    let mask: CAShapeLayer = .init()
     mask.path = path.cgPath
     layer.mask = mask
   }
