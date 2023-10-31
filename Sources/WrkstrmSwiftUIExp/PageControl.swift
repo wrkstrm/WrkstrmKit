@@ -44,7 +44,8 @@ extension PageControl {
       self.control = control
     }
 
-    @objc func updateCurrentPage(sender _: UIPageControl) {
+    @objc
+    func updateCurrentPage(sender _: UIPageControl) {
       //      control.currentPage = sender.currentPage
     }
   }

@@ -22,7 +22,8 @@ final class CallbackButton: UIView {
     button.addTarget(self, action: #selector(tapped), for: .touchUpInside)
   }
 
-  @objc func tapped(sender _: AnyObject) {
+  @objc
+  func tapped(sender _: AnyObject) {
     onTap()
   }
 }

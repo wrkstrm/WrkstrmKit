@@ -102,7 +102,8 @@ extension View {
 }
 
 extension NSLayoutAnchor {
-  @objc func constrainEqual(anchor: NSLayoutAnchor, constant: CGFloat = 0) {
+  @objc
+  func constrainEqual(anchor: NSLayoutAnchor, constant: CGFloat = 0) {
     constraint(equalTo: anchor, constant: constant).isActive = true
   }
 }
