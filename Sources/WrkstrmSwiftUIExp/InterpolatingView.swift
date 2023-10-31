@@ -16,7 +16,7 @@ struct InterpolatingView: UIViewRepresentable {
   var y: CGFloat
 
   func makeUIView(context _: Context) -> InterpolatingUIView {
-    let view: InterpolatingUIView = .init(frame: .zero)
+    let view = InterpolatingUIView(frame: .zero)
     view.color = color
     view.radius = radius
     view.x = x
