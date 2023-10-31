@@ -7,7 +7,7 @@ import WebKit
 // MARK: - WebView
 
 public struct WebView: UIViewRepresentable {
-  @ObservedObject public var state = State()
+  @ObservedObject public var state: State = .init()
 
   public init() {}
 
@@ -18,7 +18,7 @@ public struct WebView: UIViewRepresentable {
   // MARK: - UIViewRepresentable
 
   public func makeUIView(context: Context) -> WKWebView {
-    let webView = WKWebView(frame: .zero)
+    let webView: WKWebView = .init(frame: .zero)
     webView.navigationDelegate = context.coordinator
     context.coordinator.parentUIView = webView
     context.coordinator.load()
@@ -73,7 +73,7 @@ extension WebView {
 
 extension WebView {
   public func makeCoordinator() -> Coordinator {
-    let coordinator = Coordinator(self)
+    let coordinator: Coordinator = .init(self)
     state.coordinator = coordinator
     return coordinator
   }

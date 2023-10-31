@@ -68,7 +68,7 @@ open class JSONTableViewController: TableViewController<JSON.Displayable> {
     }
 
     if let tuple = jsonTuple {
-      let controller = JSONTableViewController(style: .plain)
+      let controller: JSONTableViewController = .init(style: .plain)
       var jsonDisplayble = JSON.Displayable(jsonArray: tuple.jsonArray)
       jsonDisplayble.dateKeyFuzzyOverride = ["time", "date"]
       controller.title = tuple.key.capitalized

@@ -17,8 +17,8 @@ public struct MapView: UIViewRepresentable {
   }
 
   public func updateUIView(_ view: MKMapView, context _: Context) {
-    let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-    let region = MKCoordinateRegion(center: coordinate, span: span)
+    let span: MKCoordinateSpan = .init(latitudeDelta: 0.02, longitudeDelta: 0.02)
+    let region: MKCoordinateRegion = .init(center: coordinate, span: span)
     view.setRegion(region, animated: true)
     view.isZoomEnabled = false
     view.isScrollEnabled = false
@@ -39,8 +39,8 @@ public struct MapView: NSViewRepresentable {
   }
 
   public func updateNSView(_ view: MKMapView, context _: NSViewRepresentableContext<MapView>) {
-    let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-    let region = MKCoordinateRegion(center: coordinate, span: span)
+    let span: MKCoordinateSpan = .init(latitudeDelta: 0.02, longitudeDelta: 0.02)
+    let region: MKCoordinateRegion = .init(center: coordinate, span: span)
     view.setRegion(region, animated: true)
     view.isZoomEnabled = false
     view.isScrollEnabled = false

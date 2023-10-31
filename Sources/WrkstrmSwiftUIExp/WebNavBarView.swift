@@ -71,7 +71,7 @@ extension WebNavBarView {
   //    @ObservedObject var webViewState: WebView.State
   //
   //    public var body: some View {
-  //      let defaultURL = URL(string: "https://http.cat/404")!
+  //      let defaultURL: URL = .init(string: "https://http.cat/404")!
   //      return PresentationLink(
   //        destination: ActivityViewController(urls: [webViewState.currentURL ?? defaultURL]),
   //        label: { Image(systemName: "square.and.arrow.up").padding() })

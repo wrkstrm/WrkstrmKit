@@ -3,7 +3,7 @@ import SwiftUI
 import UIKit
 
 open class HostingCollectionViewCell: CollectionViewCell {
-  public var host = UIHostingController(rootView: AnyView(Color.clear))
+  public var host: UIHostingController = .init(rootView: AnyView(Color.clear))
 
   override public init(frame: CGRect) {
     super.init(frame: frame)

@@ -39,7 +39,7 @@ extension StackViewController.ContentElement {
   public var view: UIView {
     switch self {
       case let .label(text):
-        let label = UILabel()
+        let label: UILabel = .init()
         label.numberOfLines = 0
         label.text = text
         if #available(iOS 13.0, *) {
@@ -51,7 +51,7 @@ extension StackViewController.ContentElement {
         return CallbackButton(title: title, onTap: callback)
 
       case let .image(image):
-        let image = UIImageView(image: image)
+        let image: UIImageView = .init(image: image)
         image.contentMode = .scaleAspectFit
         return image
     }
@@ -104,15 +104,15 @@ open class StackViewController: UIViewController {
   override open func viewDidLoad() {
     super.viewDidLoad()
     if case let .grid(grid) = style {
-      let vertical = UIStackView()
+      let vertical: UIStackView = .init()
       vertical.axis = .vertical
       vertical.distribution = .fillEqually
       (0..<grid.rows).forEach { rowInt in
-        let horizontal = UIStackView()
+        let horizontal: UIStackView = .init()
         horizontal.axis = .horizontal
         horizontal.distribution = .fillEqually
         (0..<grid.columns).forEach { columnInt in
-          let path = IndexPath(row: rowInt, section: columnInt)
+          let path: IndexPath = .init(row: rowInt, section: columnInt)
           if let view = gridDelegate?.view(for: stack, indexPath: path) {
             horizontal.addArrangedSubview(view)
           } else {
