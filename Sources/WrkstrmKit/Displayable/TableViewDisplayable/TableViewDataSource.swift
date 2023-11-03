@@ -55,8 +55,8 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
 
   public func tableView(
     _ tableView: UITableView,
-    cellForRowAt indexPath: IndexPath
-  ) -> UITableViewCell {
+    cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  {
     let reusableType = reusableTypes[indexPath.section][indexPath.row]
     if reusableType.reuseIdentifier() == PlaceholderTableViewCell.reuseIdentifier() {
       tableView.register(

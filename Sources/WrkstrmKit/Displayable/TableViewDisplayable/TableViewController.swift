@@ -47,16 +47,16 @@ public class Search<Model: TableViewDisplayable> {
 
   public init(
     scopes: (mode: ScopeMode, default: Int)? = nil,
-    filter: @escaping Filter.Match
-  ) {
+    filter: @escaping Filter.Match)
+  {
     self.scopes = scopes
     main = [filter]
   }
 
   public init(
     scopes: (mode: ScopeMode, default: Int)? = nil,
-    filters: [Filter.Match]
-  ) {
+    filters: [Filter.Match])
+  {
     self.scopes = scopes
     main = filters
   }
