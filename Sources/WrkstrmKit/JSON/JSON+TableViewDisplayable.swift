@@ -116,7 +116,7 @@ public protocol JSONTableViewDisplayable {
 }
 
 extension JSONTableViewDisplayable where Self: Codable {
-  func convertToJSONDictionary() -> JSONDictionary {
+  public func convertToJSONDictionary() -> JSONDictionary {
     // swiftlint:disable:next force_try
     let data = try! JSONEncoder.default.encode(self)
 
@@ -127,7 +127,7 @@ extension JSONTableViewDisplayable where Self: Codable {
     // swiftlint:disable:previous force_cast
   }
 
-  func jsonDictionaryDataSource(
+  public func jsonDictionaryDataSource(
     config: TableViewDataSource<JSON.Displayable>
       .CellConfig? = nil) -> TableViewDataSource<JSON.Displayable>
   {
