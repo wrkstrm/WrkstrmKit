@@ -1,3 +1,4 @@
+#if canImport(CoreGraphics)
 import CoreGraphics
 
 public struct Grid {
@@ -14,3 +15,4 @@ public struct Grid {
     CGSize(width: frame.width / CGFloat(rows), height: frame.height / CGFloat(columns))
   }
 }
+#endif  // canImport(CoreGraphics)
