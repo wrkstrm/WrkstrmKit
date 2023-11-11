@@ -1,6 +1,13 @@
 // swift-tools-version:5.9
 import PackageDescription
 
+extension SwiftSetting {
+  static let profile: SwiftSetting = .unsafeFlags([
+    "-Xfrontend",
+    "-warn-long-expression-type-checking=25",
+  ])
+}
+
 let package = Package(
   name: "WrkstrmKit",
   platforms: [
@@ -24,10 +31,7 @@ let package = Package(
       name: "WrkstrmCrossKit",
       dependencies: ["WrkstrmLog"],
       swiftSettings: [
-        .unsafeFlags([
-          "-Xfrontend",
-          "-warn-long-expression-type-checking=50",
-        ]),
+        .profile
       ]),
     .target(
       name: "WrkstrmKit",
@@ -37,28 +41,19 @@ let package = Package(
         "WrkstrmMain",
       ],
       swiftSettings: [
-        .unsafeFlags([
-          "-Xfrontend",
-          "-warn-long-expression-type-checking=50",
-        ]),
+        .profile
       ]),
     .target(
       name: "WrkstrmSwiftUI",
       swiftSettings: [
-        .unsafeFlags([
-          "-Xfrontend",
-          "-warn-long-expression-type-checking=50",
-        ]),
+        .profile
       ]),
     .target(
       name: "WrkstrmSwiftUIExp",
       dependencies: ["WrkstrmSwiftUI", "WrkstrmCrossKit"],
 
       swiftSettings: [
-        .unsafeFlags([
-          "-Xfrontend",
-          "-warn-long-expression-type-checking=50",
-        ]),
+        .profile
       ]),
     .testTarget(name: "WrkstrmKitTests", dependencies: ["WrkstrmKit"]),
   ])
