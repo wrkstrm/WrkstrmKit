@@ -4,7 +4,7 @@ import PackageDescription
 extension SwiftSetting {
   static let profile: SwiftSetting = .unsafeFlags([
     "-Xfrontend",
-    "-warn-long-expression-type-checking=25",
+    "-warn-long-expression-type-checking=10",
   ])
 }
 
@@ -30,9 +30,7 @@ let package = Package(
     .target(
       name: "WrkstrmCrossKit",
       dependencies: ["WrkstrmLog"],
-      swiftSettings: [
-        .profile
-      ]),
+      swiftSettings: [.profile]),
     .target(
       name: "WrkstrmKit",
       dependencies: [
@@ -40,9 +38,7 @@ let package = Package(
         "WrkstrmFoundation",
         "WrkstrmMain",
       ],
-      swiftSettings: [
-        .profile
-      ]),
+      swiftSettings: [.profile]),
     .target(
       name: "WrkstrmSwiftUI",
       swiftSettings: [
@@ -50,10 +46,18 @@ let package = Package(
       ]),
     .target(
       name: "WrkstrmSwiftUIExp",
-      dependencies: ["WrkstrmSwiftUI", "WrkstrmCrossKit"],
-
-      swiftSettings: [
-        .profile
-      ]),
-    .testTarget(name: "WrkstrmKitTests", dependencies: ["WrkstrmKit"]),
+      dependencies: [
+        "WrkstrmSwiftUI",
+        "WrkstrmCrossKit"
+      ],
+      swiftSettings: [.profile]),
+    .testTarget(
+      name: "WrkstrmKitTests",
+      dependencies: [
+        "WrkstrmKit",
+        "WrkstrmCrossKit",
+        "WrkstrmFoundation",
+        "WrkstrmMain",
+      ],
+      swiftSettings: [.profile]),
   ])
