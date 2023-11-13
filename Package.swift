@@ -32,9 +32,9 @@ extension PackageDescription.Package.Dependency {
 
   static var remote: [PackageDescription.Package.Dependency] {
     [
-      .package(url: "https://github.com/wrkstrm/WrkstrmFoundation", branch: "main"),
-      .package(url: "https://github.com/wrkstrm/WrkstrmLog", branch: "main"),
-      .package(url: "https://github.com/wrkstrm/WrkstrmMain", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmFoundation.git", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmLog.git", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmMain.git", branch: "main"),
     ]
   }
 }
@@ -44,6 +44,7 @@ let package = Package(
   platforms: [
     .iOS(.v16),
     .macOS(.v13),
+    .tvOS(.v16),
     .watchOS(.v9),
   ],
   products: [
