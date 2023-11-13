@@ -33,31 +33,17 @@ let package = Package(
       swiftSettings: [.profile]),
     .target(
       name: "WrkstrmKit",
-      dependencies: [
-        "WrkstrmCrossKit",
-        "WrkstrmFoundation",
-        "WrkstrmMain",
-      ],
+      dependencies: ["WrkstrmCrossKit", "WrkstrmFoundation", "WrkstrmMain"],
       swiftSettings: [.profile]),
     .target(
       name: "WrkstrmSwiftUI",
-      swiftSettings: [
-        .profile
-      ]),
+      swiftSettings: [.profile]),
     .target(
       name: "WrkstrmSwiftUIExp",
-      dependencies: [
-        "WrkstrmSwiftUI",
-        "WrkstrmCrossKit"
-      ],
+      dependencies: ["WrkstrmSwiftUI", "WrkstrmCrossKit"],
       swiftSettings: [.profile]),
     .testTarget(
       name: "WrkstrmKitTests",
-      dependencies: [
-        "WrkstrmKit",
-        "WrkstrmCrossKit",
-        "WrkstrmFoundation",
-        "WrkstrmMain",
-      ],
+      dependencies: ["WrkstrmKit", "WrkstrmCrossKit", "WrkstrmFoundation", "WrkstrmMain"],
       swiftSettings: [.profile]),
   ])
