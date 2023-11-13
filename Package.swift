@@ -1,11 +1,42 @@
 // swift-tools-version:5.9
 import PackageDescription
+import Foundation
 
 extension SwiftSetting {
   static let profile: SwiftSetting = .unsafeFlags([
     "-Xfrontend",
     "-warn-long-expression-type-checking=6",
   ])
+}
+
+extension ProcessInfo {
+  static var useLocalDeps: Bool {
+    ProcessInfo.processInfo.environment["SPM_CI_USE_LOCAL_DEPS"] == "true"
+  }
+}
+
+let wrkstrmDeps: [PackageDescription.Package.Dependency]  =
+  ProcessInfo.useLocalDeps ? PackageDescription.Package.Dependency.local : PackageDescription.Package.Dependency.remote
+print("---- Wrkstrm Deps ----")
+print(wrkstrmDeps.map { $0.kind })
+print("---- Wrkstrm Deps ----")
+
+extension PackageDescription.Package.Dependency {
+  static var local: [PackageDescription.Package.Dependency] {
+    [
+      .package(name: "WrkstrmFoundation", path: "../WrkstrmFoundation"),
+      .package(name: "WrkstrmLog", path: "../WrkstrmLog"),
+      .package(name: "WrkstrmMain", path: "../WrkstrmMain"),
+    ]
+  }
+
+  static var remote: [PackageDescription.Package.Dependency] {
+    [
+      .package(url: "https://github.com/wrkstrm/WrkstrmFoundation", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmLog", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmMain", branch: "main"),
+    ]
+  }
 }
 
 let package = Package(
@@ -21,11 +52,7 @@ let package = Package(
     .library(name: "WrkstrmSwiftUI", targets: ["WrkstrmSwiftUI"]),
     .library(name: "WrkstrmSwiftUIExp", targets: ["WrkstrmSwiftUIExp"]),
   ],
-  dependencies: [
-    .package(name: "WrkstrmFoundation", path: "../WrkstrmFoundation"),
-    .package(name: "WrkstrmLog", path: "../WrkstrmLog"),
-    .package(name: "WrkstrmMain", path: "../WrkstrmMain"),
-  ],
+  dependencies: wrkstrmDeps,
   targets: [
     .target(
       name: "WrkstrmCrossKit",
