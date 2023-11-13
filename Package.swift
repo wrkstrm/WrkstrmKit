@@ -32,9 +32,9 @@ extension PackageDescription.Package.Dependency {
 
   static var remote: [PackageDescription.Package.Dependency] {
     [
-      .package(url: "https://github.com/wrkstrm/WrkstrmFoundation", branch: "main"),
-      .package(url: "https://github.com/wrkstrm/WrkstrmLog", branch: "main"),
-      .package(url: "https://github.com/wrkstrm/WrkstrmMain", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmFoundation.git", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmLog.git", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmMain.git", branch: "main"),
     ]
   }
 }
