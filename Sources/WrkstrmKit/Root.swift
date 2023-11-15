@@ -17,8 +17,8 @@ public struct SceneRoot {
 
   public init(
     windowScene: UIWindowScene,
-    rootViewController: UIViewController = UIViewController()
-  ) {
+    rootViewController: UIViewController = UIViewController())
+  {
     scene = windowScene
     window = UIWindow(windowScene: windowScene)
     window.rootViewController = rootViewController
