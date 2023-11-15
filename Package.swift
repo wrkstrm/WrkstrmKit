@@ -1,6 +1,6 @@
 // swift-tools-version:5.9
-import PackageDescription
 import Foundation
+import PackageDescription
 
 extension SwiftSetting {
   static let profile: SwiftSetting = .unsafeFlags([
@@ -16,9 +16,10 @@ extension ProcessInfo {
 }
 
 let wrkstrmDeps: [PackageDescription.Package.Dependency]  =
-  ProcessInfo.useLocalDeps ? PackageDescription.Package.Dependency.local : PackageDescription.Package.Dependency.remote
+  ProcessInfo.useLocalDeps ? PackageDescription.Package.Dependency.local : PackageDescription
+    .Package.Dependency.remote
 print("---- Wrkstrm Deps ----")
-print(wrkstrmDeps.map { $0.kind })
+print(wrkstrmDeps.map(\.kind))
 print("---- Wrkstrm Deps ----")
 
 extension PackageDescription.Package.Dependency {
@@ -44,6 +45,7 @@ let package = Package(
   platforms: [
     .iOS(.v16),
     .macOS(.v13),
+    .tvOS(.v16),
     .watchOS(.v9),
   ],
   products: [

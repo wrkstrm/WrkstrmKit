@@ -2,8 +2,9 @@
 import UIKit
 import WrkstrmFoundation
 import WrkstrmLog
+import WrkstrmMain
 
-extension WrkstrmFoundation.JSON {
+extension WrkstrmMain.JSON {
   open class BasicCell: UITableViewCell, StyleableCell {
     public static var cellStyle: UITableViewCell.CellStyle = .value1
 
@@ -67,13 +68,10 @@ extension WrkstrmFoundation.JSON {
       else { Log.guard() }
 
       textLabel?.text = key.titlecased()
-      let formatString: String! =
-        if jsonArray.count == 1
-      {
-        NSLocalizedString("%@ Item", comment: "")
-      } else {
-        NSLocalizedString("%@ Items", comment: "")
-      }
+      let formatString =
+        (jsonArray.count == 1)
+          ? NSLocalizedString("%@ Item", comment: "") : NSLocalizedString("%@ Items", comment: "")
+
       detailTextLabel?.text =
         .localizedStringWithFormat(
           formatString,
@@ -89,13 +87,10 @@ extension WrkstrmFoundation.JSON {
       else { Log.guard() }
       textLabel?.text = key.titlecased()
 
-      let formatString: String! =
-        if json.count == 1
-      {
-        NSLocalizedString("%@ Detail", comment: "")
-      } else {
-        NSLocalizedString("%@ Details", comment: "")
-      }
+      let formatString =
+        (json.count == 1)
+          ? NSLocalizedString("%@ Detail", comment: "") :
+          NSLocalizedString("%@ Details", comment: "")
       detailTextLabel?.text =
         .localizedStringWithFormat(
           formatString,

@@ -1,4 +1,6 @@
 #if canImport(UIKit)
+import CoreFoundation
+import CoreGraphics
 import UIKit
 
 extension UIImage {
