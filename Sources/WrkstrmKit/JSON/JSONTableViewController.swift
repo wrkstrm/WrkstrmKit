@@ -17,8 +17,8 @@ extension JSONTableViewController: Injectable {
 open class JSONTableViewController: TableViewController<JSON.Displayable> {
   override open func tableView(
     _ tableView: UITableView,
-    willSelectRowAt indexPath: IndexPath) -> IndexPath?
-  {
+    willSelectRowAt indexPath: IndexPath
+  ) -> IndexPath? {
     tableView.indexPathsForSelectedRows?.forEach { tableView.deselectRow(at: $0, animated: true) }
     guard let item = genericDataSource?.modelFor(indexPath: indexPath) else { return nil }
     switch item {
@@ -46,7 +46,7 @@ open class JSONTableViewController: TableViewController<JSON.Displayable> {
     tableView.indexPathsForSelectedRows?.forEach { tableView.deselectRow(at: $0, animated: true) }
     guard let item = genericDataSource?.modelFor(indexPath: indexPath) else { Log.guard() }
 
-    var jsonTuple: (key: String, jsonArray: [JSONDictionary])?
+    var jsonTuple: (key: String, jsonArray: [JSON.Dictionary])?
     switch item {
       case let .dictionary(_, equatableJSONDictionary):
         switch equatableJSONDictionary {

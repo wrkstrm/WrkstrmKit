@@ -43,17 +43,17 @@ extension JSON {
     ])
 
   public struct Displayable: TableViewDisplayable {
-    let jsonArray: [JSONDictionary]
+    let jsonArray: [JSON.Dictionary]
 
     var dateKeyFuzzyOverride: [String]?
 
-    public init(jsonArray: [JSONDictionary], dateKeyFuzzyOverride: [String]? = nil) {
+    public init(jsonArray: [JSON.Dictionary], dateKeyFuzzyOverride: [String]? = nil) {
       self.jsonArray = jsonArray
       self.dateKeyFuzzyOverride = dateKeyFuzzyOverride
     }
 
     public var items: [[Value]] {
-      let values = jsonArray.map { (json: JSONDictionary) -> [Value] in
+      let values = jsonArray.map { (json: JSON.Dictionary) -> [Value] in
         let sortedJSON = json.lazy.sorted { $0.key < $1.key }
         return sortedJSON.map { key, anyValue -> Value in
           guard let fuzzyKeys = dateKeyFuzzyOverride else {
@@ -94,14 +94,14 @@ extension JSON {
         case let value as Date:
           .date(key, value)
 
-        case let value as [JSONDictionary]:
-          .array(key, EquatableArray.dictionary(value))
+        case let value as [JSON.Dictionary]:
+          .array(key, AnyEquatableArrayEnum.dictionary(value))
 
         case let value as [Any]:
-          .array(key, EquatableArray.any(value))
+          .array(key, AnyEquatableArrayEnum.any(value))
 
-        case let value as JSONDictionary:
-          .dictionary(key, EquatableDictionary.any(value))
+        case let value as JSON.Dictionary:
+          .dictionary(key, AnyEquatableDictionaryEnum.any(value))
 
         default:
           .any(key, "\(anyValue)")
@@ -116,21 +116,21 @@ public protocol JSONTableViewDisplayable {
 }
 
 extension JSONTableViewDisplayable where Self: Codable {
-  public func convertToJSONDictionary() -> JSONDictionary {
+  public func convertToJSONDictionary() -> JSON.Dictionary {
     // swiftlint:disable:next force_try
     let data = try! JSONEncoder.default.encode(self)
 
     // swiftlint:disable:next force_try
     return try! JSONSerialization.jsonObject(
       with: data,
-      options: .allowFragments) as! JSONDictionary
+      options: .allowFragments) as! JSON.Dictionary
     // swiftlint:disable:previous force_cast
   }
 
   public func jsonDictionaryDataSource(
     config: TableViewDataSource<JSON.Displayable>
-      .CellConfig? = nil) -> TableViewDataSource<JSON.Displayable>
-  {
+      .CellConfig? = nil
+  ) -> TableViewDataSource<JSON.Displayable> {
     let displayble =
       JSON.Displayable(
         jsonArray: [convertToJSONDictionary()],
