@@ -6,12 +6,12 @@ extension UIView {
   fileprivate static let pulseDuration: TimeInterval = 2
 
   @discardableResult
-  func pulseView(_ pulse: Bool) -> UIViewPropertyAnimator {
+  public func pulseView(_ pulse: Bool) -> UIViewPropertyAnimator {
     pulseView(pulse, delay: 0.0)
   }
 
   @discardableResult
-  func pulseView(_ pulse: Bool, delay _: CGFloat) -> UIViewPropertyAnimator {
+  public func pulseView(_ pulse: Bool, delay _: CGFloat) -> UIViewPropertyAnimator {
     guard pulse else {
       return perform(
         .animation(
