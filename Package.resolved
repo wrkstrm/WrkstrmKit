@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "532d8b529501fb73a2455b179e0bbb6d49b652ed",
+        "version" : "1.5.3"
+      }
+    },
+    {
+      "identity" : "wrkstrmfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wrkstrm/WrkstrmFoundation.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a6956fbc44613666741357887ad57c24a4b9ef39"
+      }
+    },
+    {
+      "identity" : "wrkstrmlog",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wrkstrm/WrkstrmLog.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3728081262d4f0146f1c764a461cb26a4904e43a"
+      }
+    },
+    {
+      "identity" : "wrkstrmmain",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wrkstrm/WrkstrmMain.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "5d3147cd3ed288885b9c1fdb8560bb20b0448fec"
+      }
+    }
+  ],
+  "version" : 2
+}
