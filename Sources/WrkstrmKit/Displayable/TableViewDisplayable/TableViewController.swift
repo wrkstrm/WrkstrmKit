@@ -166,7 +166,7 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
         scopedItems = scopedItems?.compactMap { section in
           section.filter { current.test($0, current.title) }
         }
-        Log.verbose("\(current)")
+        Log.verbose(current)
 
       case let .sort(scopes):
         if let test = scopes[index].test {
