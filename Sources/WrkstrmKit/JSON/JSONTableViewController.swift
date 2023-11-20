@@ -46,7 +46,7 @@ open class JSONTableViewController: TableViewController<JSON.Displayable> {
     tableView.indexPathsForSelectedRows?.forEach { tableView.deselectRow(at: $0, animated: true) }
     guard let item = genericDataSource?.modelFor(indexPath: indexPath) else { Log.guard() }
 
-    var jsonTuple: (key: String, jsonArray: [JSON.Dictionary])?
+    var jsonTuple: (key: String, jsonArray: [JSON.AnyDictionary])?
     switch item {
       case let .dictionary(_, equatableJSONDictionary):
         switch equatableJSONDictionary {
