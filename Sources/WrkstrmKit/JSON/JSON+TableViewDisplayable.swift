@@ -23,7 +23,7 @@ extension JSON.Value: TableReusableItem {
         JSON.ArrayCell.self
 
       case .dictionary:
-        JSON.AnyDictionaryCell.self
+        JSON.DictionaryCell.self
 
       case .any:
         JSON.AnyCell.self
