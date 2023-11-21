@@ -44,7 +44,7 @@ open class JSONTableViewController: TableViewController<JSON.Displayable> {
 
   override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.indexPathsForSelectedRows?.forEach { tableView.deselectRow(at: $0, animated: true) }
-    guard let item = genericDataSource?.modelFor(indexPath: indexPath) else {Log.kit.guard() }
+    guard let item = genericDataSource?.modelFor(indexPath: indexPath) else { Log.kit.guard() }
 
     var jsonTuple: (key: String, jsonArray: [JSON.AnyDictionary])?
     switch item {

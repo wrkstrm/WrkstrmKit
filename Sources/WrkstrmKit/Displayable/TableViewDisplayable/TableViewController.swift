@@ -156,7 +156,7 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
   @objc(updateSearchResultsForSearchController:)
   open func updateSearchResults(for searchController: UISearchController) {
     // Strip out all the leading and trailing spaces.
-   Log.kit.verbose("isActive: \(searchController.isActive)")
+    Log.kit.verbose("isActive: \(searchController.isActive)")
     guard let search else { return }
     let index = searchController.searchBar.selectedScopeButtonIndex
     var scopedItems = search.model?.items
@@ -166,7 +166,7 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
         scopedItems = scopedItems?.compactMap { section in
           section.filter { current.test($0, current.title) }
         }
-       Log.kit.verbose(current)
+        Log.kit.verbose(current)
 
       case let .sort(scopes):
         if let test = scopes[index].test {

@@ -31,7 +31,7 @@ extension WrkstrmMain.JSON {
 
   public class IntegerCell: BasicCell {
     public func prepare(for model: Any?, path _: IndexPath) {
-      guard case let .integer(key, value)? = model as? JSON.Value else {Log.kit.guard() }
+      guard case let .integer(key, value)? = model as? JSON.Value else { Log.kit.guard() }
       textLabel?.text = key.titlecased()
       detailTextLabel?.text = NumberFormatter.integer.string(for: value)
     }
@@ -39,7 +39,7 @@ extension WrkstrmMain.JSON {
 
   public class DoubleCell: BasicCell {
     public func prepare(for model: Any?, path _: IndexPath) {
-      guard case let .double(key, value)? = model as? JSON.Value else {Log.kit.guard() }
+      guard case let .double(key, value)? = model as? JSON.Value else { Log.kit.guard() }
       textLabel?.text = key.titlecased()
       detailTextLabel?.text = value.doubleString()
     }
@@ -47,7 +47,7 @@ extension WrkstrmMain.JSON {
 
   public class StringCell: BasicCell {
     public func prepare(for model: Any?, path _: IndexPath) {
-      guard case let .string(key, value)? = model as? JSON.Value else {Log.kit.guard() }
+      guard case let .string(key, value)? = model as? JSON.Value else { Log.kit.guard() }
       textLabel?.text = key.titlecased()
       detailTextLabel?.text = value
     }
@@ -55,7 +55,7 @@ extension WrkstrmMain.JSON {
 
   public class DateCell: BasicCell {
     public func prepare(for model: Any?, path _: IndexPath) {
-      guard case let .date(key, value)? = model as? JSON.Value else {Log.kit.guard() }
+      guard case let .date(key, value)? = model as? JSON.Value else { Log.kit.guard() }
       textLabel?.text = key.titlecased()
       detailTextLabel?.text = value.localizedString()
     }
@@ -65,7 +65,7 @@ extension WrkstrmMain.JSON {
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .array(key, arrayValue)? = model as? JSON.Value,
             case let .dictionary(jsonArray) = arrayValue
-      else {Log.kit.guard() }
+      else { Log.kit.guard() }
 
       textLabel?.text = key.titlecased()
       let formatString =
@@ -84,7 +84,7 @@ extension WrkstrmMain.JSON {
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .dictionary(key, jsonDictionary)? = model as? JSON.Value,
             case let .any(json) = jsonDictionary
-      else {Log.kit.guard() }
+      else { Log.kit.guard() }
       textLabel?.text = key.titlecased()
 
       let formatString =
@@ -101,7 +101,7 @@ extension WrkstrmMain.JSON {
 
   public class AnyCell: BasicCell {
     public func prepare(for model: Any?, path _: IndexPath) {
-      guard case let .any(value, key)? = model as? JSON.Value else {Log.kit.guard() }
+      guard case let .any(value, key)? = model as? JSON.Value else { Log.kit.guard() }
       textLabel?.text = key.titlecased()
       detailTextLabel?.text = value
     }
