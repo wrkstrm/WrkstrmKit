@@ -27,8 +27,8 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
     var registrationIdentifiers: [[String]] = []
     for (section, elements) in items.enumerated() {
       var sectionIdentifiers: [String] = []
-      elements.indices.forEach {
-        let path: IndexPath = .init(row: $0, section: section)
+      for index in elements.indices {
+        let path: IndexPath = .init(row: index, section: section)
 
         let cellType = model.reusableCell(for: path)
         sectionIdentifiers.append(cellType.reuseIdentifier())
@@ -56,8 +56,8 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
   public func collectionView(
     _ collectionView: UICollectionView,
     viewForSupplementaryElementOfKind kind: String,
-    at indexPath: IndexPath) -> UICollectionReusableView
-  {
+    at indexPath: IndexPath
+  ) -> UICollectionReusableView {
     guard
       let view = displayable.supplementaryElementView(
         for: collectionView,
@@ -83,8 +83,8 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
 
   public func collectionView(
     _ collectionView: UICollectionView,
-    cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-  {
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
     let cellType = item(for: indexPath).collectionReusableCell
     if cellType == PlaceholderCollectionCell.self {
       collectionView.register(cellType, forCellWithReuseIdentifier: cellType.reuseIdentifier())

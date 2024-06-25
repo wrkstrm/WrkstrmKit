@@ -107,11 +107,11 @@ open class StackViewController: UIViewController {
       let vertical: UIStackView = .init()
       vertical.axis = .vertical
       vertical.distribution = .fillEqually
-      (0..<grid.rows).forEach { rowInt in
+      for rowInt in 0..<grid.rows {
         let horizontal: UIStackView = .init()
         horizontal.axis = .horizontal
         horizontal.distribution = .fillEqually
-        (0..<grid.columns).forEach { columnInt in
+        for columnInt in 0..<grid.columns {
           let path: IndexPath = .init(row: rowInt, section: columnInt)
           if let view = gridDelegate?.view(for: stack, indexPath: path) {
             horizontal.addArrangedSubview(view)
