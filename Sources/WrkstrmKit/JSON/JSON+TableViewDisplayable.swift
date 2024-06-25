@@ -129,8 +129,8 @@ extension JSONTableViewDisplayable where Self: Codable {
 
   public func jsonDictionaryDataSource(
     config: TableViewDataSource<JSON.Displayable>
-      .CellConfig? = nil) -> TableViewDataSource<JSON.Displayable>
-  {
+      .CellConfig? = nil
+  ) -> TableViewDataSource<JSON.Displayable> {
     let displayble =
       JSON.Displayable(
         jsonArray: [convertToJSONDictionary()],

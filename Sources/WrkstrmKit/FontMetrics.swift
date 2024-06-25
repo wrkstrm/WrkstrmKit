@@ -1,5 +1,6 @@
 #if canImport(UIKit)
 import UIKit
+
 /// A `UIFontMetrics` wrapper, allowing iOS 11 devices to take advantage of `UIFontMetrics` scaling,
 /// while earlier iOS versions fall back on a scale calculation.
 /// https://medium.com/livefront/practical-dynamic-type-d2b5774e8a8a

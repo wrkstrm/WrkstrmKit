@@ -31,9 +31,9 @@ extension UIView {
   func loadEmbeddedView() {
     let nib =
       defaultNib
-        ?? UINib(
-          nibName: String(describing: type(of: self)),
-          bundle: Bundle(for: type(of: self)))
+      ?? UINib(
+        nibName: String(describing: type(of: self)),
+        bundle: Bundle(for: type(of: self)))
     nib.instantiate(withOwner: self, options: nil)
     if let newView = embeddedView {
       newView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

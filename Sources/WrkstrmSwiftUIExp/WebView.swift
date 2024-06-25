@@ -136,8 +136,8 @@ extension WebView.Coordinator: WKNavigationDelegate {
   public func webView(
     _ webView: WKWebView,
     didFail _: WKNavigation!,
-    withError _: Error)
-  {
+    withError _: Error
+  ) {
     updateState(isLoading: false, webView: webView)
   }
 

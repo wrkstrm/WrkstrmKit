@@ -12,7 +12,8 @@ public protocol CollectionViewDisplayable: Indexable where Item: CollectionReusa
   func supplementaryElementView(
     for collectionView: UICollectionView,
     of kind: String,
-    at indexPath: IndexPath) -> UICollectionReusableView?
+    at indexPath: IndexPath
+  ) -> UICollectionReusableView?
 }
 
 extension CollectionViewDisplayable {
@@ -29,15 +30,16 @@ extension CollectionViewDisplayable {
   public func supplementaryElementView(
     for _: UICollectionView,
     of _: String,
-    at _: IndexPath) -> UICollectionReusableView?
-  {
+    at _: IndexPath
+  ) -> UICollectionReusableView? {
     nil
   }
 }
 
 extension Array: CollectionViewDisplayable where Element: CollectionReusableItem {
   public func collectionDataSource(
-    config: CollectionViewDataSource<[Element]>.CellConfig? = nil)
+    config: CollectionViewDataSource<[Element]>.CellConfig? = nil
+  )
     -> CollectionViewDataSource<[Element]>
   {
     CollectionViewDataSource(model: self, config: config)

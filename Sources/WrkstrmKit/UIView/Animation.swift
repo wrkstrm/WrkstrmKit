@@ -23,8 +23,8 @@ public class Animation {
   public static func animation(
     with options: Options,
     _ stage: Stage,
-    next _: Animation? = nil) -> Animation
-  {
+    next _: Animation? = nil
+  ) -> Animation {
     .init(with: options, stage, next: nil)
   }
 }
@@ -43,8 +43,8 @@ extension Animation {
       duration: TimeInterval,
       delay: TimeInterval = 0,
       timingOptions: UIView.AnimationOptions = [],
-      hold: TimeInterval = 0)
-    {
+      hold: TimeInterval = 0
+    ) {
       self.duration = duration
       self.delay = delay
       self.timingOptions = timingOptions
@@ -59,8 +59,8 @@ extension Animation {
       duration: TimeInterval,
       delay: TimeInterval = 0,
       timingOptions: UIView.AnimationOptions = [],
-      hold: TimeInterval = 0) -> Options
-    {
+      hold: TimeInterval = 0
+    ) -> Options {
       .init(duration: duration, delay: delay, timingOptions: timingOptions, hold: hold)
     }
   }

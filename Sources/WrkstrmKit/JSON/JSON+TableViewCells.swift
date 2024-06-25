@@ -64,13 +64,13 @@ extension WrkstrmMain.JSON {
   public class ArrayCell: BasicCell {
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .array(key, arrayValue)? = model as? JSON.Value,
-            case let .dictionary(jsonArray) = arrayValue
+        case let .dictionary(jsonArray) = arrayValue
       else { Log.kit.guard() }
 
       textLabel?.text = key.titlecased()
       let formatString =
         (jsonArray.count == 1)
-          ? NSLocalizedString("%@ Item", comment: "") : NSLocalizedString("%@ Items", comment: "")
+        ? NSLocalizedString("%@ Item", comment: "") : NSLocalizedString("%@ Items", comment: "")
 
       detailTextLabel?.text =
         .localizedStringWithFormat(
@@ -83,14 +83,13 @@ extension WrkstrmMain.JSON {
   public class DictionaryCell: BasicCell {
     public func prepare(for model: Any?, path _: IndexPath) {
       guard case let .dictionary(key, jsonDictionary)? = model as? JSON.Value,
-            case let .any(json) = jsonDictionary
+        case let .any(json) = jsonDictionary
       else { Log.kit.guard() }
       textLabel?.text = key.titlecased()
 
       let formatString =
         (json.count == 1)
-          ? NSLocalizedString("%@ Detail", comment: "") :
-          NSLocalizedString("%@ Details", comment: "")
+        ? NSLocalizedString("%@ Detail", comment: "") : NSLocalizedString("%@ Details", comment: "")
       detailTextLabel?.text =
         .localizedStringWithFormat(
           formatString,

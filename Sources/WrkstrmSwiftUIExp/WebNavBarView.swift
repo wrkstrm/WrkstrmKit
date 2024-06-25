@@ -1,9 +1,9 @@
-//#if canImport(UIKit)
-//import SwiftUI
-//import UIKit
-//import WrkstrmCrossKit
+// #if canImport(UIKit)
+// import SwiftUI
+// import UIKit
+// import WrkstrmCrossKit
 //
-//public struct WebNavBarView: SwiftUI.View {
+// public struct WebNavBarView: SwiftUI.View {
 //  @ObservedObject public var webViewState: WebView.State
 //
 //  public init(webViewState: WebView.State) {
@@ -23,11 +23,13 @@
 //      //      Spacer()
 //    }
 //  }
-//}
+// }
 //
-//// MARK: - Nav Buttons
+
+// MARK: - Nav Buttons
+
 //
-//extension WebNavBarView {
+// extension WebNavBarView {
 //  public struct LoadingButton: SwiftUI.View {
 //    @ObservedObject var webViewState: WebView.State
 //
@@ -75,13 +77,13 @@
 //  //        label: { Image(systemName: "square.and.arrow.up").padding() })
 //  //    }
 //  //  }
-//}
+// }
 //
-//#if DEBUG
-//struct WebNavBarViewPreviews: PreviewProvider {
+// #if DEBUG
+// struct WebNavBarViewPreviews: PreviewProvider {
 //  public static var previews: some SwiftUI.View {
 //    WebNavBarView(webViewState: WebView.State())
 //  }
-//}
-//#endif  // DEBUG
-//#endif  // canImport(UIKit)
+// }
+// #endif  // DEBUG
+// #endif  // canImport(UIKit)

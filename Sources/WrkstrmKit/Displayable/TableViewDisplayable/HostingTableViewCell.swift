@@ -9,8 +9,8 @@ open class HostingTableViewCell: TableViewCell, StyleableCell {
 
   override public required init(
     style: UITableViewCell.CellStyle,
-    reuseIdentifier: String?)
-  {
+    reuseIdentifier: String?
+  ) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     configure()
   }

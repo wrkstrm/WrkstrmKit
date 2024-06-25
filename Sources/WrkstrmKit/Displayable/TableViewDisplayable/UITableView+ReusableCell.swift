@@ -4,8 +4,8 @@ import WrkstrmCrossKit
 
 extension UITableView {
   public func register(nib cells: [UITableViewCell.Type]) {
-    cells.forEach {
-      self.register($0.defaultNib, forCellReuseIdentifier: $0.reuseIdentifier())
+    for cell in cells {
+      register(cell.defaultNib, forCellReuseIdentifier: cell.reuseIdentifier())
     }
   }
 
@@ -17,8 +17,8 @@ extension UITableView {
 
   public func dequeueReusableCell<Cell: TableReusableCell>(
     _ cellClass: Cell.Type,
-    for indexPath: IndexPath) -> Cell
-  {
+    for indexPath: IndexPath
+  ) -> Cell {
     // swiftlint:disable:next force_cast
     dequeueReusableCell(withIdentifier: cellClass.reuseIdentifier(), for: indexPath) as! Cell
   }

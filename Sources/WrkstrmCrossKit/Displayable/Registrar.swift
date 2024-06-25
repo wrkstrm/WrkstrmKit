@@ -11,8 +11,8 @@ public struct Registrar {
 
   public static func registrar(
     classes: [ReusableCell.Type]? = nil,
-    nibs: [ReusableCell.Type]? = nil) -> Registrar
-  {
+    nibs: [ReusableCell.Type]? = nil
+  ) -> Registrar {
     self.init(classes: classes, nibs: nibs)
   }
 }
