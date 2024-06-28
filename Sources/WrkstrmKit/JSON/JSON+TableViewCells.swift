@@ -70,7 +70,8 @@ extension WrkstrmMain.JSON {
       textLabel?.text = key.titlecased()
       let formatString =
         (jsonArray.count == 1)
-        ? NSLocalizedString("%@ Item", comment: "") : NSLocalizedString("%@ Items", comment: "")
+        ? NSLocalizedString("%@ Item", bundle: .main, comment: "")
+        : NSLocalizedString("%@ Items", bundle: .main, comment: "")
 
       detailTextLabel?.text =
         .localizedStringWithFormat(
@@ -89,7 +90,8 @@ extension WrkstrmMain.JSON {
 
       let formatString =
         (json.count == 1)
-        ? NSLocalizedString("%@ Detail", comment: "") : NSLocalizedString("%@ Details", comment: "")
+        ? NSLocalizedString("%@ Detail", bundle: .main, comment: "")
+        : NSLocalizedString("%@ Details", bundle: .main, comment: "")
       detailTextLabel?.text =
         .localizedStringWithFormat(
           formatString,
