@@ -7,11 +7,11 @@ import Cocoa
 
 @objc
 public protocol ReusableCell {
-#if canImport(UIKit)
+  #if canImport(UIKit)
   static var defaultNib: UINib { get }
-#elseif os(OSX)
+  #elseif os(OSX)
   static var defaultNib: NSNib { get }
-#endif  // canImport(UIKit)
+  #endif  // canImport(UIKit)
 
   static func reuseIdentifier() -> String
 

@@ -11,11 +11,11 @@ public typealias Screen = NSScreen
 
 extension Screen {
   public static var hairlineWidth: CGFloat {
-#if canImport(UIKit)
+    #if canImport(UIKit)
     return 1 / Screen.main.scale
-#elseif os(OSX)
+    #elseif os(OSX)
     return 1 / (Screen.main?.backingScaleFactor ?? 1)
-#endif
+    #endif
   }
 }
 #endif  // !canImport(WatchKit)
