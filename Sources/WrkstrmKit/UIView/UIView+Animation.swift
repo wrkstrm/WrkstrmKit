@@ -39,7 +39,8 @@ extension UIView {
       delay: options.delay,
       options: options.timingOptions,
       animations: animations,
-      completion: finalCompletion)
+      completion: finalCompletion
+    )
   }
 
   public func hide(_ views: [UIView]) {

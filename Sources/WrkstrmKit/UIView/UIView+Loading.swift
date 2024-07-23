@@ -15,7 +15,8 @@ extension UIView {
         self,
         &AssociatedKey.embeddedView,
         newValue,
-        .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+      )
     }
   }
 
@@ -28,12 +29,13 @@ extension UIView {
 
   /// Calls this method in a commonInit after both init with frame and coder to add the embedded
   /// view.
-  func loadEmbeddedView() {
+  internal func loadEmbeddedView() {
     let nib =
       defaultNib
       ?? UINib(
         nibName: String(describing: type(of: self)),
-        bundle: Bundle(for: type(of: self)))
+        bundle: Bundle(for: type(of: self))
+      )
     nib.instantiate(withOwner: self, options: nil)
     if let newView = embeddedView {
       newView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

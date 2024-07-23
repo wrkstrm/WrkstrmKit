@@ -41,7 +41,8 @@ public enum FontMetrics {
     return UIFontMetrics.default.scaledFont(
       for: font,
       maximumPointSize: maximumPointSize,
-      compatibleWith: nil)
+      compatibleWith: nil
+    )
   }
 
   /// Scales an arbitrary layout value based on the current Dynamic Type settings.

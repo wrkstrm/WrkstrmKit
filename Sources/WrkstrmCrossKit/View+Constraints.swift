@@ -21,14 +21,16 @@ extension View {
       guard
         let cache = objc_getAssociatedObject(
           self,
-          &AssociatedKey.constraintCache) as? ConstraintCache
+          &AssociatedKey.constraintCache
+        ) as? ConstraintCache
       else {
         let cache: ConstraintCache = .init()
         objc_setAssociatedObject(
           self,
           &AssociatedKey.constraintCache,
           cache,
-          .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+          .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+        )
         return cache
       }
       return cache
@@ -38,7 +40,8 @@ extension View {
         self,
         &AssociatedKey.constraintCache,
         newValue,
-        .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+      )
     }
   }
 
@@ -60,7 +63,8 @@ extension View {
       attribute: attribute,
       to: to, attribute,
       multiplier: multiplier,
-      constant: constant)
+      constant: constant
+    )
   }
 
   public func constrainEqual(
@@ -78,7 +82,8 @@ extension View {
         toItem: to,
         attribute: toAttribute,
         multiplier: multiplier,
-        constant: constant)
+        constant: constant
+      )
     ])
   }
 

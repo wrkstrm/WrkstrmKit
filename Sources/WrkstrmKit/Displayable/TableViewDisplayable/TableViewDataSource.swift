@@ -61,7 +61,8 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
     if reusableType.reuseIdentifier() == PlaceholderTableViewCell.reuseIdentifier() {
       tableView.register(
         UITableViewCell.self,
-        forCellReuseIdentifier: reusableType.reuseIdentifier())
+        forCellReuseIdentifier: reusableType.reuseIdentifier()
+      )
     }
 
     let cell: UITableViewCell!
@@ -75,7 +76,8 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
           cell =
             (styleableType.init(
               style: styleableType.cellStyle,
-              reuseIdentifier: styleableType.reuseIdentifier()) as! UITableViewCell)
+              reuseIdentifier: styleableType.reuseIdentifier()
+            ) as! UITableViewCell)
           // swiftlint:disable:previous force_cast
           cell.prepareForReuse()
         }
@@ -84,7 +86,8 @@ public class TableViewDataSource<Model: TableViewDisplayable>: NSObject,
         cell =
           tableView.dequeueReusableCell(
             withIdentifier: reusableType.reuseIdentifier(),
-            for: indexPath)
+            for: indexPath
+          )
     }
 
     let currentItem = item(for: indexPath)

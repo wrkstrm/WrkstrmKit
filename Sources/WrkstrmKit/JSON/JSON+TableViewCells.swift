@@ -76,7 +76,8 @@ extension WrkstrmMain.JSON {
       detailTextLabel?.text =
         .localizedStringWithFormat(
           formatString,
-          jsonArray.count.integerString())
+          jsonArray.count.integerString()
+        )
       accessoryType = .disclosureIndicator
     }
   }
@@ -95,7 +96,8 @@ extension WrkstrmMain.JSON {
       detailTextLabel?.text =
         .localizedStringWithFormat(
           formatString,
-          json.count.integerString())
+          json.count.integerString()
+        )
       accessoryType = .disclosureIndicator
     }
   }

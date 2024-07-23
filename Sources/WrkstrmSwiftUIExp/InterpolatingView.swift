@@ -72,13 +72,15 @@ class InterpolatingUIView: UILabel {
     layer.shadowRadius = radius
     let horizontal: UIInterpolatingMotionEffect = .init(
       keyPath: "layer.shadowOffset.width",
-      type: .tiltAlongHorizontalAxis)
+      type: .tiltAlongHorizontalAxis
+    )
     horizontal.minimumRelativeValue = -12
     horizontal.maximumRelativeValue = 12
 
     let vertical: UIInterpolatingMotionEffect = .init(
       keyPath: "layer.shadowOffset.height",
-      type: .tiltAlongVerticalAxis)
+      type: .tiltAlongVerticalAxis
+    )
     vertical.minimumRelativeValue = -12
     vertical.maximumRelativeValue = 14
 

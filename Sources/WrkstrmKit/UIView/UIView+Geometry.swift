@@ -12,7 +12,8 @@ import UIKit
     let path: UIBezierPath = .init(
       roundedRect: bounds,
       byRoundingCorners: corners,
-      cornerRadii: CGSize(width: radius, height: radius))
+      cornerRadii: CGSize(width: radius, height: radius)
+    )
     let mask: CAShapeLayer = .init()
     mask.path = path.cgPath
     layer.mask = mask

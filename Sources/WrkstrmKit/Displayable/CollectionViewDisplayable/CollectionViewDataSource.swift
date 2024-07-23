@@ -62,17 +62,20 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
       let view = displayable.supplementaryElementView(
         for: collectionView,
         of: kind,
-        at: indexPath)
+        at: indexPath
+      )
     else {
       let identifier = PlaceholderSupplementaryCell.reuseIdentifier()
       collectionView.register(
         UICollectionViewCell.self,
         forSupplementaryViewOfKind: kind,
-        withReuseIdentifier: identifier)
+        withReuseIdentifier: identifier
+      )
       return collectionView.dequeueReusableSupplementaryView(
         ofKind: kind,
         withReuseIdentifier: identifier,
-        for: indexPath)
+        for: indexPath
+      )
     }
     return view
   }
@@ -91,7 +94,8 @@ public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObjec
     }
     let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: cellType.reuseIdentifier(),
-      for: indexPath)
+      for: indexPath
+    )
     let cellItem = displayable.item(for: indexPath)
     config?(cell, cellItem, indexPath)
     (cell as ReusableCell).prepare?(for: cellItem, path: indexPath)

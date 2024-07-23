@@ -123,7 +123,8 @@ extension JSONTableViewDisplayable where Self: Codable {
     // swiftlint:disable:next force_try
     return try! JSONSerialization.jsonObject(
       with: data,
-      options: .allowFragments) as! JSON.AnyDictionary
+      options: .allowFragments
+    ) as! JSON.AnyDictionary
     // swiftlint:disable:previous force_cast
   }
 
@@ -134,7 +135,8 @@ extension JSONTableViewDisplayable where Self: Codable {
     let displayble =
       JSON.Displayable(
         jsonArray: [convertToJSONDictionary()],
-        dateKeyFuzzyOverride: ["time", "date"])
+        dateKeyFuzzyOverride: ["time", "date"]
+      )
     let dataSource = displayble.dataSource(config: config)
     dataSource.registrar = JSON.registrar
     return dataSource
