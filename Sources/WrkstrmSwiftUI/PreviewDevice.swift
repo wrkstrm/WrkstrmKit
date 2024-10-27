@@ -1,6 +1,8 @@
 import SwiftUI
 
-extension PreviewDevice: Hashable {
+extension PreviewDevice: @retroactive Equatable {}
+
+extension PreviewDevice: @retroactive Hashable {
   public static let iPhoneSE: PreviewDevice = .init(rawValue: "iPhone SE")
 
   public static let iPhoneSXMax: PreviewDevice = .init(rawValue: "iPhone XS Max")
