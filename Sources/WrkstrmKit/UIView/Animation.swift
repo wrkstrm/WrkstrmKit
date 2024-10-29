@@ -51,7 +51,7 @@ extension Animation {
       self.hold = hold
     }
 
-    public static func duration(_ duration: TimeInterval) -> Options {
+    public static func duration(_ duration: TimeInterval) -> Self {
       options(duration: duration)
     }
 
@@ -60,7 +60,7 @@ extension Animation {
       delay: TimeInterval = 0,
       timingOptions: UIView.AnimationOptions = [],
       hold: TimeInterval = 0
-    ) -> Options {
+    ) -> Self {
       .init(duration: duration, delay: delay, timingOptions: timingOptions, hold: hold)
     }
   }
@@ -75,7 +75,7 @@ extension Animation {
       self.perform = perform
     }
 
-    public static func stage(load: (() -> Void)? = nil, perform: (() -> Void)?) -> Stage {
+    public static func stage(load: (() -> Void)? = nil, perform: (() -> Void)?) -> Self {
       .init(load: load, perform: perform)
     }
   }

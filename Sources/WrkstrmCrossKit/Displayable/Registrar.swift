@@ -12,7 +12,7 @@ public struct Registrar {
   public static func registrar(
     classes: [ReusableCell.Type]? = nil,
     nibs: [ReusableCell.Type]? = nil
-  ) -> Registrar {
+  ) -> Self {
     self.init(classes: classes, nibs: nibs)
   }
 }

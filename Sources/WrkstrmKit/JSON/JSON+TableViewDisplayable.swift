@@ -60,7 +60,7 @@ extension JSON {
             return generateValue(key, anyValue: anyValue)
           }
           for fuzzyKey in fuzzyKeys where key.lowercased().contains(fuzzyKey.lowercased()) {
-            return self.generateDateValue(key, anyValue: anyValue)
+            return generateDateValue(key, anyValue: anyValue)
           }
           return generateValue(key, anyValue: anyValue)
         }

@@ -34,11 +34,11 @@ public struct MapView: NSViewRepresentable {
     self.coordinate = coordinate
   }
 
-  public func makeNSView(context _: NSViewRepresentableContext<MapView>) -> MKMapView {
+  public func makeNSView(context _: NSViewRepresentableContext<Self>) -> Self {
     MKMapView(frame: .zero)
   }
 
-  public func updateNSView(_ view: MKMapView, context _: NSViewRepresentableContext<MapView>) {
+  public func updateNSView(_ view: MKMapView, context _: NSViewRepresentableContext<Self>) {
     let span: MKCoordinateSpan = .init(latitudeDelta: 0.02, longitudeDelta: 0.02)
     let region: MKCoordinateRegion = .init(center: coordinate, span: span)
     view.setRegion(region, animated: true)
