@@ -1,7 +1,6 @@
+#if canImport(UIKit)
 import Combine
 import SwiftUI
-
-#if canImport(UIKit)
 import UIKit
 
 open class UIImagePublisher: ObservableObject {
