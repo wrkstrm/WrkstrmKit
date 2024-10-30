@@ -26,11 +26,9 @@ public struct WebView: UIViewRepresentable {
   }
 
   public func updateUIView(_: WKWebView, context _: Context) {}
-}
 
-// MARK: - State
+  // MARK: - State
 
-extension WebView {
   public class State: ObservableObject {
     weak var coordinator: Coordinator?
 
@@ -67,18 +65,20 @@ extension WebView {
     @discardableResult
     public func goForward() -> WKNavigation? { coordinator?.goForward() }
   }
-}
 
-// MARK: - Coordinator
+  // MARK: - Coordinator
 
-extension WebView {
   public func makeCoordinator() -> Coordinator {
     let coordinator: Coordinator = .init(self)
     state.coordinator = coordinator
     return coordinator
   }
+}
 
-  public class Coordinator: NSObject {
+// MARK: - WKNavigationDelegate
+
+extension WebView {
+  public class Coordinator: NSObject, WKNavigationDelegate {
     weak var parentUIView: WKWebView?
 
     var parent: WebView
@@ -117,32 +117,28 @@ extension WebView {
       }
       return nil
     }
-  }
-}
 
-// MARK: - WKNavigationDelegate
+    func updateState(isLoading: Bool, webView: WKWebView) {
+      parent.state.isLoading = isLoading
+      parent.state.canGoForward = webView.canGoForward
+      parent.state.canGoBack = webView.canGoBack
+    }
 
-extension WebView.Coordinator: WKNavigationDelegate {
-  func updateState(isLoading: Bool, webView: WKWebView) {
-    parent.state.isLoading = isLoading
-    parent.state.canGoForward = webView.canGoForward
-    parent.state.canGoBack = webView.canGoBack
-  }
+    public func webView(_ webView: WKWebView, didCommit _: WKNavigation!) {
+      updateState(isLoading: true, webView: webView)
+    }
 
-  public func webView(_ webView: WKWebView, didCommit _: WKNavigation!) {
-    updateState(isLoading: true, webView: webView)
-  }
+    public func webView(
+      _ webView: WKWebView,
+      didFail _: WKNavigation!,
+      withError _: Error
+    ) {
+      updateState(isLoading: false, webView: webView)
+    }
 
-  public func webView(
-    _ webView: WKWebView,
-    didFail _: WKNavigation!,
-    withError _: Error
-  ) {
-    updateState(isLoading: false, webView: webView)
-  }
-
-  public func webView(_ webView: WKWebView, didFinish _: WKNavigation!) {
-    updateState(isLoading: false, webView: webView)
+    public func webView(_ webView: WKWebView, didFinish _: WKNavigation!) {
+      updateState(isLoading: false, webView: webView)
+    }
   }
 }
 #endif
