@@ -29,7 +29,7 @@ extension UIView {
 
   /// Calls this method in a commonInit after both init with frame and coder to add the embedded
   /// view.
-  internal func loadEmbeddedView() {
+  public func loadEmbeddedView() {
     let nib =
       defaultNib
       ?? UINib(
