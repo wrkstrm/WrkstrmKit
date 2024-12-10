@@ -93,22 +93,31 @@ public final class SecureDocumentPickerManager {
         defer { self?.activeDelegate = nil }
 
         guard let selectedURL = urls.first else {
-          continuation.resume(throwing: SecureDocumentPickerManager.Error.noSelection)
+          continuation.resume(throwing: Self.Error.noSelection)
           return
         }
 
         // Create bookmark if requested
         if let key = bookmarkKey {
           do {
+            #if os(macOS) || targetEnvironment(macCatalyst)
             let bookmark = try selectedURL.bookmarkData(
               options: .withSecurityScope,
               includingResourceValuesForKeys: nil,
               relativeTo: nil
             )
+            #else
+            let bookmark = try selectedURL.bookmarkData(
+              options: .minimalBookmark,
+              includingResourceValuesForKeys: nil,
+              relativeTo: nil
+            )
+            #endif
             UserDefaults.standard.set(bookmark, forKey: key)
           } catch {
             Log.error("Failed to create bookmark: \(error)")
-            continuation.resume(throwing: SecureDocumentPickerManager.Error.bookmarkCreationFailed)
+            continuation.resume(
+              throwing: Self.Error.bookmarkCreationFailed)
             return
           }
         }
@@ -123,7 +132,7 @@ public final class SecureDocumentPickerManager {
       if let viewController = UIApplication.shared.topViewController() {
         viewController.present(picker, animated: animated)
       } else {
-        continuation.resume(throwing: SecureDocumentPickerManager.Error.presentationFailed)
+        continuation.resume(throwing: Self.Error.presentationFailed)
       }
     }
   }
@@ -154,7 +163,7 @@ public final class SecureDocumentPickerManager {
         defer { self?.activeDelegate = nil }
 
         guard !urls.isEmpty else {
-          continuation.resume(throwing: SecureDocumentPickerManager.Error.noSelection)
+          continuation.resume(throwing: Self.Error.noSelection)
           return
         }
 
@@ -166,7 +175,7 @@ public final class SecureDocumentPickerManager {
       if let viewController = UIApplication.shared.topViewController() {
         viewController.present(picker, animated: animated)
       } else {
-        continuation.resume(throwing: SecureDocumentPickerManager.Error.presentationFailed)
+        continuation.resume(throwing: Self.Error.presentationFailed)
       }
     }
   }
@@ -176,31 +185,49 @@ public final class SecureDocumentPickerManager {
   /// - Parameter key: The UserDefaults key where the bookmark is stored
   /// - Returns: The resolved URL if the bookmark exists and is valid
   /// - Throws: Error if bookmark is invalid or cannot be resolved
+
   public func verifyBookmark(forKey key: String) throws -> URL {
     guard let bookmarkData = UserDefaults.standard.data(forKey: key) else {
-      throw SecureDocumentPickerManager.Error.accessDenied
+      throw Self.Error.accessDenied
     }
 
     var isStale = false
-    let url = try URL(
+    #if os(macOS) || targetEnvironment(macCatalyst)
+    let url: URL = try URL(
       resolvingBookmarkData: bookmarkData,
       options: .withSecurityScope,
       relativeTo: nil,
       bookmarkDataIsStale: &isStale
     )
+    #else
+    let url: URL = try URL(
+      resolvingBookmarkData: bookmarkData,
+      options: .withoutUI,
+      relativeTo: nil,
+      bookmarkDataIsStale: &isStale
+    )
+    #endif  // os(macOS) || targetEnvironment(macCatalyst)
 
     if isStale {
       // Try to recreate bookmark
+      #if os(macOS) || targetEnvironment(macCatalyst)
       let newBookmarkData: Data = try url.bookmarkData(
         options: .withSecurityScope,
         includingResourceValuesForKeys: nil,
         relativeTo: nil
       )
+      #else
+      let newBookmarkData: Data = try url.bookmarkData(
+        options: .minimalBookmark,
+        includingResourceValuesForKeys: nil,
+        relativeTo: nil
+      )
+      #endif
       UserDefaults.standard.set(newBookmarkData, forKey: key)
     }
 
     guard url.startAccessingSecurityScopedResource() else {
-      throw SecureDocumentPickerManager.Error.accessDenied
+      throw Self.Error.accessDenied
     }
 
     // Remember to call stopAccessingSecurityScopedResource() when done
