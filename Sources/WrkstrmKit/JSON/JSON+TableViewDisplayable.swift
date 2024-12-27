@@ -4,7 +4,7 @@ import WrkstrmCrossKit
 import WrkstrmFoundation
 import WrkstrmMain
 
-extension JSON.Value: TableReusableItem {
+extension JSON.KVPair: TableReusableItem {
   public var tableReusableCell: TableReusableCell.Type {
     switch self {
       case .integer:
@@ -52,10 +52,10 @@ extension JSON {
       self.dateKeyFuzzyOverride = dateKeyFuzzyOverride
     }
 
-    public var items: [[Value]] {
-      let values = jsonArray.map { (json: JSON.AnyDictionary) -> [Value] in
+    public var items: [[KVPair]] {
+      let values = jsonArray.map { (json: JSON.AnyDictionary) -> [KVPair] in
         let sortedJSON = json.lazy.sorted { $0.key < $1.key }
-        return sortedJSON.map { key, anyValue -> Value in
+        return sortedJSON.map { key, anyValue -> KVPair in
           guard let fuzzyKeys = dateKeyFuzzyOverride else {
             return generateValue(key, anyValue: anyValue)
           }
@@ -72,7 +72,7 @@ extension JSON {
       .localizedStringWithFormat("Item %@", (section + 1).integerString())
     }
 
-    func generateDateValue(_ key: String, anyValue: Any) -> Value {
+    func generateDateValue(_ key: String, anyValue: Any) -> KVPair {
       guard
         let dateString = anyValue as? String,
         let date = DateFormatter.iso8601.date(from: dateString)
@@ -80,7 +80,7 @@ extension JSON {
       return .date(key, date)
     }
 
-    func generateValue(_ key: String, anyValue: Any) -> Value {
+    func generateValue(_ key: String, anyValue: Any) -> KVPair {
       switch anyValue {
         case let value as Int:
           .integer(key, value)
