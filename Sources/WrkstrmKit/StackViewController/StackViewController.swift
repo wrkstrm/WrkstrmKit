@@ -38,7 +38,7 @@ extension StackViewController {
 extension StackViewController.ContentElement {
   public var view: UIView {
     switch self {
-      case let .label(text):
+      case .label(let text):
         let label: UILabel = .init()
         label.numberOfLines = 0
         label.text = text
@@ -47,10 +47,10 @@ extension StackViewController.ContentElement {
         }
         return label
 
-      case let .button(title, callback):
+      case .button(let title, let callback):
         return CallbackButton(title: title, onTap: callback)
 
-      case let .image(image):
+      case .image(let image):
         let image: UIImageView = .init(image: image)
         image.contentMode = .scaleAspectFit
         return image
@@ -67,10 +67,10 @@ open class StackViewController: UIViewController {
 
   public init(style: Style) {
     self.style = style
-    if case let .content(elements, alignment) = style {
+    if case .content(let elements, let alignment) = style {
       stack = UIStackView(views: elements.map(\.view))
       stack.alignment = alignment
-    } else if case let .views(views, alignment) = style {
+    } else if case .views(let views, let alignment) = style {
       stack = UIStackView(views: views)
       stack.alignment = alignment
     } else {
@@ -103,7 +103,7 @@ open class StackViewController: UIViewController {
 
   override open func viewDidLoad() {
     super.viewDidLoad()
-    if case let .grid(grid) = style {
+    if case .grid(let grid) = style {
       let vertical: UIStackView = .init()
       vertical.axis = .vertical
       vertical.distribution = .fillEqually

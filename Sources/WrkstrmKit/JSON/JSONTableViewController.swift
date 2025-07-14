@@ -22,18 +22,18 @@ open class JSONTableViewController: TableViewController<JSON.Displayable> {
     tableView.indexPathsForSelectedRows?.forEach { tableView.deselectRow(at: $0, animated: true) }
     guard let item = genericDataSource?.modelFor(indexPath: indexPath) else { return nil }
     switch item {
-      case let .array(_, jsonArray):
+      case .array(_, let jsonArray):
         switch jsonArray {
-          case let .dictionary(jsonArray):
+          case .dictionary(let jsonArray):
             return jsonArray.isEmpty ? nil : indexPath
 
           case .any:
             return nil
         }
 
-      case let .dictionary(_, equatableJsonDictionary):
+      case .dictionary(_, let equatableJsonDictionary):
         switch equatableJsonDictionary {
-          case let .any(jsonDictionary):
+          case .any(let jsonDictionary):
             return jsonDictionary.isEmpty ? nil : indexPath
         }
 
@@ -48,15 +48,15 @@ open class JSONTableViewController: TableViewController<JSON.Displayable> {
 
     var jsonTuple: (key: String, jsonArray: [JSON.AnyDictionary])?
     switch item {
-      case let .dictionary(_, equatableJSONDictionary):
+      case .dictionary(_, let equatableJSONDictionary):
         switch equatableJSONDictionary {
-          case let .any(jsonDictionary):
+          case .any(let jsonDictionary):
             jsonTuple = (key: "", jsonArray: [jsonDictionary])
         }
 
-      case let .array(key, equatableJsonArray):
+      case .array(let key, let equatableJsonArray):
         switch equatableJsonArray {
-          case let .dictionary(array):
+          case .dictionary(let array):
             jsonTuple = (key: key, jsonArray: array)
 
           default:

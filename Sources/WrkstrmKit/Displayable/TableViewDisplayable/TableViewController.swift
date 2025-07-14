@@ -123,11 +123,11 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
 
       // Place the search bar in the navigation bar.
       switch search?.scopes?.mode {
-        case let .filter(scopes):
+        case .filter(let scopes):
           searchController?.searchBar.scopeButtonTitles = scopes.map(\.title)
           searchController?.searchBar.selectedScopeButtonIndex = search?.scopes?.default ?? 0
 
-        case let .sort(scopes):
+        case .sort(let scopes):
           searchController?.searchBar.scopeButtonTitles = scopes.map(\.title)
           searchController?.searchBar.selectedScopeButtonIndex = search?.scopes?.default ?? 0
 
@@ -161,14 +161,14 @@ open class TableViewController<Model: TableViewDisplayable>: UITableViewControll
     let index = searchController.searchBar.selectedScopeButtonIndex
     var scopedItems = search.model?.items
     switch search.scopes?.mode {
-      case let .filter(scopes):
+      case .filter(let scopes):
         let current = scopes[index]
         scopedItems = scopedItems?.compactMap { section in
           section.filter { current.test($0, current.title) }
         }
         Log.kit.verbose(current)
 
-      case let .sort(scopes):
+      case .sort(let scopes):
         if let test = scopes[index].test {
           scopedItems = scopedItems?.compactMap { section in
             section.sorted { test($0, $1) }
