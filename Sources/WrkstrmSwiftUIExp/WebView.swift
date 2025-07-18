@@ -29,6 +29,7 @@ public struct WebView: UIViewRepresentable {
 
   // MARK: - State
 
+  @MainActor
   public class State: ObservableObject {
     weak var coordinator: Coordinator?
 

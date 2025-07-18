@@ -51,7 +51,7 @@ public class InstantiatorCell: UITableViewCell, StyleableCell {
   }
 }
 
-extension SplitViewControllerInstantiator: Injectable {
+extension SplitViewControllerInstantiator: @MainActor Injectable {
   public func inject(_ resource: [Instantiator]) {
     genericDataSource = resource.tableDataSource()
   }

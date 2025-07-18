@@ -5,7 +5,7 @@ import UIKit
 import Cocoa
 #endif  // canImport(UIKit)
 
-@objc
+@MainActor @objc
 public protocol ReusableCell {
   #if canImport(UIKit)
   static var defaultNib: UINib { get }

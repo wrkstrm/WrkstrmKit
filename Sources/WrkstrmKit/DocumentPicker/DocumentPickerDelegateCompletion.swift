@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import UIKit
 
 /// A delegate handler for UIDocumentPickerViewController that simplifies document selection
@@ -67,3 +68,4 @@ public final class DocumentPickerDelegateCompletion: NSObject, UIDocumentPickerD
     completion([])
   }
 }
+#endif  // canImport(UIKit)

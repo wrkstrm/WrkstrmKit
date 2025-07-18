@@ -36,7 +36,7 @@ extension StackViewController {
 }
 
 extension StackViewController.ContentElement {
-  public var view: UIView {
+  @MainActor public var view: UIView {
     switch self {
       case .label(let text):
         let label: UILabel = .init()

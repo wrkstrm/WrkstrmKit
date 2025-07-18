@@ -3,7 +3,7 @@ import UIKit
 import WrkstrmFoundation
 
 extension Notification {
-  public static let contentSize = Transformer<Void>(
+  public nonisolated(unsafe) static let contentSize = Transformer<Void>(
     name: UIContentSizeCategory.didChangeNotification)
 }
-#endif
+#endif  // canImport(UIKit)

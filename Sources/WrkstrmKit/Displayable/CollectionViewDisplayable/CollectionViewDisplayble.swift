@@ -16,7 +16,7 @@ public protocol CollectionViewDisplayable: Indexable where Item: CollectionReusa
   ) -> UICollectionReusableView?
 }
 
-extension CollectionViewDisplayable {
+@MainActor extension CollectionViewDisplayable {
   public func reusableCell(for path: IndexPath) -> CollectionReusableCell.Type {
     item(for: path).collectionReusableCell
   }
@@ -36,8 +36,8 @@ extension CollectionViewDisplayable {
   }
 }
 
-extension Array: CollectionViewDisplayable where Element: CollectionReusableItem {
-  public func collectionDataSource(
+extension Array: @MainActor CollectionViewDisplayable where Element: CollectionReusableItem {
+  @MainActor public func collectionDataSource(
     config: CollectionViewDataSource<[Element]>.CellConfig? = nil
   )
     -> CollectionViewDataSource<[Element]>

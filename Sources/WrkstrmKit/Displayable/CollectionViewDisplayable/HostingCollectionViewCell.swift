@@ -2,7 +2,7 @@
 import SwiftUI
 import UIKit
 
-open class HostingCollectionViewCell: CollectionViewCell {
+@MainActor open class HostingCollectionViewCell: CollectionViewCell {
   public var host: UIHostingController = .init(rootView: AnyView(Color.clear))
 
   override public init(frame: CGRect) {
@@ -28,7 +28,9 @@ open class HostingCollectionViewCell: CollectionViewCell {
 
   override open func awakeFromNib() {
     super.awakeFromNib()
-    prepareForReuse()
+    Task { @MainActor in
+      self.prepareForReuse()
+    }
   }
 
   override open func prepareForReuse() {

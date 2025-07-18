@@ -4,7 +4,7 @@ import WrkstrmFoundation
 import WrkstrmLog
 import WrkstrmMain
 
-extension JSONTableViewController: Injectable {
+extension JSONTableViewController: @preconcurrency Injectable {
   public func inject(_ resource: TableViewDataSource<JSON.Displayable>) {
     genericDataSource = resource
   }

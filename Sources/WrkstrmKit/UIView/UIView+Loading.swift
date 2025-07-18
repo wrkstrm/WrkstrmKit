@@ -3,7 +3,7 @@ import UIKit
 
 extension UIView {
   private enum AssociatedKey {
-    static var embeddedView = "wsm_embeddedView"
+    @MainActor static var embeddedView = "wsm_embeddedView"
   }
 
   @IBOutlet public var embeddedView: UIView? {

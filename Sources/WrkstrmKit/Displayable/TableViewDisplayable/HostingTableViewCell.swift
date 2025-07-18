@@ -2,6 +2,7 @@
 import SwiftUI
 import UIKit
 
+@MainActor
 open class HostingTableViewCell: TableViewCell, StyleableCell {
   public static var cellStyle: UITableViewCell.CellStyle = .subtitle
 
@@ -33,7 +34,9 @@ open class HostingTableViewCell: TableViewCell, StyleableCell {
 
   override open func awakeFromNib() {
     super.awakeFromNib()
-    prepareForReuse()
+    Task { @MainActor in
+      self.prepareForReuse()
+    }
   }
 
   override open func prepareForReuse() {

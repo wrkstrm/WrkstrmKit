@@ -11,7 +11,7 @@ public typealias View = NSView
 
 extension View {
   private enum AssociatedKey {
-    static var constraintCache = "wsm_constraintCache"
+    @MainActor static var constraintCache = "wsm_constraintCache"
   }
 
   typealias ConstraintCache = [NSLayoutConstraint: CGFloat]

@@ -32,17 +32,7 @@ extension JSON.KVPair: TableReusableItem {
 }
 
 extension JSON {
-  public static let registrar =
-    Registrar(classes: [
-      JSON.BasicCell.self,
-      JSON.IntegerCell.self,
-      JSON.DoubleCell.self,
-      JSON.StringCell.self,
-      JSON.DateCell.self,
-      JSON.AnyCell.self,
-    ])
-
-  public struct Displayable: TableViewDisplayable {
+  public struct Displayable: @MainActor TableViewDisplayable {
     let jsonArray: [JSON.AnyDictionary]
 
     var dateKeyFuzzyOverride: [String]?
@@ -53,19 +43,19 @@ extension JSON {
     }
 
     public var items: [[KVPair]] {
-      let values = jsonArray.map { (json: JSON.AnyDictionary) -> [KVPair] in
+      let kvPairs = jsonArray.map { (json: JSON.AnyDictionary) -> [KVPair] in
         let sortedJSON = json.lazy.sorted { $0.key < $1.key }
         return sortedJSON.map { key, anyValue -> KVPair in
           guard let fuzzyKeys = dateKeyFuzzyOverride else {
-            return generateValue(key, anyValue: anyValue)
+            return generateKVPair(key, anyValue: anyValue)
           }
           for fuzzyKey in fuzzyKeys where key.lowercased().contains(fuzzyKey.lowercased()) {
             return generateDateValue(key, anyValue: anyValue)
           }
-          return generateValue(key, anyValue: anyValue)
+          return generateKVPair(key, anyValue: anyValue)
         }
       }
-      return values
+      return kvPairs
     }
 
     public func title(for section: Int) -> String? {
@@ -80,7 +70,7 @@ extension JSON {
       return .date(key, date)
     }
 
-    func generateValue(_ key: String, anyValue: Any) -> KVPair {
+    func generateKVPair(_ key: String, anyValue: Any) -> KVPair {
       switch anyValue {
         case let value as Int:
           .integer(key, value)
@@ -128,7 +118,7 @@ extension JSONTableViewDisplayable where Self: Codable {
     // swiftlint:disable:previous force_cast
   }
 
-  public func jsonDictionaryDataSource(
+  @MainActor public func jsonDictionaryDataSource(
     config: TableViewDataSource<JSON.Displayable>
       .CellConfig? = nil
   ) -> TableViewDataSource<JSON.Displayable> {
@@ -138,7 +128,15 @@ extension JSONTableViewDisplayable where Self: Codable {
         dateKeyFuzzyOverride: ["time", "date"]
       )
     let dataSource = displayble.dataSource(config: config)
-    dataSource.registrar = JSON.registrar
+    dataSource.registrar =
+      Registrar(classes: [
+        JSON.BasicCell.self,
+        JSON.IntegerCell.self,
+        JSON.DoubleCell.self,
+        JSON.StringCell.self,
+        JSON.DateCell.self,
+        JSON.AnyCell.self,
+      ])
     return dataSource
   }
 }

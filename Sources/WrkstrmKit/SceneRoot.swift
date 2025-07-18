@@ -5,6 +5,7 @@ import UIKit
 /// This structure simplifies the setup and management of the app's main window,
 /// root view controller, and navigation controller.
 ///
+@MainActor
 public struct SceneRoot {
   /// The `UIWindowScene` instance that manages the app's window hierarchy.
   public let scene: UIWindowScene

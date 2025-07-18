@@ -15,17 +15,17 @@ extension TableViewDisplayable {
     item(for: path).tableReusableCell
   }
 
-  public func dataSource(config: TableViewDataSource<Self>.CellConfig? = nil)
+  @MainActor public func dataSource(config: TableViewDataSource<Self>.CellConfig? = nil)
     -> TableViewDataSource<Self>
   {
     TableViewDataSource(model: self, config: config)
   }
 }
 
-extension Array: TableViewDisplayable where Element: TableReusableItem {
+extension Array: @MainActor TableViewDisplayable where Element: TableReusableItem {
   public func title(for _: Int) -> String? { nil }
 
-  public func tableDataSource(
+  @MainActor public func tableDataSource(
     config: TableViewDataSource<[Element]>.CellConfig? = nil
   ) -> TableViewDataSource<[Element]> {
     TableViewDataSource(items: items, config: config)
