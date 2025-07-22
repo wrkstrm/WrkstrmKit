@@ -1,28 +1,28 @@
 #if canImport(QuartzCore)
-import QuartzCore
+  import QuartzCore
 
-extension CAGradientLayer {
-  typealias Positions = (start: CGPoint, end: CGPoint)
+  extension CAGradientLayer {
+    typealias Positions = (start: CGPoint, end: CGPoint)
 
-  enum Direction: CaseIterable {
-    case leftRight
+    enum Direction: CaseIterable {
+      case leftRight
 
-    case rightLeft
+      case rightLeft
 
-    case topBottom
+      case topBottom
 
-    case bottomTop
+      case bottomTop
 
-    case topLeftBottomRight
+      case topLeftBottomRight
 
-    case bottomRightTopLeft
+      case bottomRightTopLeft
 
-    case topRightBottomLeft
+      case topRightBottomLeft
 
-    case bottomLeftTopRight
+      case bottomLeftTopRight
 
-    var position: Positions {
-      switch self {
+      var position: Positions {
+        switch self {
         case .leftRight:
           (start: .init(x: 0, y: 0.5), end: .init(x: 1, y: 0.5))
 
@@ -46,18 +46,18 @@ extension CAGradientLayer {
 
         case .bottomLeftTopRight:
           (start: .init(x: 0, y: 1), end: .init(x: 1, y: 0))
+        }
+      }
+    }
+
+    var direction: Direction? {
+      get {
+        Direction.allCases.first { $0.position == (start: startPoint, end: endPoint) }
+      }
+      set {
+        startPoint = newValue?.position.start ?? CGPoint(x: 0.5, y: 0)
+        endPoint = newValue?.position.end ?? CGPoint(x: 0.5, y: 1)
       }
     }
   }
-
-  var direction: Direction? {
-    get {
-      Direction.allCases.first { $0.position == (start: startPoint, end: endPoint) }
-    }
-    set {
-      startPoint = newValue?.position.start ?? CGPoint(x: 0.5, y: 0)
-      endPoint = newValue?.position.end ?? CGPoint(x: 0.5, y: 1)
-    }
-  }
-}
 #endif  // canImport(QuartzCore)

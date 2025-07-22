@@ -61,26 +61,26 @@ let package = Package(
     .target(
       name: "WrkstrmCrossKit",
       dependencies: ["WrkstrmLog"],
-      swiftSettings: [.profile]
+      swiftSettings: [.profile],
     ),
     .target(
       name: "WrkstrmKit",
       dependencies: ["WrkstrmCrossKit", "WrkstrmFoundation", "WrkstrmMain"],
-      swiftSettings: [.profile]
+      swiftSettings: [.profile],
     ),
     .target(
       name: "WrkstrmSwiftUI",
-      swiftSettings: [.profile]
+      swiftSettings: [.profile],
     ),
     .target(
       name: "WrkstrmSwiftUIExp",
       dependencies: ["WrkstrmSwiftUI", "WrkstrmCrossKit"],
-      swiftSettings: [.profile]
+      swiftSettings: [.profile],
     ),
     .testTarget(
       name: "WrkstrmKitTests",
       dependencies: ["WrkstrmKit", "WrkstrmCrossKit", "WrkstrmFoundation", "WrkstrmMain"],
-      swiftSettings: [.profile]
+      swiftSettings: [.profile],
     ),
-  ]
+  ],
 )

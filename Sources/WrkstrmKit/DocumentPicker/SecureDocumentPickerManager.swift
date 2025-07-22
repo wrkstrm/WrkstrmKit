@@ -17,14 +17,14 @@ extension SecureDocumentPickerManager {
 
     public var errorDescription: String? {
       switch self {
-        case .presentationFailed:
-          "Could not present document picker - no view controller available"
-        case .noSelection:
-          "No document was selected"
-        case .accessDenied:
-          "Could not access the selected document"
-        case .bookmarkCreationFailed:
-          "Failed to create security-scoped bookmark for selected document"
+      case .presentationFailed:
+        "Could not present document picker - no view controller available"
+      case .noSelection:
+        "No document was selected"
+      case .accessDenied:
+        "Could not access the selected document"
+      case .bookmarkCreationFailed:
+        "Failed to create security-scoped bookmark for selected document"
       }
     }
   }
@@ -82,7 +82,7 @@ public final class SecureDocumentPickerManager {
   @MainActor
   public func pickDirectory(
     bookmarkKey: String? = nil,
-    animated: Bool = true
+    animated: Bool = true,
   ) async throws -> URL {
     try await withCheckedThrowingContinuation { continuation in
       let picker: UIDocumentPickerViewController = .init(forOpeningContentTypes: [.folder])
@@ -101,17 +101,17 @@ public final class SecureDocumentPickerManager {
         if let key = bookmarkKey {
           do {
             #if os(macOS) || targetEnvironment(macCatalyst)
-            let bookmark = try selectedURL.bookmarkData(
-              options: .withSecurityScope,
-              includingResourceValuesForKeys: nil,
-              relativeTo: nil
-            )
+              let bookmark = try selectedURL.bookmarkData(
+                options: .withSecurityScope,
+                includingResourceValuesForKeys: nil,
+                relativeTo: nil,
+              )
             #else
-            let bookmark = try selectedURL.bookmarkData(
-              options: .minimalBookmark,
-              includingResourceValuesForKeys: nil,
-              relativeTo: nil
-            )
+              let bookmark = try selectedURL.bookmarkData(
+                options: .minimalBookmark,
+                includingResourceValuesForKeys: nil,
+                relativeTo: nil,
+              )
             #endif
             UserDefaults.standard.set(bookmark, forKey: key)
           } catch {
@@ -153,7 +153,7 @@ public final class SecureDocumentPickerManager {
   public func pickDocuments(
     contentTypes: [UTType],
     allowsMultiple: Bool = false,
-    animated: Bool = true
+    animated: Bool = true,
   ) async throws -> [URL] {
     try await withCheckedThrowingContinuation { continuation in
       let picker: UIDocumentPickerViewController = .init(forOpeningContentTypes: contentTypes)
@@ -193,35 +193,35 @@ public final class SecureDocumentPickerManager {
 
     var isStale = false
     #if os(macOS) || targetEnvironment(macCatalyst)
-    let url: URL = try URL(
-      resolvingBookmarkData: bookmarkData,
-      options: .withSecurityScope,
-      relativeTo: nil,
-      bookmarkDataIsStale: &isStale
-    )
+      let url: URL = try URL(
+        resolvingBookmarkData: bookmarkData,
+        options: .withSecurityScope,
+        relativeTo: nil,
+        bookmarkDataIsStale: &isStale,
+      )
     #else
-    let url: URL = try URL(
-      resolvingBookmarkData: bookmarkData,
-      options: .withoutUI,
-      relativeTo: nil,
-      bookmarkDataIsStale: &isStale
-    )
+      let url: URL = try URL(
+        resolvingBookmarkData: bookmarkData,
+        options: .withoutUI,
+        relativeTo: nil,
+        bookmarkDataIsStale: &isStale,
+      )
     #endif  // os(macOS) || targetEnvironment(macCatalyst)
 
     if isStale {
       // Try to recreate bookmark
       #if os(macOS) || targetEnvironment(macCatalyst)
-      let newBookmarkData: Data = try url.bookmarkData(
-        options: .withSecurityScope,
-        includingResourceValuesForKeys: nil,
-        relativeTo: nil
-      )
+        let newBookmarkData: Data = try url.bookmarkData(
+          options: .withSecurityScope,
+          includingResourceValuesForKeys: nil,
+          relativeTo: nil,
+        )
       #else
-      let newBookmarkData: Data = try url.bookmarkData(
-        options: .minimalBookmark,
-        includingResourceValuesForKeys: nil,
-        relativeTo: nil
-      )
+        let newBookmarkData: Data = try url.bookmarkData(
+          options: .minimalBookmark,
+          includingResourceValuesForKeys: nil,
+          relativeTo: nil,
+        )
       #endif
       UserDefaults.standard.set(newBookmarkData, forKey: key)
     }

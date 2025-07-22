@@ -1,9 +1,9 @@
 #if canImport(UIKit)
-import UIKit
+  import UIKit
 
-open class CollectionViewCell: UICollectionViewCell {
-  var model: Any?
+  open class CollectionViewCell: UICollectionViewCell {
+    var model: Any?
 
-  weak var delegate: UIViewController?
-}
+    weak var delegate: UIViewController?
+  }
 #endif

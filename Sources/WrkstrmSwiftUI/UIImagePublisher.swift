@@ -1,15 +1,15 @@
 #if canImport(UIKit)
-import Combine
-import SwiftUI
-import UIKit
+  import Combine
+  import SwiftUI
+  import UIKit
 
-open class UIImagePublisher: ObservableObject {
-  public var imageCancellable: AnyCancellable?
+  open class UIImagePublisher: ObservableObject {
+    public var imageCancellable: AnyCancellable?
 
-  @Published public var uiImage: UIImage
+    @Published public var uiImage: UIImage
 
-  public init(_ uiImage: UIImage) {
-    self.uiImage = uiImage
+    public init(_ uiImage: UIImage) {
+      self.uiImage = uiImage
+    }
   }
-}
 #endif

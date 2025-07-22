@@ -1,26 +1,26 @@
 #if !canImport(WatchKit)
-#if canImport(UIKit)
-import UIKit
-#elseif os(OSX)
-import Cocoa
-#endif  // canImport(UIKit)
-
-@MainActor @objc
-public protocol ReusableCell {
   #if canImport(UIKit)
-  static var defaultNib: UINib { get }
+    import UIKit
   #elseif os(OSX)
-  static var defaultNib: NSNib { get }
+    import Cocoa
   #endif  // canImport(UIKit)
 
-  static func reuseIdentifier() -> String
+  @MainActor @objc
+  public protocol ReusableCell {
+    #if canImport(UIKit)
+      static var defaultNib: UINib { get }
+    #elseif os(OSX)
+      static var defaultNib: NSNib { get }
+    #endif  // canImport(UIKit)
 
-  @objc optional func prepare(for model: Any?, path: IndexPath)
-}
+    static func reuseIdentifier() -> String
 
-@objc
-public protocol TableReusableCell: ReusableCell {}
+    @objc optional func prepare(for model: Any?, path: IndexPath)
+  }
 
-@objc
-public protocol CollectionReusableCell: ReusableCell {}
+  @objc
+  public protocol TableReusableCell: ReusableCell {}
+
+  @objc
+  public protocol CollectionReusableCell: ReusableCell {}
 #endif  // !canImport(WatchKit)
