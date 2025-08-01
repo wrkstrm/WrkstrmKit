@@ -41,11 +41,12 @@
 
     public func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
       if let model {
-        model.title(for: section)
+        return model.title(for: section)
       } else if numberOfSections > 1 {
-        .localizedStringWithFormat("Item %@", (section + 1).integerString())
+        let itemCount = (section + 1).integerString() ?? "?"
+        return .localizedStringWithFormat("Item %@", itemCount)
       } else {
-        nil
+        return nil
       }
     }
 

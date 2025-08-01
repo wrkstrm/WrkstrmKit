@@ -13,7 +13,10 @@
       ///  subclass through the static `cellStyle` property.
       /// - Parameter style: The default style to be ignored.
       /// - Parameter reuseIdentifier: The cellReuseIdentifier. Usually "{Class}Identifier"
-      override public required init(style _: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+      override public required init(
+        style _: UITableViewCell.CellStyle,
+        reuseIdentifier: String?
+      ) {
         super.init(style: Self.cellStyle, reuseIdentifier: reuseIdentifier)
       }
 
@@ -31,7 +34,9 @@
 
     public class IntegerCell: BasicCell {
       public func prepare(for model: Any?, path _: IndexPath) {
-        guard case .integer(let key, let value)? = model as? JSON.KVPair else { Log.kit.guard() }
+        guard case .integer(let key, let value)? = model as? JSON.KVPair else {
+          Log.kit.guard()
+        }
         textLabel?.text = key.titlecased()
         detailTextLabel?.text = NumberFormatter.integer.string(for: value)
       }
@@ -39,7 +44,9 @@
 
     public class DoubleCell: BasicCell {
       public func prepare(for model: Any?, path _: IndexPath) {
-        guard case .double(let key, let value)? = model as? JSON.KVPair else { Log.kit.guard() }
+        guard case .double(let key, let value)? = model as? JSON.KVPair else {
+          Log.kit.guard()
+        }
         textLabel?.text = key.titlecased()
         detailTextLabel?.text = value.doubleString()
       }
@@ -47,7 +54,9 @@
 
     public class StringCell: BasicCell {
       public func prepare(for model: Any?, path _: IndexPath) {
-        guard case .string(let key, let value)? = model as? JSON.KVPair else { Log.kit.guard() }
+        guard case .string(let key, let value)? = model as? JSON.KVPair else {
+          Log.kit.guard()
+        }
         textLabel?.text = key.titlecased()
         detailTextLabel?.text = value
       }
@@ -55,7 +64,9 @@
 
     public class DateCell: BasicCell {
       public func prepare(for model: Any?, path _: IndexPath) {
-        guard case .date(let key, let value)? = model as? JSON.KVPair else { Log.kit.guard() }
+        guard case .date(let key, let value)? = model as? JSON.KVPair else {
+          Log.kit.guard()
+        }
         textLabel?.text = key.titlecased()
         detailTextLabel?.text = value.localizedString()
       }
@@ -73,10 +84,11 @@
           ? NSLocalizedString("%@ Item", bundle: .main, comment: "")
           : NSLocalizedString("%@ Items", bundle: .main, comment: "")
 
+        let count = jsonArray.count.integerString() ?? "?"
         detailTextLabel?.text =
           .localizedStringWithFormat(
             formatString,
-            jsonArray.count.integerString(),
+            count,
           )
         accessoryType = .disclosureIndicator
       }
@@ -84,7 +96,8 @@
 
     public class DictionaryCell: BasicCell {
       public func prepare(for model: Any?, path _: IndexPath) {
-        guard case .dictionary(let key, let jsonDictionary)? = model as? JSON.KVPair,
+        guard
+          case .dictionary(let key, let jsonDictionary)? = model as? JSON.KVPair,
           case .any(let json) = jsonDictionary
         else { Log.kit.guard() }
         textLabel?.text = key.titlecased()
@@ -93,10 +106,11 @@
           (json.count == 1)
           ? NSLocalizedString("%@ Detail", bundle: .main, comment: "")
           : NSLocalizedString("%@ Details", bundle: .main, comment: "")
+        let count = json.count.integerString() ?? "?"
         detailTextLabel?.text =
           .localizedStringWithFormat(
             formatString,
-            json.count.integerString(),
+            count,
           )
         accessoryType = .disclosureIndicator
       }
@@ -104,7 +118,9 @@
 
     public class AnyCell: BasicCell {
       public func prepare(for model: Any?, path _: IndexPath) {
-        guard case .any(let value, let key)? = model as? JSON.KVPair else { Log.kit.guard() }
+        guard case .any(let value, let key)? = model as? JSON.KVPair else {
+          Log.kit.guard()
+        }
         textLabel?.text = key.titlecased()
         detailTextLabel?.text = value
       }

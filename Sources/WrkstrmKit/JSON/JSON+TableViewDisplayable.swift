@@ -59,7 +59,7 @@
       }
 
       public func title(for section: Int) -> String? {
-        .localizedStringWithFormat("Item %@", (section + 1).integerString())
+        .localizedStringWithFormat("Item %@", (section + 1).integerString() ?? "?")
       }
 
       func generateDateValue(_ key: String, anyValue: Any) -> KVPair {
