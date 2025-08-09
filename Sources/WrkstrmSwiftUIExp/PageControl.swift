@@ -1,6 +1,5 @@
-import SwiftUI
-
-#if canImport(UIKit)
+#if canImport(SwiftUI) && canImport(UIKit)
+  import SwiftUI
   import UIKit
 
   @available(iOS 13.0, *)

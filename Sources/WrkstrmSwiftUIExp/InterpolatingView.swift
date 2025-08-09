@@ -1,7 +1,7 @@
-import Foundation
-import SwiftUI
-
-#if canImport(UIKit)
+// swiftlint:disable file_length
+#if canImport(SwiftUI) && canImport(UIKit)
+  import Foundation
+  import SwiftUI
   import UIKit
 
   struct InterpolatingView: UIViewRepresentable {
@@ -88,4 +88,4 @@ import SwiftUI
       addMotionEffect(vertical)
     }
   }
-#endif  // canImport(UIKit)
+#endif
