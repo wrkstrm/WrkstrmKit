@@ -1,8 +1,8 @@
-import Combine
-import SwiftUI
-import WebKit
-
-#if canImport(UIKit)
+// swiftlint:disable file_length
+#if canImport(SwiftUI) && canImport(Combine) && canImport(WebKit) && canImport(UIKit)
+  import Combine
+  import SwiftUI
+  import WebKit
 
   // MARK: - WebView
 

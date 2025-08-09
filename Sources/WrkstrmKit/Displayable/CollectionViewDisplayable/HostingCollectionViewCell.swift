@@ -1,4 +1,4 @@
-#if canImport(UIKit)
+#if canImport(SwiftUI) && canImport(UIKit)
   import SwiftUI
   import UIKit
 
@@ -51,4 +51,4 @@
       updateConstraintsIfNeeded()
     }
   }
-#endif  // canImport(UIKit)
+#endif
