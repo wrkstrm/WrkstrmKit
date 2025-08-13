@@ -37,7 +37,7 @@
       case sort([Sort])
     }
 
-    var last: String = ""
+    public var last: String = ""
 
     public var main: [Filter.Match]
 
