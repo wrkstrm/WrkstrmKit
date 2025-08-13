@@ -36,7 +36,7 @@ extension PackageDescription.Package.Dependency {
   static var remote: [PackageDescription.Package.Dependency] {
     [
       .package(url: "https://github.com/wrkstrm/WrkstrmFoundation.git", branch: "main"),
-      .package(url: "https://github.com/wrkstrm/WrkstrmLog.git", branch: "main"),
+      .package(url: "https://github.com/wrkstrm/WrkstrmLog.git", from: "2.0.0"),
       .package(url: "https://github.com/wrkstrm/WrkstrmMain.git", from: "2.0.0"),
     ]
   }
