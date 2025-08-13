@@ -59,6 +59,9 @@ class MyViewController: CollectionViewController<MyModel> {
     }
 }
 ```
+## 🏷️ Release Names
+
+Each release is nicknamed after a UI-kit component and a matching animal, underscoring WrkstrmKit's goal of making interfaces easier to build. 
 
 ## 📋 Requirements
 
