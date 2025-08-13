@@ -64,12 +64,3 @@ class MyViewController: CollectionViewController<MyModel> {
 
 - 📱 iOS 13.0+
 - 🏎️ Swift 5.0+
-
-## 🏷️ Release Names
-
-Each release is nicknamed after a UI-kit component and a matching animal, underscoring WrkstrmKit's goal of making interfaces easier to build. Use the helper script to generate a name for any version:
-
-```bash
-$ Scripts/release-name.swift 0.2.0
-Layout Lynx
-```
