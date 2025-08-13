@@ -65,7 +65,7 @@
       func generateDateValue(_ key: String, anyValue: Any) -> KVPair {
         guard
           let dateString = anyValue as? String,
-          let date = DateFormatter.iso8601.date(from: dateString)
+          let date = DateFormatter.iso8601Z.date(from: dateString)
         else { return .date(key, Date()) }
         return .date(key, date)
       }
