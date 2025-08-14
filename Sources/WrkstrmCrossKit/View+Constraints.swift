@@ -68,7 +68,7 @@
     ///
     /// - Parameters:
     ///   - attribute: The attribute on the receiver to constrain.
-    ///   - to: The item whose matching attribute is constrained against. `self` and `to` must already share a view hierarchy.
+    ///   - to: The item whose matching attribute is constrained against. `self` and `to` must share a common superview.
     ///   - multiplier: The multiplier applied to the other attribute. Default `1`.
     ///   - constant: The constant offset to apply. Default `0`.
     /// - Important: `translatesAutoresizingMaskIntoConstraints` is not modified; callers should disable it as needed.
