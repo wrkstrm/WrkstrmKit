@@ -9,7 +9,7 @@
     /// insertion and removal.
     ///
     /// - Returns: A transition combining move, scale, and opacity effects.
-    /// - Example:
+    /// ## Example
     ///   ```swift
     ///   Text("Hello").transition(.moveAndFade)
     ///   ```
