@@ -127,7 +127,7 @@
 
     /// Centers the view within a container.
     ///
-    /// - Parameter view: The container to center in. Defaults to the superview.
+    /// - Parameter view: The container to center in. If `view` is nil, the superview is used as the container.
     /// - Precondition: Either `view` or `superview` must be non-`nil`; otherwise a `fatalError` is
     ///   raised.
     /// - Important: Only alignment is affected; the view's size is unchanged.
