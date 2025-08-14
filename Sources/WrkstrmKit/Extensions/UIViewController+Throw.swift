@@ -1,8 +1,11 @@
 import Foundation
-import UIKit
-import WrkstrmFoundation
+#if canImport(UIKit)
+  import UIKit
+  import WrkstrmFoundation
+#endif
 
 /// Provides error throwing capabilities for view controller scenarios
+#if canImport(UIKit)
 extension UIViewController {
   /// Throws an error with a custom message and pretends to return a value of any type.
   /// This method is particularly useful in guard/optional chaining scenarios where you need
@@ -28,3 +31,4 @@ extension UIViewController {
     throw "Controller not available: \(T.self)"
   }
 }
+#endif

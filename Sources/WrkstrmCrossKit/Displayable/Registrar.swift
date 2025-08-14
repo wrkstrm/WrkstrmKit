@@ -1,4 +1,4 @@
-#if !canImport(WatchKit)
+#if canImport(UIKit) || os(OSX)
   public struct Registrar {
     public var classes: [ReusableCell.Type]?
 
@@ -16,4 +16,4 @@
       self.init(classes: classes, nibs: nibs)
     }
   }
-#endif  // !canImport(WatchKit)
+#endif  // canImport(UIKit) || os(OSX)

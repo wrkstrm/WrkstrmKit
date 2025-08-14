@@ -1,4 +1,4 @@
-#if !canImport(WatchKit)
+#if canImport(UIKit) || os(OSX)
   #if canImport(UIKit)
     import UIKit
 
@@ -113,4 +113,4 @@
       constraint(equalTo: anchor, constant: constant).isActive = true
     }
   }
-#endif  // !canImport(WatchKit)
+#endif  // canImport(UIKit) || os(OSX)
