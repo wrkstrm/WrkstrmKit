@@ -59,7 +59,10 @@ struct MockFont {
 /// Simplified font metrics used solely for tests to apply a fixed scaling
 /// factor and optional maximum point size.
 enum MockFontMetrics {
-  static var scaler: Double { 1.5 }
+  /// Arbitrary scaling factor chosen to simulate font scaling in tests.
+  /// This value (1.5) does not correspond to any real system metric, but is
+  /// used to verify fallback behavior when UIFontMetrics is unavailable.
+  static var scaler: Double = 1.5
   static func scaledFont(for font: MockFont) -> MockFont {
     font.withSize(scaler * font.pointSize)
   }
