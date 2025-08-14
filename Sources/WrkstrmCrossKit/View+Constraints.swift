@@ -45,14 +45,31 @@
       }
     }
 
+    /// Saves a constraint's current constant so it can be restored later.
+    ///
+    /// - Parameter constraint: The constraint whose constant should be cached.
+    /// - Important: Subsequent calls update the cached constant with the latest value.
     func cache(_ constraint: NSLayoutConstraint) {
       constraintCache[constraint] = constraint.constant
     }
 
+    /// Restores a constraint's constant from the cache.
+    ///
+    /// - Parameter constraint: The constraint to reset.
+    /// - Note: If the constraint has not been cached, its constant defaults to `0`.
     func reset(_ constraint: NSLayoutConstraint) {
       constraint.constant = constraintCache[constraint, default: 0]
     }
 
+    /// Constrains one of the view's attributes equal to the same attribute on `to`.
+    ///
+    /// Forwards to the overload that accepts distinct attributes.
+    ///
+    /// - Parameters:
+    ///   - attribute: The attribute on the receiver to constrain.
+    ///   - to: The item whose attribute is constrained against.
+    ///   - multiplier: The multiplier applied to the other attribute. Default `1`.
+    ///   - constant: The constant offset to apply. Default `0`.
     public func constrainEqual(
       attribute: NSLayoutConstraint.Attribute,
       to: AnyObject,
@@ -67,6 +84,16 @@
       )
     }
 
+    /// Creates and activates an equality constraint between two attributes.
+    ///
+    /// - Parameters:
+    ///   - attribute: The attribute on the receiver to constrain.
+    ///   - to: The item whose attribute is constrained against. Both must belong to a compatible
+    ///     view hierarchy.
+    ///   - toAttribute: The attribute on `to` to constrain to.
+    ///   - multiplier: The multiplier applied to the other attribute. Default `1`.
+    ///   - constant: The constant offset to apply. Default `0`.
+    /// - Important: `translatesAutoresizingMaskIntoConstraints` is not modified.
     public func constrainEqual(
       attribute: NSLayoutConstraint.Attribute,
       to: AnyObject,
@@ -87,6 +114,10 @@
       ])
     }
 
+    /// Pins all four edges of the view to match those of another view.
+    ///
+    /// - Parameter view: The view whose edges should be matched.
+    /// - Precondition: Both views share a common superview to avoid unsatisfiable constraints.
     public func constrainEdges(to view: View) {
       constrainEqual(attribute: .top, to: view, .top)
       constrainEqual(attribute: .leading, to: view, .leading)
@@ -94,13 +125,22 @@
       constrainEqual(attribute: .bottom, to: view, .bottom)
     }
 
-    /// If the `view` is nil, we take the superview.
+    /// Centers the view within a container.
+    ///
+    /// - Parameter view: The container to center in. If `view` is nil, the superview is used as the container.
+    /// - Precondition: Either `view` or `superview` must be non-`nil`; otherwise a `fatalError` is
+    ///   raised.
+    /// - Important: Only alignment is affected; the view's size is unchanged.
     public func constrainToCenter(in view: View? = nil) {
       guard let container = view ?? superview else { fatalError() }
       centerXAnchor.constrainEqual(anchor: container.centerXAnchor)
       centerYAnchor.constrainEqual(anchor: container.centerYAnchor)
     }
 
+    /// The geometric center of the view derived from its frame after layout.
+    ///
+    /// - Returns: A point representing the center based on the current frame.
+    /// - Note: Any transform applied to the view is ignored.
     var centerPoint: CGPoint {
       CGPoint(
         x: (frame.origin.x + frame.size.width) / 2, y: (frame.origin.y + frame.size.height) / 2)
