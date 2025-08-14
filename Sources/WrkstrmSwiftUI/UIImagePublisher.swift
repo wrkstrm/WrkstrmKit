@@ -9,7 +9,7 @@
   /// Use this publisher to drive a SwiftUI ``Image`` from UIKit image loading
   /// code or other imperative updates.
   ///
-  /// - Example:
+  /// ## Example
   ///   ```swift
   ///   let publisher = UIImagePublisher(UIImage(systemName: "star")!)
   ///   Image(uiImage: publisher.uiImage)
