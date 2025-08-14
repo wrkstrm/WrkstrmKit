@@ -10,6 +10,12 @@
 
   /// Bridges a `CollectionViewDisplayable` model to `UICollectionView`'s data
   /// source requirements.
+  ///
+  /// ### Usage Example
+  /// ```swift
+  /// let dataSource = library.dataSource()
+  /// collectionView.dataSource = dataSource
+  /// ```
   public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObject,
     UICollectionViewDataSource, @preconcurrency Indexable
   {
