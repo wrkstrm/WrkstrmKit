@@ -2,14 +2,17 @@
   import SwiftUI
 
   extension AnyTransition {
-    /// A transition that moves a view in from the trailing edge while fading,
-    /// and scales and fades it out on removal.
+    /// A transition that moves a view in from the trailing edge while fading
+    /// and scales and fades the view out on removal.
     ///
-    /// Apply this transition using ``View/transition(_:)``.
+    /// Use this transition with ``View/transition(_:)`` to animate view
+    /// insertion and removal.
     ///
-    /// ```swift
-    /// Text("Hello").transition(.moveAndFade)
-    /// ```
+    /// - Returns: A transition combining move, scale, and opacity effects.
+    /// ## Example
+    ///   ```swift
+    ///   Text("Hello").transition(.moveAndFade)
+    ///   ```
     public static var moveAndFade: AnyTransition {
       let insertion = Self.move(edge: .trailing)
         .combined(with: .opacity)

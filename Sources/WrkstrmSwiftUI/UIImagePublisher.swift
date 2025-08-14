@@ -3,12 +3,17 @@
   import SwiftUI
   import UIKit
 
-  /// An observable object that publishes updates to a `UIImage` for use in SwiftUI views.
+  /// An observable object that publishes updates to a `UIImage` for use in
+  /// SwiftUI views.
   ///
-  /// ```swift
-  /// let publisher = UIImagePublisher(UIImage(systemName: "star")!)
-  /// Image(uiImage: publisher.uiImage)
-  /// ```
+  /// Use this publisher to drive a SwiftUI ``Image`` from UIKit image loading
+  /// code or other imperative updates.
+  ///
+  /// ## Example
+  ///   ```swift
+  ///   let publisher = UIImagePublisher(UIImage(systemName: "star")!)
+  ///   Image(uiImage: publisher.uiImage)
+  ///   ```
   open class UIImagePublisher: ObservableObject {
     /// A cancellable reference to an image loading task.
     public var imageCancellable: AnyCancellable?
