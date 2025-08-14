@@ -63,7 +63,7 @@
   public class SplitViewControllerInstantiator: TableViewController<[Instantiator]> {
     override public func viewDidLoad() {
       super.viewDidLoad()
-      tableView.addRegistar(Registrar(classes: [InstantiatorCell.self], nibs: nil))
+      tableView.addRegistrar(Registrar(classes: [InstantiatorCell.self], nibs: nil))
       tableView.separatorStyle = .none
     }
 

@@ -65,7 +65,7 @@
   open class TableViewController<Model: TableViewDisplayable>: UITableViewController,
     UISearchProtocols
   {
-    // MARK: - TableViewDisplayble Variables
+    // MARK: - TableViewDisplayable Variables
 
     open var displayableModel: Model? {
       didSet {
@@ -79,7 +79,7 @@
     open var genericDataSource: TableViewDataSource<Model>? {
       didSet {
         if let registrar = genericDataSource?.registrar {
-          tableView.addRegistar(registrar)
+          tableView.addRegistrar(registrar)
         }
         tableView.dataSource = genericDataSource
         tableView.reloadData()

@@ -69,10 +69,10 @@
 
       if let tuple = jsonTuple {
         let controller: JSONTableViewController = .init(style: .plain)
-        var jsonDisplayble = JSON.Displayable(jsonArray: tuple.jsonArray)
-        jsonDisplayble.dateKeyFuzzyOverride = ["time", "date"]
+        var jsonDisplayable = JSON.Displayable(jsonArray: tuple.jsonArray)
+        jsonDisplayable.dateKeyFuzzyOverride = ["time", "date"]
         controller.title = tuple.key.capitalized
-        controller.inject(jsonDisplayble.dataSource())
+        controller.inject(jsonDisplayable.dataSource())
         navigationController?.pushViewController(controller, animated: true)
       }
     }
