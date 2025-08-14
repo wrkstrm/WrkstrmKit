@@ -119,7 +119,7 @@
     /// Pins all four edges of the view to match those of another view.
     ///
     /// - Parameter view: The view whose edges should be matched.
-    /// - Precondition: `self` and `view` must share a common superview; otherwise Auto Layout will complain about missing anchors.
+    /// - Precondition: `self` and `view` must share a common superview; otherwise Auto Layout will complain about unsatisfiable constraints or items not having a common ancestor.
     /// - Important: `translatesAutoresizingMaskIntoConstraints` is not modified and should be disabled prior to calling.
     public func constrainEdges(to view: View) {
       constrainEqual(attribute: .top, to: view, .top)
