@@ -4,7 +4,13 @@ import Testing
 #if canImport(UIKit)
 import UIKit
 public typealias View = UIView
-#elseif os(OSX)
+#if canImport(UIKit) || os(macOS)
+import Testing
+@testable import WrkstrmCrossKit
+#if canImport(UIKit)
+import UIKit
+public typealias View = UIView
+#elseif os(macOS)
 import AppKit
 public typealias View = NSView
 #endif
