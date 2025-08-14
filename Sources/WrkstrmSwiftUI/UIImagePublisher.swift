@@ -20,7 +20,11 @@
     /// - Parameter uiImage: The starting image to publish.
     /// - Example:
     ///   ```swift
-    ///   let publisher = UIImagePublisher(UIImage(named: "Avatar")!)
+    ///   if let avatar = UIImage(named: "Avatar") {
+    ///     let publisher = UIImagePublisher(avatar)
+    ///   }
+    ///   // Or use a system image:
+    ///   let publisher = UIImagePublisher(UIImage(systemName: "person.circle")!)
     ///   ```
     public init(_ uiImage: UIImage) {
       self.uiImage = uiImage
