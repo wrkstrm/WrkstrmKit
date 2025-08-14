@@ -1,4 +1,4 @@
-#if !canImport(WatchKit)
+#if canImport(UIKit) || os(OSX)
   #if canImport(UIKit)
     import UIKit
   #elseif os(OSX)
@@ -23,4 +23,4 @@
 
   @objc
   public protocol CollectionReusableCell: ReusableCell {}
-#endif  // !canImport(WatchKit)
+#endif  // canImport(UIKit) || os(OSX)

@@ -2,13 +2,18 @@
   import UIKit
   import WrkstrmCrossKit
 
+  /// A placeholder supplementary view used when the model does not provide one.
   public class PlaceholderSupplementaryCell: UICollectionViewCell {}
 
+  /// A placeholder cell used when a concrete cell has not been registered.
   public class PlaceholderCollectionCell: UICollectionViewCell {}
 
+  /// Bridges a `CollectionViewDisplayable` model to `UICollectionView`'s data
+  /// source requirements.
   public class CollectionViewDataSource<Model: CollectionViewDisplayable>: NSObject,
     UICollectionViewDataSource, @preconcurrency Indexable
   {
+    /// Closure type used to configure cells after dequeuing.
     public typealias CellConfig = (UICollectionViewCell, Model.Item, IndexPath) -> Void
 
     private var displayable: Model
@@ -21,6 +26,10 @@
 
     var config: CellConfig?
 
+    /// Creates a data source for the supplied model.
+    /// - Parameters:
+    ///   - model: The collection view model providing the data.
+    ///   - config: Optional closure executed for each cell after it has been dequeued.
     init(model: Model, config: CellConfig?) {
       displayable = model
       items = model.items
@@ -39,6 +48,7 @@
       self.config = config
     }
 
+    /// Returns the model item for the specified index path, if it exists.
     public func model(for indexPath: IndexPath) -> Model.Item? {
       let sectionIndex = indexPath.section
       let rowIndex = indexPath.row
@@ -51,8 +61,11 @@
       return nil
     }
 
+    /// Returns the number of sections in the data source.
     public func numberOfSections(in _: UICollectionView) -> Int { numberOfSections }
 
+    /// Supplies a supplementary view for the collection view by asking the model
+    /// or falling back to a placeholder.
     public func collectionView(
       _ collectionView: UICollectionView,
       viewForSupplementaryElementOfKind kind: String,
@@ -80,10 +93,12 @@
       return view
     }
 
+    /// Returns the number of items in the specified section.
     public func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       numberOfItems(in: section)
     }
 
+    /// Dequeues and configures a cell for the item at the supplied index path.
     public func collectionView(
       _ collectionView: UICollectionView,
       cellForItemAt indexPath: IndexPath,
