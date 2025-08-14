@@ -6,6 +6,12 @@
   ///
   /// Provide a model and the controller automatically creates the
   /// associated `CollectionViewDataSource` and registers the required cells.
+  ///
+  /// ### Usage Example
+  /// ```swift
+  /// let controller = CollectionViewController<Library>()
+  /// controller.displayableModel = Library(items: [[Book(title: "1984")]])
+  /// ```
   open class CollectionViewController<Model: CollectionViewDisplayable>: UICollectionViewController
   {
     /// The model driving the collection view. Setting this will create a new

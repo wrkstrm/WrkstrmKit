@@ -24,6 +24,7 @@
   /// let dataSource = library.dataSource()
   /// ```
   public protocol CollectionViewDisplayable: Indexable where Item: CollectionReusableItem {
+    /// Returns the type of cell used to render the item at the given index path.
     func reusableCell(for path: IndexPath) -> CollectionReusableCell.Type
 
     /// Creates a type-safe data source backed by the receiver.
@@ -41,6 +42,8 @@
   }
 
   @MainActor extension CollectionViewDisplayable {
+    /// Resolves the cell type for the item at `path` using its
+    /// `collectionReusableCell` property.
     public func reusableCell(for path: IndexPath) -> CollectionReusableCell.Type {
       item(for: path).collectionReusableCell
     }
@@ -66,6 +69,7 @@
   }
 
   extension Array: @MainActor CollectionViewDisplayable where Element: CollectionReusableItem {
+    /// Convenience factory for producing a data source backed by the array.
     @MainActor public func collectionDataSource(
       config: CollectionViewDataSource<[Element]>.CellConfig? = nil,
     )
