@@ -6,7 +6,7 @@
   /// An observable object that publishes updates to a `UIImage` for use in SwiftUI views.
   ///
   /// ```swift
-  /// let publisher = UIImagePublisher(UIImage(named: "Logo")!)
+  /// let publisher = UIImagePublisher(UIImage(systemName: "star")!)
   /// Image(uiImage: publisher.uiImage)
   /// ```
   open class UIImagePublisher: ObservableObject {
