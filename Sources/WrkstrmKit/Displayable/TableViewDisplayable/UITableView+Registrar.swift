@@ -3,7 +3,7 @@
   import WrkstrmCrossKit
 
   extension UITableView {
-    public func addRegistar(_ registrar: Registrar) {
+    public func addRegistrar(_ registrar: Registrar) {
       if let classes = registrar.classes as? [UITableViewCell.Type] {
         register(classes: classes)
       }

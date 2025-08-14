@@ -3,7 +3,7 @@ import Foundation
 #if canImport(UIKit)
   import UIKit
 
-  // MARK: - UIViewController Convinience Initializers
+  // MARK: - UIViewController Convenience Initializers
 
   extension UIStoryboard {
     /// Returns a view controller in a storyboard for an identifier
@@ -17,7 +17,7 @@ import Foundation
     /// This function returns an instance of the class type provided.
     ///
     /// - Parameter class: The `UIViewController` class type that will be converted to a storyboard
-    /// identifer.
+    /// identifier.
     /// - Returns: An instance of the `UIViewController` class created from the storyboard.
     public func controller<Controller: UIViewController>(class _: Controller.Type) -> Controller {
       // swiftlint:disable:next force_cast

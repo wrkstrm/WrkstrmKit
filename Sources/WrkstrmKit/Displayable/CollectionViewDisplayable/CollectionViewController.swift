@@ -29,7 +29,7 @@
     open var genericDataSource: CollectionViewDataSource<Model>? {
       didSet {
         if let registrar = genericDataSource?.registrar {
-          collectionView.add(registrar)
+          collectionView.addRegistrar(registrar)
         }
         collectionView.dataSource = genericDataSource
         collectionView.reloadData()
