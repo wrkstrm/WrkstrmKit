@@ -7,10 +7,11 @@
   /// Use ``IndexedRow`` to provide identity information when iterating over
   /// collections that might mutate.
   ///
-  /// ```swift
-  /// let row = IndexedRow(id: 1, index: 0, element: "A")
-  /// print(row.element) // "A"
-  /// ```
+  /// - Example:
+  ///   ```swift
+  ///   let row = IndexedRow(id: 1, index: 0, element: "A")
+  ///   print(row.element) // "A"
+  ///   ```
   public final class IndexedRow<M>: Identifiable, ObservableObject {
     /// The stable identifier of the row.
     public let id: Int
