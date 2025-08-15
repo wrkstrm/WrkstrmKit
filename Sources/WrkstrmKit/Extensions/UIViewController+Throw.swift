@@ -1,7 +1,8 @@
 import Foundation
+
 #if canImport(UIKit)
-  import UIKit
-  import WrkstrmFoundation
+import UIKit
+import WrkstrmFoundation
 #endif
 
 /// Provides error throwing capabilities for view controller scenarios

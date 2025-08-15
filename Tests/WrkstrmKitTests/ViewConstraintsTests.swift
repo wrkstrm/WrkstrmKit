@@ -1,9 +1,3 @@
-#if canImport(UIKit) || os(OSX)
-import Testing
-@testable import WrkstrmCrossKit
-#if canImport(UIKit)
-import UIKit
-public typealias View = UIView
 #if canImport(UIKit) || os(macOS)
 import Testing
 @testable import WrkstrmCrossKit
@@ -41,12 +35,11 @@ func testConstrainEdgesProducesExpectedConstraints() {
   child.constrainEdges(to: container)
   let attributes: [NSLayoutConstraint.Attribute] = [.top, .leading, .trailing, .bottom]
   for attribute in attributes {
-    #expect(container.constraints.contains { constraint in
-      constraint.firstItem === child &&
-        constraint.secondItem === container &&
-        constraint.firstAttribute == attribute &&
-        constraint.secondAttribute == attribute
-    })
+    #expect(
+      container.constraints.contains { constraint in
+        constraint.firstItem === child && constraint.secondItem === container
+          && constraint.firstAttribute == attribute && constraint.secondAttribute == attribute
+      })
   }
 }
 
@@ -62,12 +55,11 @@ func testConstrainToCenterProducesExpectedConstraints() {
   child.constrainToCenter(in: container)
   let attributes: [NSLayoutConstraint.Attribute] = [.centerX, .centerY]
   for attribute in attributes {
-    #expect(container.constraints.contains { constraint in
-      constraint.firstItem === child &&
-        constraint.secondItem === container &&
-        constraint.firstAttribute == attribute &&
-        constraint.secondAttribute == attribute
-    })
+    #expect(
+      container.constraints.contains { constraint in
+        constraint.firstItem === child && constraint.secondItem === container
+          && constraint.firstAttribute == attribute && constraint.secondAttribute == attribute
+      })
   }
 }
 #endif
