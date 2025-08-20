@@ -1,8 +1,8 @@
 import Foundation
+import WrkstrmMain
 
 #if canImport(UIKit)
 import UIKit
-import WrkstrmFoundation
 #endif
 
 /// Provides error throwing capabilities for view controller scenarios
@@ -29,7 +29,7 @@ extension UIViewController {
   /// - Returns: Never actually returns since it always throws an error
   /// - Throws: A String error containing the provided message
   public func `throw`<T>(message _: String = "") throws -> T {
-    throw "Controller not available: \(T.self)"
+    throw StringError("Controller not available: \(T.self)")
   }
 }
 #endif
