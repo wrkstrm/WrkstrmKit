@@ -31,7 +31,7 @@ extension StackViewController {
 
     case views([UIView], alignment: UIStackView.Alignment)
 
-    case grid(Grid)
+    case grid(LayoutGrid)
   }
 }
 
