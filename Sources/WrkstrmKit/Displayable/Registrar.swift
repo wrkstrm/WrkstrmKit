@@ -1,4 +1,4 @@
-#if canImport(UIKit) || os(OSX)
+#if canImport(UIKit) || os(macOS) || targetEnvironment(macCatalyst)
 public struct Registrar {
   public var classes: [ReusableCell.Type]?
 
@@ -16,4 +16,4 @@ public struct Registrar {
     self.init(classes: classes, nibs: nibs)
   }
 }
-#endif  // canImport(UIKit) || os(OSX)
+#endif  // canImport(UIKit) || os(macOS) || targetEnvironment(macCatalyst)

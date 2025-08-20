@@ -1,17 +1,17 @@
-#if canImport(UIKit) || os(OSX)
+#if canImport(UIKit) || canImport(Cocoa) || targetEnvironment(macCatalyst)
 #if canImport(UIKit)
 import UIKit
-#elseif os(OSX)
+#elseif canImport(Cocoa)
 import Cocoa
-#endif  // canImport(UIKit)
+#endif  // canImport(Cocoa)
 
 @MainActor @objc
 public protocol ReusableCell {
   #if canImport(UIKit)
   static var defaultNib: UINib { get }
-  #elseif os(OSX)
+  #elseif canImport(Cocoa)
   static var defaultNib: NSNib { get }
-  #endif  // canImport(UIKit)
+  #endif  // canImport(Cocoa)
 
   static func reuseIdentifier() -> String
 
@@ -23,4 +23,4 @@ public protocol TableReusableCell: ReusableCell {}
 
 @objc
 public protocol CollectionReusableCell: ReusableCell {}
-#endif  // canImport(UIKit) || os(OSX)
+#endif  // canImport(UIKit) || canImport(Cocoa) || targetEnvironment(macCatalyst)

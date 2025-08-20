@@ -52,6 +52,7 @@ let package = Package(
   ],
   products: [
     .library(name: "WrkstrmCrossKit", targets: ["WrkstrmCrossKit"]),
+    .library(name: "WrkstrmCatalystKit", targets: ["WrkstrmCatalystKit"]),
     .library(name: "WrkstrmKit", targets: ["WrkstrmKit"]),
     .library(name: "WrkstrmSwiftUI", targets: ["WrkstrmSwiftUI"]),
     .library(name: "WrkstrmSwiftUIExp", targets: ["WrkstrmSwiftUIExp"]),
@@ -61,6 +62,11 @@ let package = Package(
     .target(
       name: "WrkstrmCrossKit",
       dependencies: ["WrkstrmLog"],
+      swiftSettings: [.profile],
+    ),
+    .target(
+      name: "WrkstrmCatalystKit",
+      dependencies: ["WrkstrmLog", "WrkstrmFoundation", "WrkstrmMain"],
       swiftSettings: [.profile],
     ),
     .target(
