@@ -2,14 +2,14 @@
 #if canImport(UIKit)
 import UIKit
 
-public typealias View = UIView
-#elseif os(OSX)
+public typealias PlatformView = UIView
+#elseif os(macOS)
 import Cocoa
 
-public typealias View = NSView
+public typealias PlatformView = NSView
 #endif
 
-extension View {
+extension PlatformView {
   private enum AssociatedKey {
     @MainActor static var constraintCache = "wsm_constraintCache"
   }
@@ -121,7 +121,7 @@ extension View {
   /// - Parameter view: The view whose edges should be matched.
   /// - Precondition: `self` and `view` must share a common superview; otherwise Auto Layout will complain about unsatisfiable constraints or items not having a common ancestor.
   /// - Important: `translatesAutoresizingMaskIntoConstraints` is not modified and should be disabled prior to calling.
-  public func constrainEdges(to view: View) {
+  public func constrainEdges(to view: PlatformView) {
     constrainEqual(attribute: .top, to: view, .top)
     constrainEqual(attribute: .leading, to: view, .leading)
     constrainEqual(attribute: .trailing, to: view, .trailing)
@@ -134,7 +134,7 @@ extension View {
   /// - Precondition: Either `view` or `superview` must be non-`nil`; otherwise a `fatalError` is raised.
   /// - Note: Only alignment is affected; the view's size is unchanged.
   /// - Important: `translatesAutoresizingMaskIntoConstraints` is not modified.
-  public func constrainToCenter(in view: View? = nil) {
+  public func constrainToCenter(in view: PlatformView? = nil) {
     guard let container = view ?? superview else { fatalError() }
     centerXAnchor.constrainEqual(anchor: container.centerXAnchor)
     centerYAnchor.constrainEqual(anchor: container.centerYAnchor)

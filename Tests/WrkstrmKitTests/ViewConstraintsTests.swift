@@ -3,10 +3,8 @@ import Testing
 @testable import WrkstrmCrossKit
 #if canImport(UIKit)
 import UIKit
-public typealias View = UIView
 #elseif os(macOS)
 import AppKit
-public typealias View = NSView
 #endif
 
 /// Expectation: `cache(_:)` stores a constraint's original constant so
@@ -14,7 +12,7 @@ public typealias View = NSView
 /// when constraints are adjusted for animations or state changes.
 @Test
 func testCacheAndResetRestoreConstant() {
-  let view = View()
+  let view = PlatformView()
   let constraint = view.widthAnchor.constraint(equalToConstant: 100)
   constraint.isActive = true
   view.cache(constraint)
@@ -28,8 +26,8 @@ func testCacheAndResetRestoreConstant() {
 /// size and position.
 @Test
 func testConstrainEdgesProducesExpectedConstraints() {
-  let container = View()
-  let child = View()
+  let container = PlatformView()
+  let child = PlatformView()
   child.translatesAutoresizingMaskIntoConstraints = false
   container.addSubview(child)
   child.constrainEdges(to: container)
@@ -48,8 +46,8 @@ func testConstrainEdgesProducesExpectedConstraints() {
 /// within a parent view.
 @Test
 func testConstrainToCenterProducesExpectedConstraints() {
-  let container = View()
-  let child = View()
+  let container = PlatformView()
+  let child = PlatformView()
   child.translatesAutoresizingMaskIntoConstraints = false
   container.addSubview(child)
   child.constrainToCenter(in: container)
