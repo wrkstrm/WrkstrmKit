@@ -3,7 +3,7 @@
 import UIKit
 
 public typealias PlatformView = UIView
-#elseif os(OSX)
+#elseif os(macOS)
 import Cocoa
 
 public typealias PlatformView = NSView
