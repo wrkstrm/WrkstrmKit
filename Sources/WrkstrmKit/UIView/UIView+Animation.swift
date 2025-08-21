@@ -8,8 +8,8 @@ extension CGFloat {
 extension UIView {
   @discardableResult
   public func perform(
-    _ animation: Animation,
-    completion: Animation.Completion? = nil,
+    _ animation: UIViewAnimation,
+    completion: UIViewAnimation.Completion? = nil,
   ) -> UIViewPropertyAnimator {
     let options = animation.options
     let stage = animation.stage
@@ -22,7 +22,7 @@ extension UIView {
       self?.layoutIfNeeded()
     }
 
-    let finalCompletion: Animation.Completion = { [weak self] position in
+    let finalCompletion: UIViewAnimation.Completion = { [weak self] position in
       guard let self else { return }
       DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + options.hold) { [weak self] in
         guard let self else { return }

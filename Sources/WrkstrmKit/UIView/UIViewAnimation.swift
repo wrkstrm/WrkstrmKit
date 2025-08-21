@@ -1,16 +1,16 @@
 #if canImport(UIKit)
 import UIKit
 
-public class Animation {
+public class UIViewAnimation {
   public typealias Completion = (UIViewAnimatingPosition) -> Void
 
   public let options: Options
 
   public let stage: Stage
 
-  public var next: Animation?
+  public var next: UIViewAnimation?
 
-  public init(with options: Options, _ stage: Stage, next: Animation?) {
+  public init(with options: Options, _ stage: Stage, next: UIViewAnimation?) {
     self.options = options
     self.stage = stage
     self.next = next
@@ -23,13 +23,13 @@ public class Animation {
   public static func animation(
     with options: Options,
     _ stage: Stage,
-    next _: Animation? = nil,
-  ) -> Animation {
+    next _: UIViewAnimation? = nil,
+  ) -> UIViewAnimation {
     .init(with: options, stage, next: nil)
   }
 }
 
-extension Animation {
+extension UIViewAnimation {
   public struct Options: Equatable {
     public let duration: TimeInterval
 
@@ -81,16 +81,16 @@ extension Animation {
   }
 }
 
-extension Animation: Sequence {
-  public func makeIterator() -> AnimationIterator {
-    AnimationIterator(animation: self)
+extension UIViewAnimation: Sequence {
+  public func makeIterator() -> UIViewAnimationIterator {
+    UIViewAnimationIterator(animation: self)
   }
 }
 
-public struct AnimationIterator: IteratorProtocol {
-  public var animation: Animation?
+public struct UIViewAnimationIterator: IteratorProtocol {
+  public var animation: UIViewAnimation?
 
-  public mutating func next() -> Animation? {
+  public mutating func next() -> UIViewAnimation? {
     guard let next = animation else {
       return nil
     }
@@ -98,4 +98,7 @@ public struct AnimationIterator: IteratorProtocol {
     return next
   }
 }
+
+@available(*, deprecated, renamed: "UIViewAnimation")
+public typealias Animation = UIViewAnimation
 #endif

@@ -14,7 +14,7 @@ extension UIView {
   public func pulseView(_ pulse: Bool, delay _: CGFloat) -> UIViewPropertyAnimator {
     guard pulse else {
       return perform(
-        .animation(
+        UIViewAnimation.animation(
           with: .options(duration: Self.pulseDuration, timingOptions: [.beginFromCurrentState]),
           .stage { [weak self] in self?.transform = .identity },
         ))
@@ -25,7 +25,7 @@ extension UIView {
       .allowUserInteraction,
       .beginFromCurrentState,
     ]
-    let start: Animation = .init(
+    let start: UIViewAnimation = .init(
       with: .options(duration: Self.pulseDuration, timingOptions: timingOptions),
       .stage { [weak self] in
         guard let self else { return }
@@ -36,7 +36,7 @@ extension UIView {
       },
     )
 
-    let next: Animation = .init(
+    let next: UIViewAnimation = .init(
       with: .options(duration: Self.pulseDuration, timingOptions: timingOptions),
       .stage { [weak self] in self?.transform = .identity },
       next: start,
