@@ -1,6 +1,7 @@
 # WrkstrmKit 🧰
 
-WrkstrmKit is a Swift library that provides a set of utilities and extensions for building flexible and reusable UICollectionView-based interfaces in iOS applications.
+WrkstrmKit is a Swift library that provides a set of utilities and extensions for building flexible
+and reusable UICollectionView-based interfaces in iOS applications.
 
 ## ✨ Features
 
@@ -14,11 +15,13 @@ WrkstrmKit is a Swift library that provides a set of utilities and extensions fo
 
 ### CollectionViewCell
 
-A base class for collection view cells that can hold a model and a weak reference to a delegate view controller.
+A base class for collection view cells that can hold a model and a weak reference to a delegate view
+controller.
 
 ### CollectionViewController
 
-A generic view controller for managing collection views with a specific model type conforming to `CollectionViewDisplayable`.
+A generic view controller for managing collection views with a specific model type conforming to
+`CollectionViewDisplayable`.
 
 ### CollectionViewDataSource
 
@@ -30,19 +33,22 @@ A protocol that defines the requirements for models that can be displayed in a c
 
 ### HostingCollectionViewCell
 
-A collection view cell that can host SwiftUI views, allowing for seamless integration of SwiftUI content in UICollectionView-based interfaces.
+A collection view cell that can host SwiftUI views, allowing for seamless integration of SwiftUI
+content in UICollectionView-based interfaces.
 
 ### UICollectionView Extensions
 
 - `add(_:)`: Adds a registrar to register cell classes and nibs.
-- `register(nib:)` and `register(classes:)`: Convenience methods for registering multiple cell types.
+- `register(nib:)` and `register(classes:)`: Convenience methods for registering multiple cell
+  types.
 - `dequeueReusableCell(_:for:)`: Type-safe cell dequeuing.
 
 ## 🚀 Usage
 
 1. Create a model that conforms to `CollectionViewDisplayable`.
 2. Implement custom collection view cells as needed.
-3. Use `CollectionViewController` or create your own controller that uses `CollectionViewDataSource`.
+3. Use `CollectionViewController` or create your own controller that uses
+   `CollectionViewDataSource`.
 4. Configure your data source and set it to your collection view.
 
 ## 💻 Example
@@ -59,9 +65,11 @@ class MyViewController: CollectionViewController<MyModel> {
     }
 }
 ```
+
 ## 🏷️ Release Names
 
-Each release is nicknamed after a UI-kit component and a matching animal, underscoring WrkstrmKit's goal of making interfaces easier to build. 
+Each release is nicknamed after a UI-kit component and a matching animal, underscoring WrkstrmKit's
+goal of making interfaces easier to build.
 
 ## 📋 Requirements
 
