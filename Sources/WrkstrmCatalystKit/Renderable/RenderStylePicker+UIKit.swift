@@ -24,13 +24,13 @@ extension RenderStylePicker {
     }
 
     // Full menu to pick explicitly (shows on macCatalyst)
-    let swiftUI = UIAction(
+    let swiftUI: UIAction = UIAction(
       title: "SwiftUI",
       image: UIImage(systemName: "list.bullet"),
       state: store.current == .swiftui ? .on : .off
     ) { _ in store.current = .swiftui }
 
-    let uikit = UIAction(
+    let uikit: UIAction = UIAction(
       title: "UIKit",
       image: UIImage(systemName: "square.grid.2x2"),
       state: store.current == .uikit ? .on : .off
