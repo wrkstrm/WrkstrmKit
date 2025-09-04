@@ -108,7 +108,7 @@ public protocol JSONTableViewDisplayable {
 extension JSONTableViewDisplayable where Self: Codable {
   public func convertToJSONDictionary() -> JSON.AnyDictionary {
     // swiftlint:disable:next force_try
-    let data = try! JSONEncoder.default.encode(self)
+    let data = try! JSONEncoder.commonDateFormatting.encode(self)
 
     // swiftlint:disable:next force_try
     return try! JSONSerialization.jsonObject(
