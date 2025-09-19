@@ -186,3 +186,9 @@ domain-specific, or proprietary expressions. 🎨📚⚠️
 **Q:** Are there any scenarios in which the codename can be omitted?\
 **A:** No. The consistent use of a codename enhances recall and reinforces brand identity across the
 release timeline. 📜🔍✅
+
+## Assistant Operating Mode
+
+- Git command approval: do not run any `git` commands without explicit user approval
+  (including but not limited to `clone`, `status`, `add`, `commit`, `reset`, `rebase`, `push`,
+  `submodule`, `config`). Prefer reading workspace files over invoking `git` when possible.
