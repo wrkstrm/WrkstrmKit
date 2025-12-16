@@ -10,6 +10,7 @@ import AppKit
 /// Expectation: `cache(_:)` stores a constraint's original constant so
 /// `reset(_:)` can restore it after temporary modifications. Encountered
 /// when constraints are adjusted for animations or state changes.
+@MainActor
 @Test
 func testCacheAndResetRestoreConstant() {
   let view = PlatformView()
@@ -24,6 +25,7 @@ func testCacheAndResetRestoreConstant() {
 /// Expectation: `constrainEdges(to:)` pins a child view to all edges of
 /// its container. Encountered when a subview should match the container's
 /// size and position.
+@MainActor
 @Test
 func testConstrainEdgesProducesExpectedConstraints() {
   let container = PlatformView()
@@ -44,6 +46,7 @@ func testConstrainEdgesProducesExpectedConstraints() {
 /// Expectation: `constrainToCenter(in:)` aligns a child view's center with
 /// its container. Encountered when a subview needs to remain centered
 /// within a parent view.
+@MainActor
 @Test
 func testConstrainToCenterProducesExpectedConstraints() {
   let container = PlatformView()
