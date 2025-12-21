@@ -215,4 +215,3 @@ In interviews, you can describe this as:
   - Value types (`Options`, `Stage`) capture configuration and behavior.
   - A reference graph (`UIViewAnimation` + `next`) expresses sequencing.
   - A single executor (`UIView.perform(_:)`) drives the whole chain on the main thread.
-
