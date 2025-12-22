@@ -15,4 +15,3 @@ Use this catalog to explore patterns such as the chainable `UIViewAnimation` API
 ## Articles
 
 - <doc:UIViewAnimationDesign>
-
