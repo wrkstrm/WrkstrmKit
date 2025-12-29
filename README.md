@@ -55,14 +55,14 @@ content in UICollectionView-based interfaces.
 
 ```swift
 class MyModel: CollectionViewDisplayable {
-    // Implement required methods
+  // Implement required methods
 }
 
 class MyViewController: CollectionViewController<MyModel> {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        displayableModel = MyModel()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    displayableModel = MyModel()
+  }
 }
 ```
 
