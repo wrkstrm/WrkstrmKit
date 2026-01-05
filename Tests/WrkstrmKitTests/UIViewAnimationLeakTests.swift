@@ -31,4 +31,3 @@ func uiviewAnimationRetainCycleExistsForLoop() {
   #expect(weakStart != nil)
 }
 #endif
-
