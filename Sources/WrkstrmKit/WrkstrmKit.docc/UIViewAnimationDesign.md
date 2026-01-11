@@ -1,6 +1,6 @@
-# Chainable UIView animations in WrkstrmKit
+# Chainable UIView Animations In WrkstrmKit
 
-## Problem space
+## Problem Space
 
 - UIKit’s `UIView.animate` and `UIViewPropertyAnimator` are powerful but can lead to:
   - Nested completion handlers for multi-stage animations.
@@ -12,7 +12,7 @@
   - Links stages via a `next` pointer to build chains (including loops).
   - Executes chains with a single `UIView.perform(_:)` helper.
 
-## Core types
+## Core Types
 
 ### `UIViewAnimation`
 
@@ -36,7 +36,7 @@ public class UIViewAnimation {
 - `stage` captures the work for this step.
 - `next` links to another `UIViewAnimation`, allowing multi-stage or looping sequences.
 
-### `Options` – timing configuration
+### `Options` – Timing Configuration
 
 ```swift
 extension UIViewAnimation {
@@ -65,7 +65,7 @@ extension UIViewAnimation {
 - Groups duration, delay, and animation options into a single value type.
 - `hold` introduces a small pause before starting the next stage in a chain.
 
-### `Stage` – work to perform
+### `Stage` – Work To Perform
 
 ```swift
 extension UIViewAnimation {
@@ -86,7 +86,7 @@ extension UIViewAnimation {
 - `load` runs before the animation, often for initial layout or state setup.
 - `perform` runs within the animator’s animations closure, where property changes are animated.
 
-## Executing animations
+## Executing Animations
 
 ### `UIView.perform(_:)`
 
@@ -146,7 +146,7 @@ Key points:
 
 This design keeps chaining logic in one place and avoids nested completion handlers in callers.
 
-## Example: pulsing animation
+## Example: Pulsing Animation
 
 WrkstrmKit’s `UIView+Pulse` extension demonstrates how to build reusable patterns on top of
 `UIViewAnimation`:
@@ -200,7 +200,7 @@ Behavior:
 - `start.next = next` and `next.next = start` create a loop; `perform(start)` produces a continuous
   pulse until the view leaves the window or you stop it.
 
-## Concurrency and sequencing considerations
+## Concurrency And Sequencing Considerations
 
 - `UIViewPropertyAnimator` runs on the main run loop; `DispatchQueue.main.asyncAfter` is used to
   sequence stages with an optional hold between them.
