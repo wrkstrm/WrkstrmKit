@@ -1,4 +1,4 @@
-# Chainable UIView Animations In WrkstrmKit
+# Chainable UIView Animations in WrkstrmKit
 
 ## Problem Space
 
@@ -65,7 +65,7 @@ extension UIViewAnimation {
 - Groups duration, delay, and animation options into a single value type.
 - `hold` introduces a small pause before starting the next stage in a chain.
 
-### `Stage` – Work To Perform
+### `Stage` – Work to Perform
 
 ```swift
 extension UIViewAnimation {
@@ -200,7 +200,7 @@ Behavior:
 - `start.next = next` and `next.next = start` create a loop; `perform(start)` produces a continuous
   pulse until the view leaves the window or you stop it.
 
-## Concurrency And Sequencing Considerations
+## Concurrency and Sequencing Considerations
 
 - `UIViewPropertyAnimator` runs on the main run loop; `DispatchQueue.main.asyncAfter` is used to
   sequence stages with an optional hold between them.
