@@ -2,7 +2,7 @@
 #if canImport(UIKit)
 
 import UIKit
-import WrkstrmLog
+import CommonLog
 
 extension UIApplication {
   /// Get the top view controller from the first window scene.

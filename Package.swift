@@ -28,7 +28,7 @@ extension PackageDescription.Package.Dependency {
   static var local: [PackageDescription.Package.Dependency] {
     [
       .package(name: "WrkstrmFoundation", path: "../../universal/WrkstrmFoundation"),
-      .package(name: "WrkstrmLog", path: "../../universal/WrkstrmLog"),
+      .package(name: "common-log", path: "../../universal/common/domain/system/common-log"),
       .package(name: "WrkstrmMain", path: "../../universal/WrkstrmMain"),
     ]
   }
@@ -36,7 +36,7 @@ extension PackageDescription.Package.Dependency {
   static var remote: [PackageDescription.Package.Dependency] {
     [
       .package(url: "https://github.com/wrkstrm/WrkstrmFoundation.git", from: "3.0.0"),
-      .package(url: "https://github.com/wrkstrm/WrkstrmLog.git", from: "2.0.0"),
+      .package(url: "https://github.com/wrkstrm/common-log.git", from: "2.0.0"),
       .package(url: "https://github.com/wrkstrm/WrkstrmMain.git", from: "2.0.0"),
     ]
   }
@@ -61,12 +61,12 @@ let package = Package(
   targets: [
     .target(
       name: "WrkstrmCrossKit",
-      dependencies: ["WrkstrmLog"],
+      dependencies: ["CommonLog"],
       swiftSettings: [.profile],
     ),
     .target(
       name: "WrkstrmCatalystKit",
-      dependencies: ["WrkstrmLog", "WrkstrmFoundation", "WrkstrmMain"],
+      dependencies: ["CommonLog", "WrkstrmFoundation", "WrkstrmMain"],
       swiftSettings: [.profile],
     ),
     .target(

@@ -1,4 +1,4 @@
-import WrkstrmLog
+import CommonLog
 
 extension Log {
   @MainActor

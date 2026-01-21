@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 import UniformTypeIdentifiers
-import WrkstrmLog
+import CommonLog
 
 extension SecureDocumentPickerManager {
   /// Error types specific to document picking operations

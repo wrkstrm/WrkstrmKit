@@ -1,6 +1,6 @@
 #if canImport(UIKit)
 import UIKit
-import WrkstrmLog
+import CommonLog
 
 private let estimatedRowHeight: CGFloat = 200
 

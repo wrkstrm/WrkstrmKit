@@ -1,7 +1,7 @@
 #if canImport(UIKit)
 import UIKit
 import WrkstrmFoundation
-import WrkstrmLog
+import CommonLog
 import WrkstrmMain
 
 extension JSONTableViewController: @preconcurrency Injectable {
