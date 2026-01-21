@@ -36,7 +36,7 @@ extension PackageDescription.Package.Dependency {
   static var remote: [PackageDescription.Package.Dependency] {
     [
       .package(url: "https://github.com/wrkstrm/WrkstrmFoundation.git", from: "3.0.0"),
-      .package(url: "https://github.com/wrkstrm/common-log.git", from: "3.0.0"),
+      .package(url: "https://github.com/wrkstrm/common-log.git", from: "4.0.0"),
       .package(url: "https://github.com/wrkstrm/WrkstrmMain.git", from: "2.0.0"),
     ]
   }
@@ -61,12 +61,18 @@ let package = Package(
   targets: [
     .target(
       name: "WrkstrmCrossKit",
-      dependencies: ["CommonLog"],
+      dependencies: [
+        .product(name: "CommonLog", package: "common-log")
+      ],
       swiftSettings: [.profile],
     ),
     .target(
       name: "WrkstrmCatalystKit",
-      dependencies: ["CommonLog", "WrkstrmFoundation", "WrkstrmMain"],
+      dependencies: [
+        .product(name: "CommonLog", package: "common-log"),
+        "WrkstrmFoundation",
+        "WrkstrmMain"
+      ],
       swiftSettings: [.profile],
     ),
     .target(
