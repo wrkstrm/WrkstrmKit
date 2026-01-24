@@ -29,15 +29,15 @@ extension PackageDescription.Package.Dependency {
     [
       .package(name: "wrkstrm-foundation", path: "../../universal/domain/system/wrkstrm-foundation"),
       .package(name: "common-log", path: "../../universal/common/domain/system/common-log"),
-      .package(name: "WrkstrmMain", path: "../../universal/WrkstrmMain"),
+      .package(name: "wrkstrm-main", path: "../../universal/domain/system/wrkstrm-main"),
     ]
   }
 
   static var remote: [PackageDescription.Package.Dependency] {
     [
-      .package(url: "https://github.com/wrkstrm/WrkstrmFoundation.git", from: "3.0.0"),
+      .package(name: "wrkstrm-foundation", path: "../../universal/domain/system/wrkstrm-foundation"),
       .package(url: "https://github.com/wrkstrm/common-log.git", from: "3.0.0"),
-      .package(url: "https://github.com/wrkstrm/WrkstrmMain.git", from: "2.0.0"),
+      .package(name: "wrkstrm-main", path: "../../universal/domain/system/wrkstrm-main"),
     ]
   }
 }
@@ -70,14 +70,18 @@ let package = Package(
       name: "WrkstrmCatalystKit",
       dependencies: [
         .product(name: "CommonLog", package: "common-log"),
-        "WrkstrmFoundation",
-        "WrkstrmMain"
+        .product(name: "WrkstrmFoundation", package: "wrkstrm-foundation"),
+        .product(name: "WrkstrmMain", package: "wrkstrm-main")
       ],
       swiftSettings: [.profile],
     ),
     .target(
       name: "WrkstrmKit",
-      dependencies: ["WrkstrmCrossKit", "WrkstrmFoundation", "WrkstrmMain"],
+      dependencies: [
+        "WrkstrmCrossKit",
+        .product(name: "WrkstrmFoundation", package: "wrkstrm-foundation"),
+        .product(name: "WrkstrmMain", package: "wrkstrm-main")
+      ],
       swiftSettings: [.profile],
     ),
     .target(
@@ -91,7 +95,12 @@ let package = Package(
     ),
     .testTarget(
       name: "WrkstrmKitTests",
-      dependencies: ["WrkstrmKit", "WrkstrmCrossKit", "WrkstrmFoundation", "WrkstrmMain"],
+      dependencies: [
+        "WrkstrmKit",
+        "WrkstrmCrossKit",
+        .product(name: "WrkstrmFoundation", package: "wrkstrm-foundation"),
+        .product(name: "WrkstrmMain", package: "wrkstrm-main")
+      ],
       swiftSettings: [.profile],
     ),
   ],
