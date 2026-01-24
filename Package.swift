@@ -27,7 +27,7 @@ print("---- Wrkstrm Deps ----")
 extension PackageDescription.Package.Dependency {
   static var local: [PackageDescription.Package.Dependency] {
     [
-      .package(name: "WrkstrmFoundation", path: "../../universal/WrkstrmFoundation"),
+      .package(name: "wrkstrm-foundation", path: "../../universal/domain/system/wrkstrm-foundation"),
       .package(name: "common-log", path: "../../universal/common/domain/system/common-log"),
       .package(name: "WrkstrmMain", path: "../../universal/WrkstrmMain"),
     ]
