@@ -1,4 +1,4 @@
-// swift-tools-version:6.1
+// swift-tools-version:6.2
 import Foundation
 import PackageDescription
 
@@ -46,7 +46,7 @@ let package = Package(
   name: "WrkstrmKit",
   platforms: [
     .iOS(.v16),
-    .macOS(.v14),
+    .macOS(.v15),
     .tvOS(.v16),
     .watchOS(.v9),
   ],
@@ -105,3 +105,4 @@ let package = Package(
     ),
   ],
 )
+
