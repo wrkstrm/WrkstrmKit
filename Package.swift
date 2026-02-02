@@ -28,7 +28,10 @@ extension PackageDescription.Package.Dependency {
   static var local: [PackageDescription.Package.Dependency] {
     [
       .package(name: "wrkstrm-foundation", path: "../../universal/domain/system/wrkstrm-foundation"),
-      .package(name: "common-log", path: "../../universal/domain/system/common-log"),
+      .package(
+        name: "common-log",
+        path: "../../../../swift-universal/public/spm/universal/domain/system/common-log"
+      ),
       .package(name: "wrkstrm-main", path: "../../universal/domain/system/wrkstrm-main"),
     ]
   }
@@ -36,7 +39,7 @@ extension PackageDescription.Package.Dependency {
   static var remote: [PackageDescription.Package.Dependency] {
     [
       .package(name: "wrkstrm-foundation", path: "../../universal/domain/system/wrkstrm-foundation"),
-      .package(url: "https://github.com/wrkstrm/common-log.git", from: "3.0.0"),
+      .package(url: "https://github.com/swift-universal/common-log.git", from: "3.0.0"),
       .package(name: "wrkstrm-main", path: "../../universal/domain/system/wrkstrm-main"),
     ]
   }
